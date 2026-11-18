@@ -1,0 +1,204 @@
+﻿=== GameLoader.RobRunRuntime+<WriteFrame>d__11::MoveNext
+  IL_0000: ldc.i4.1 
+  IL_0001: stloc.0 
+  IL_0002: ldarg.0 
+  IL_0003: ldfld <WriteFrame>d__11::<>1__state
+  IL_0008: stloc.2 
+  IL_0009: ldloc.2 
+  IL_000A: switch IL_00BB, IL_013D, IL_01AD
+  IL_001B: ldarg.0 
+  IL_001C: ldarg.0 
+  IL_001D: ldfld <WriteFrame>d__11::bytes
+  IL_0022: ldlen 
+  IL_0023: conv.i4 
+  IL_0024: stfld <WriteFrame>d__11::<length>5__12
+  IL_0029: ldarg.0 
+  IL_002A: ldc.i4.4 
+  IL_002B: newarr Byte
+  IL_0030: stloc.3 
+  IL_0031: ldloc.3 
+  IL_0032: ldc.i4.0 
+  IL_0033: ldarg.0 
+  IL_0034: ldfld <WriteFrame>d__11::<length>5__12
+  IL_0039: conv.u1 
+  IL_003A: stelem.i1 
+  IL_003B: ldloc.3 
+  IL_003C: ldc.i4.1 
+  IL_003D: ldarg.0 
+  IL_003E: ldfld <WriteFrame>d__11::<length>5__12
+  IL_0043: ldc.i4.8 
+  IL_0044: shr.un 
+  IL_0045: conv.u1 
+  IL_0046: stelem.i1 
+  IL_0047: ldloc.3 
+  IL_0048: ldc.i4.2 
+  IL_0049: ldarg.0 
+  IL_004A: ldfld <WriteFrame>d__11::<length>5__12
+  IL_004F: ldc.i4.s 16
+  IL_0051: shr.un 
+  IL_0052: conv.u1 
+  IL_0053: stelem.i1 
+  IL_0054: ldloc.3 
+  IL_0055: ldc.i4.3 
+  IL_0056: ldarg.0 
+  IL_0057: ldfld <WriteFrame>d__11::<length>5__12
+  IL_005C: ldc.i4.s 24
+  IL_005E: shr.un 
+  IL_005F: conv.u1 
+  IL_0060: stelem.i1 
+  IL_0061: ldloc.3 
+  IL_0062: stfld <WriteFrame>d__11::<header>5__13
+  IL_0067: ldarg.0 
+  IL_0068: ldfld <WriteFrame>d__11::stream
+  IL_006D: ldarg.0 
+  IL_006E: ldfld <WriteFrame>d__11::<header>5__13
+  IL_0073: ldc.i4.0 
+  IL_0074: ldarg.0 
+  IL_0075: ldfld <WriteFrame>d__11::<header>5__13
+  IL_007A: ldlen 
+  IL_007B: conv.i4 
+  IL_007C: ldarg.0 
+  IL_007D: ldfld <WriteFrame>d__11::cancel
+  IL_0082: callvirt Stream::WriteAsync
+  IL_0087: callvirt Task::GetAwaiter
+  IL_008C: stloc.s 4
+  IL_008E: ldloca.s 4
+  IL_0090: call TaskAwaiter::get_IsCompleted
+  IL_0095: brtrue.s IL_00DA
+  IL_0097: ldarg.0 
+  IL_0098: ldc.i4.0 
+  IL_0099: stfld <WriteFrame>d__11::<>1__state
+  IL_009E: ldarg.0 
+  IL_009F: ldloc.s 4
+  IL_00A1: stfld <WriteFrame>d__11::<>u__$awaiter14
+  IL_00A6: ldarg.0 
+  IL_00A7: ldflda <WriteFrame>d__11::<>t__builder
+  IL_00AC: ldloca.s 4
+  IL_00AE: ldarg.0 
+  IL_00AF: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_00B4: ldc.i4.0 
+  IL_00B5: stloc.0 
+  IL_00B6: leave IL_0207
+  IL_00BB: ldarg.0 
+  IL_00BC: ldfld <WriteFrame>d__11::<>u__$awaiter14
+  IL_00C1: stloc.s 4
+  IL_00C3: ldarg.0 
+  IL_00C4: ldloca.s 5
+  IL_00C6: initobj TaskAwaiter
+  IL_00CC: ldloc.s 5
+  IL_00CE: stfld <WriteFrame>d__11::<>u__$awaiter14
+  IL_00D3: ldarg.0 
+  IL_00D4: ldc.i4.m1 
+  IL_00D5: stfld <WriteFrame>d__11::<>1__state
+  IL_00DA: ldloca.s 4
+  IL_00DC: call TaskAwaiter::GetResult
+  IL_00E1: ldloca.s 4
+  IL_00E3: initobj TaskAwaiter
+  IL_00E9: ldarg.0 
+  IL_00EA: ldfld <WriteFrame>d__11::stream
+  IL_00EF: ldarg.0 
+  IL_00F0: ldfld <WriteFrame>d__11::bytes
+  IL_00F5: ldc.i4.0 
+  IL_00F6: ldarg.0 
+  IL_00F7: ldfld <WriteFrame>d__11::bytes
+  IL_00FC: ldlen 
+  IL_00FD: conv.i4 
+  IL_00FE: ldarg.0 
+  IL_00FF: ldfld <WriteFrame>d__11::cancel
+  IL_0104: callvirt Stream::WriteAsync
+  IL_0109: callvirt Task::GetAwaiter
+  IL_010E: stloc.s 6
+  IL_0110: ldloca.s 6
+  IL_0112: call TaskAwaiter::get_IsCompleted
+  IL_0117: brtrue.s IL_015C
+  IL_0119: ldarg.0 
+  IL_011A: ldc.i4.1 
+  IL_011B: stfld <WriteFrame>d__11::<>1__state
+  IL_0120: ldarg.0 
+  IL_0121: ldloc.s 6
+  IL_0123: stfld <WriteFrame>d__11::<>u__$awaiter14
+  IL_0128: ldarg.0 
+  IL_0129: ldflda <WriteFrame>d__11::<>t__builder
+  IL_012E: ldloca.s 6
+  IL_0130: ldarg.0 
+  IL_0131: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_0136: ldc.i4.0 
+  IL_0137: stloc.0 
+  IL_0138: leave IL_0207
+  IL_013D: ldarg.0 
+  IL_013E: ldfld <WriteFrame>d__11::<>u__$awaiter14
+  IL_0143: stloc.s 6
+  IL_0145: ldarg.0 
+  IL_0146: ldloca.s 7
+  IL_0148: initobj TaskAwaiter
+  IL_014E: ldloc.s 7
+  IL_0150: stfld <WriteFrame>d__11::<>u__$awaiter14
+  IL_0155: ldarg.0 
+  IL_0156: ldc.i4.m1 
+  IL_0157: stfld <WriteFrame>d__11::<>1__state
+  IL_015C: ldloca.s 6
+  IL_015E: call TaskAwaiter::GetResult
+  IL_0163: ldloca.s 6
+  IL_0165: initobj TaskAwaiter
+  IL_016B: ldarg.0 
+  IL_016C: ldfld <WriteFrame>d__11::stream
+  IL_0171: ldarg.0 
+  IL_0172: ldfld <WriteFrame>d__11::cancel
+  IL_0177: callvirt Stream::FlushAsync
+  IL_017C: callvirt Task::GetAwaiter
+  IL_0181: stloc.s 8
+  IL_0183: ldloca.s 8
+  IL_0185: call TaskAwaiter::get_IsCompleted
+  IL_018A: brtrue.s IL_01CC
+  IL_018C: ldarg.0 
+  IL_018D: ldc.i4.2 
+  IL_018E: stfld <WriteFrame>d__11::<>1__state
+  IL_0193: ldarg.0 
+  IL_0194: ldloc.s 8
+  IL_0196: stfld <WriteFrame>d__11::<>u__$awaiter14
+  IL_019B: ldarg.0 
+  IL_019C: ldflda <WriteFrame>d__11::<>t__builder
+  IL_01A1: ldloca.s 8
+  IL_01A3: ldarg.0 
+  IL_01A4: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_01A9: ldc.i4.0 
+  IL_01AA: stloc.0 
+  IL_01AB: leave.s IL_0207
+  IL_01AD: ldarg.0 
+  IL_01AE: ldfld <WriteFrame>d__11::<>u__$awaiter14
+  IL_01B3: stloc.s 8
+  IL_01B5: ldarg.0 
+  IL_01B6: ldloca.s 9
+  IL_01B8: initobj TaskAwaiter
+  IL_01BE: ldloc.s 9
+  IL_01C0: stfld <WriteFrame>d__11::<>u__$awaiter14
+  IL_01C5: ldarg.0 
+  IL_01C6: ldc.i4.m1 
+  IL_01C7: stfld <WriteFrame>d__11::<>1__state
+  IL_01CC: ldloca.s 8
+  IL_01CE: call TaskAwaiter::GetResult
+  IL_01D3: ldloca.s 8
+  IL_01D5: initobj TaskAwaiter
+  IL_01DB: leave.s IL_01F4
+  IL_01DD: stloc.1 
+  IL_01DE: ldarg.0 
+  IL_01DF: ldc.i4.s -2
+  IL_01E1: stfld <WriteFrame>d__11::<>1__state
+  IL_01E6: ldarg.0 
+  IL_01E7: ldflda <WriteFrame>d__11::<>t__builder
+  IL_01EC: ldloc.1 
+  IL_01ED: call AsyncTaskMethodBuilder::SetException
+  IL_01F2: leave.s IL_0207
+  IL_01F4: ldarg.0 
+  IL_01F5: ldc.i4.s -2
+  IL_01F7: stfld <WriteFrame>d__11::<>1__state
+  IL_01FC: ldarg.0 
+  IL_01FD: ldflda <WriteFrame>d__11::<>t__builder
+  IL_0202: call AsyncTaskMethodBuilder::SetResult
+  IL_0207: ret 
+=== GameLoader.RobRunRuntime+<WriteFrame>d__11::SetStateMachine
+  IL_0000: ldarg.0 
+  IL_0001: ldflda <WriteFrame>d__11::<>t__builder
+  IL_0006: ldarg.1 
+  IL_0007: call AsyncTaskMethodBuilder::SetStateMachine
+  IL_000C: ret 

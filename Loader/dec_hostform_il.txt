@@ -1,0 +1,530 @@
+﻿=== GameLoader.HostForm::get_CreateParams
+  IL_0000: ldarg.0 
+  IL_0001: call Form::get_CreateParams
+  IL_0006: stloc.0 
+  IL_0007: ldloc.0 
+  IL_0008: dup 
+  IL_0009: callvirt CreateParams::get_Style
+  IL_000E: ldc.i4 655360
+  IL_0013: or 
+  IL_0014: callvirt CreateParams::set_Style
+  IL_0019: ldloc.0 
+  IL_001A: dup 
+  IL_001B: callvirt CreateParams::get_ClassStyle
+  IL_0020: ldc.i4 131072
+  IL_0025: or 
+  IL_0026: callvirt CreateParams::set_ClassStyle
+  IL_002B: ldloc.0 
+  IL_002C: ret 
+=== GameLoader.HostForm::SetVisibleCore
+  IL_0000: ldarg.0 
+  IL_0001: ldfld HostForm::ready
+  IL_0006: brtrue.s IL_002C
+  IL_0008: ldarg.0 
+  IL_0009: ldfld HostForm::initStarted
+  IL_000E: brtrue.s IL_0024
+  IL_0010: ldarg.0 
+  IL_0011: ldc.i4.1 
+  IL_0012: stfld HostForm::initStarted
+  IL_0017: ldarg.0 
+  IL_0018: callvirt Control::CreateHandle
+  IL_001D: ldarg.0 
+  IL_001E: call HostForm::Init
+  IL_0023: pop 
+  IL_0024: ldarg.0 
+  IL_0025: ldc.i4.0 
+  IL_0026: call Form::SetVisibleCore
+  IL_002B: ret 
+  IL_002C: ldarg.0 
+  IL_002D: ldarg.1 
+  IL_002E: call Form::SetVisibleCore
+  IL_0033: ret 
+=== GameLoader.HostForm::OnHandleCreated
+  IL_0000: ldarg.0 
+  IL_0001: ldarg.1 
+  IL_0002: call Form::OnHandleCreated
+  IL_0007: ldarg.0 
+  IL_0008: ldfld HostForm::win11
+  IL_000D: brfalse.s IL_0022
+  IL_000F: ldc.i4.2 
+  IL_0010: stloc.0 
+  IL_0011: ldarg.0 
+  IL_0012: call Control::get_Handle
+  IL_0017: ldc.i4.s 33
+  IL_0019: ldloca.s 0
+  IL_001B: ldc.i4.4 
+  IL_001C: call Native::DwmSetWindowAttribute
+  IL_0021: pop 
+  IL_0022: ldarg.0 
+  IL_0023: call HostForm::ApplyRegion
+  IL_0028: ret 
+=== GameLoader.HostForm::Px
+  IL_0000: ldarga.s 1
+  IL_0002: call Size::get_Width
+  IL_0007: conv.r4 
+  IL_0008: ldarg.0 
+  IL_0009: ldfld HostForm::scale
+  IL_000E: mul 
+  IL_000F: conv.r8 
+  IL_0010: call Math::Round
+  IL_0015: conv.i4 
+  IL_0016: ldarga.s 1
+  IL_0018: call Size::get_Height
+  IL_001D: conv.r4 
+  IL_001E: ldarg.0 
+  IL_001F: ldfld HostForm::scale
+  IL_0024: mul 
+  IL_0025: conv.r8 
+  IL_0026: call Math::Round
+  IL_002B: conv.i4 
+  IL_002C: newobj Size::.ctor
+  IL_0031: ret 
+=== GameLoader.HostForm::Place
+  IL_0000: ldarg.0 
+  IL_0001: ldarg.1 
+  IL_0002: call HostForm::Px
+  IL_0007: stloc.0 
+  IL_0008: ldarg.0 
+  IL_0009: call Control::get_IsHandleCreated
+  IL_000E: brtrue.s IL_001C
+  IL_0010: call Screen::get_PrimaryScreen
+  IL_0015: callvirt Screen::get_WorkingArea
+  IL_001A: br.s IL_002C
+  IL_001C: ldarg.0 
+  IL_001D: call Control::get_Handle
+  IL_0022: call Screen::FromHandle
+  IL_0027: callvirt Screen::get_WorkingArea
+  IL_002C: stloc.1 
+  IL_002D: ldarg.0 
+  IL_002E: ldloca.s 1
+  IL_0030: call Rectangle::get_X
+  IL_0035: ldloca.s 1
+  IL_0037: call Rectangle::get_Width
+  IL_003C: ldloca.s 0
+  IL_003E: call Size::get_Width
+  IL_0043: sub 
+  IL_0044: ldc.i4.2 
+  IL_0045: div 
+  IL_0046: add 
+  IL_0047: ldloca.s 1
+  IL_0049: call Rectangle::get_Y
+  IL_004E: ldloca.s 1
+  IL_0050: call Rectangle::get_Height
+  IL_0055: ldloca.s 0
+  IL_0057: call Size::get_Height
+  IL_005C: sub 
+  IL_005D: ldc.i4.2 
+  IL_005E: div 
+  IL_005F: add 
+  IL_0060: ldloca.s 0
+  IL_0062: call Size::get_Width
+  IL_0067: ldloca.s 0
+  IL_0069: call Size::get_Height
+  IL_006E: newobj Rectangle::.ctor
+  IL_0073: call Control::set_Bounds
+  IL_0078: ret 
+=== GameLoader.HostForm::ApplyRegion
+  IL_0000: ldarg.0 
+  IL_0001: ldfld HostForm::win11
+  IL_0006: brtrue.s IL_0010
+  IL_0008: ldarg.0 
+  IL_0009: call Control::get_IsHandleCreated
+  IL_000E: brtrue.s IL_0011
+  IL_0010: ret 
+  IL_0011: ldc.r4 12
+  IL_0016: ldarg.0 
+  IL_0017: ldfld HostForm::scale
+  IL_001C: mul 
+  IL_001D: ldc.r4 2
+  IL_0022: mul 
+  IL_0023: conv.r8 
+  IL_0024: call Math::Round
+  IL_0029: conv.i4 
+  IL_002A: stloc.0 
+  IL_002B: ldc.i4.0 
+  IL_002C: ldc.i4.0 
+  IL_002D: ldarg.0 
+  IL_002E: call Control::get_Width
+  IL_0033: ldc.i4.1 
+  IL_0034: add 
+  IL_0035: ldarg.0 
+  IL_0036: call Control::get_Height
+  IL_003B: ldc.i4.1 
+  IL_003C: add 
+  IL_003D: ldloc.0 
+  IL_003E: ldloc.0 
+  IL_003F: call Native::CreateRoundRectRgn
+  IL_0044: stloc.1 
+  IL_0045: ldarg.0 
+  IL_0046: call Control::get_Region
+  IL_004B: stloc.2 
+  IL_004C: ldarg.0 
+  IL_004D: ldloc.1 
+  IL_004E: call Region::FromHrgn
+  IL_0053: call Control::set_Region
+  IL_0058: ldloc.1 
+  IL_0059: call Native::DeleteObject
+  IL_005E: pop 
+  IL_005F: ldloc.2 
+  IL_0060: brfalse.s IL_0068
+  IL_0062: ldloc.2 
+  IL_0063: callvirt Region::Dispose
+  IL_0068: ret 
+=== GameLoader.HostForm::OnResize
+  IL_0000: ldarg.0 
+  IL_0001: ldarg.1 
+  IL_0002: call Form::OnResize
+  IL_0007: ldarg.0 
+  IL_0008: ldfld HostForm::ctl
+  IL_000D: brfalse.s IL_0037
+  IL_000F: ldarg.0 
+  IL_0010: ldfld HostForm::ctl
+  IL_0015: ldarg.0 
+  IL_0016: call Control::get_ClientRectangle
+  IL_001B: callvirt tok(0x0A0001C7)
+  IL_0020: ldarg.0 
+  IL_0021: ldfld HostForm::ctl
+  IL_0026: ldarg.0 
+  IL_0027: call Form::get_WindowState
+  IL_002C: ldc.i4.1 
+  IL_002D: ceq 
+  IL_002F: ldc.i4.0 
+  IL_0030: ceq 
+  IL_0032: callvirt tok(0x0A0001C9)
+  IL_0037: ldarg.0 
+  IL_0038: call HostForm::ApplyRegion
+  IL_003D: ret 
+=== GameLoader.HostForm::OnMove
+  IL_0000: ldarg.0 
+  IL_0001: ldarg.1 
+  IL_0002: call Control::OnMove
+  IL_0007: ldarg.0 
+  IL_0008: ldfld HostForm::ctl
+  IL_000D: brfalse.s IL_001A
+  IL_000F: ldarg.0 
+  IL_0010: ldfld HostForm::ctl
+  IL_0015: callvirt tok(0x0A0001CB)
+  IL_001A: ret 
+=== GameLoader.HostForm::OnFormClosed
+  IL_0000: ldarg.0 
+  IL_0001: ldfld HostForm::shutdown
+  IL_0006: callvirt CancellationTokenSource::Cancel
+  IL_000B: ldarg.0 
+  IL_000C: ldfld HostForm::ctl
+  IL_0011: brfalse.s IL_002A
+  IL_0013: ldarg.0 
+  IL_0014: ldfld HostForm::ctl
+  IL_0019: callvirt tok(0x0A0001CD)
+  IL_001E: leave.s IL_0023
+  IL_0020: pop 
+  IL_0021: leave.s IL_0023
+  IL_0023: ldarg.0 
+  IL_0024: ldnull 
+  IL_0025: stfld HostForm::ctl
+  IL_002A: ldarg.0 
+  IL_002B: ldnull 
+  IL_002C: stfld HostForm::wv
+  IL_0031: call Runtime::Cleanup
+  IL_0036: ldarg.0 
+  IL_0037: ldarg.1 
+  IL_0038: call Form::OnFormClosed
+  IL_003D: ret 
+=== GameLoader.HostForm::Init
+  <no body>
+=== GameLoader.HostForm::OnFirstNavigation
+  IL_0000: ldarg.0 
+  IL_0001: ldfld HostForm::wv
+  IL_0006: ldarg.0 
+  IL_0007: ldftn HostForm::OnFirstNavigation
+  IL_000D: newobj tok(0x0A0001F7)
+  IL_0012: callvirt tok(0x0A0001FB)
+  IL_0017: ldarg.0 
+  IL_0018: ldc.i4.1 
+  IL_0019: stfld HostForm::ready
+  IL_001E: ldarg.0 
+  IL_001F: ldfld HostForm::ctl
+  IL_0024: ldc.i4.1 
+  IL_0025: callvirt tok(0x0A0001C9)
+  IL_002A: ldarg.0 
+  IL_002B: call Control::Show
+  IL_0030: ldarg.0 
+  IL_0031: call Form::Activate
+  IL_0036: ret 
+=== GameLoader.HostForm::NoRuntime
+  IL_0000: ldstr "Microsoft Edge WebView2 Runtime is required.\n\nOpen the download page?"
+  IL_0005: ldstr "Loader"
+  IL_000A: ldc.i4.4 
+  IL_000B: ldc.i4.s 48
+  IL_000D: call MessageBox::Show
+  IL_0012: stloc.0 
+  IL_0013: ldloc.0 
+  IL_0014: ldc.i4.6 
+  IL_0015: bne.un.s IL_0035
+  IL_0017: ldstr "https://go.microsoft.com/fwlink/p/?LinkId=2124703"
+  IL_001C: newobj ProcessStartInfo::.ctor
+  IL_0021: stloc.1 
+  IL_0022: ldloc.1 
+  IL_0023: ldc.i4.1 
+  IL_0024: callvirt ProcessStartInfo::set_UseShellExecute
+  IL_0029: ldloc.1 
+  IL_002A: call Process::Start
+  IL_002F: pop 
+  IL_0030: leave.s IL_0035
+  IL_0032: pop 
+  IL_0033: leave.s IL_0035
+  IL_0035: call Application::Exit
+  IL_003A: ret 
+=== GameLoader.HostForm::Fatal
+  IL_0000: ldarg.1 
+  IL_0001: ldstr "Loader"
+  IL_0006: ldc.i4.0 
+  IL_0007: ldc.i4.s 16
+  IL_0009: call MessageBox::Show
+  IL_000E: pop 
+  IL_000F: call Application::Exit
+  IL_0014: ret 
+=== GameLoader.HostForm::Post
+  IL_0000: ldarg.0 
+  IL_0001: ldfld HostForm::wv
+  IL_0006: brtrue.s IL_0009
+  IL_0008: ret 
+  IL_0009: ldarg.0 
+  IL_000A: ldfld HostForm::wv
+  IL_000F: ldarg.1 
+  IL_0010: call Json::Stringify
+  IL_0015: callvirt tok(0x0A000200)
+  IL_001A: leave.s IL_001F
+  IL_001C: pop 
+  IL_001D: leave.s IL_001F
+  IL_001F: ret 
+=== GameLoader.HostForm::Emit
+  IL_0000: ldarg.3 
+  IL_0001: dup 
+  IL_0002: brtrue.s IL_000A
+  IL_0004: pop 
+  IL_0005: newobj Dictionary`2::.ctor
+  IL_000A: stloc.0 
+  IL_000B: ldloc.0 
+  IL_000C: ldstr "gameId"
+  IL_0011: ldarg.1 
+  IL_0012: box Int64
+  IL_0017: callvirt Dictionary`2::set_Item
+  IL_001C: ldloc.0 
+  IL_001D: ldstr "stage"
+  IL_0022: ldarg.2 
+  IL_0023: callvirt Dictionary`2::set_Item
+  IL_0028: ldarg.0 
+  IL_0029: newobj Dictionary`2::.ctor
+  IL_002E: stloc.1 
+  IL_002F: ldloc.1 
+  IL_0030: ldstr "type"
+  IL_0035: ldstr "progress"
+  IL_003A: callvirt Dictionary`2::Add
+  IL_003F: ldloc.1 
+  IL_0040: ldstr "data"
+  IL_0045: ldloc.0 
+  IL_0046: callvirt Dictionary`2::Add
+  IL_004B: ldloc.1 
+  IL_004C: call HostForm::Post
+  IL_0051: ret 
+=== GameLoader.HostForm::Err
+  IL_0000: newobj Dictionary`2::.ctor
+  IL_0005: stloc.0 
+  IL_0006: ldloc.0 
+  IL_0007: ldstr "ok"
+  IL_000C: ldc.i4.0 
+  IL_000D: box Boolean
+  IL_0012: callvirt Dictionary`2::Add
+  IL_0017: ldloc.0 
+  IL_0018: ldstr "error"
+  IL_001D: ldarg.0 
+  IL_001E: callvirt Dictionary`2::Add
+  IL_0023: ldloc.0 
+  IL_0024: ldstr "status"
+  IL_0029: ldarg.1 
+  IL_002A: box Int32
+  IL_002F: callvirt Dictionary`2::Add
+  IL_0034: ldloc.0 
+  IL_0035: ret 
+=== GameLoader.HostForm::Arg
+  IL_0000: ldarg.0 
+  IL_0001: ldlen 
+  IL_0002: conv.i4 
+  IL_0003: ldarg.1 
+  IL_0004: ble.s IL_000B
+  IL_0006: ldarg.0 
+  IL_0007: ldarg.1 
+  IL_0008: ldelem.ref 
+  IL_0009: brtrue.s IL_0011
+  IL_000B: ldstr ""
+  IL_0010: ret 
+  IL_0011: ldarg.0 
+  IL_0012: ldarg.1 
+  IL_0013: ldelem.ref 
+  IL_0014: call CultureInfo::get_InvariantCulture
+  IL_0019: call Convert::ToString
+  IL_001E: ret 
+=== GameLoader.HostForm::OnWebMessage
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <OnWebMessage>d__19::<>4__this
+  IL_0008: ldloca.s 0
+  IL_000A: ldarg.2 
+  IL_000B: stfld <OnWebMessage>d__19::e
+  IL_0010: ldloca.s 0
+  IL_0012: call AsyncVoidMethodBuilder::Create
+  IL_0017: stfld <OnWebMessage>d__19::<>t__builder
+  IL_001C: ldloca.s 0
+  IL_001E: ldc.i4.m1 
+  IL_001F: stfld <OnWebMessage>d__19::<>1__state
+  IL_0024: ldloca.s 0
+  IL_0026: ldfld <OnWebMessage>d__19::<>t__builder
+  IL_002B: stloc.1 
+  IL_002C: ldloca.s 1
+  IL_002E: ldloca.s 0
+  IL_0030: call AsyncVoidMethodBuilder::Start
+  IL_0035: ret 
+=== GameLoader.HostForm::Dispatch
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <Dispatch>d__2c::<>4__this
+  IL_0008: ldloca.s 0
+  IL_000A: ldarg.1 
+  IL_000B: stfld <Dispatch>d__2c::cmd
+  IL_0010: ldloca.s 0
+  IL_0012: ldarg.2 
+  IL_0013: stfld <Dispatch>d__2c::a
+  IL_0018: ldloca.s 0
+  IL_001A: call AsyncTaskMethodBuilder`1::Create
+  IL_001F: stfld <Dispatch>d__2c::<>t__builder
+  IL_0024: ldloca.s 0
+  IL_0026: ldc.i4.m1 
+  IL_0027: stfld <Dispatch>d__2c::<>1__state
+  IL_002C: ldloca.s 0
+  IL_002E: ldfld <Dispatch>d__2c::<>t__builder
+  IL_0033: stloc.1 
+  IL_0034: ldloca.s 1
+  IL_0036: ldloca.s 0
+  IL_0038: call AsyncTaskMethodBuilder`1::Start
+  IL_003D: ldloca.s 0
+  IL_003F: ldflda <Dispatch>d__2c::<>t__builder
+  IL_0044: call AsyncTaskMethodBuilder`1::get_Task
+  IL_0049: ret 
+=== GameLoader.HostForm::<Init>b__1
+  IL_0000: call Runtime::Prepare
+  IL_0005: ret 
+=== GameLoader.HostForm::<Init>b__2
+  IL_0000: ldarg.1 
+  IL_0001: ldc.i4.1 
+  IL_0002: callvirt tok(0x0A0001CF)
+  IL_0007: ret 
+=== GameLoader.HostForm::<Init>b__3
+  IL_0000: ldarg.1 
+  IL_0001: callvirt tok(0x0A0001D0)
+  IL_0006: ldstr "https://loader.ui/"
+  IL_000B: ldc.i4.5 
+  IL_000C: callvirt String::StartsWith
+  IL_0011: brtrue.s IL_001A
+  IL_0013: ldarg.1 
+  IL_0014: ldc.i4.1 
+  IL_0015: callvirt tok(0x0A0001D1)
+  IL_001A: ret 
+=== GameLoader.HostForm::<Init>b__4
+  IL_0000: call Temp::Cleanup
+  IL_0005: ret 
+=== GameLoader.HostForm::<Dispatch>b__28
+  IL_0000: call Readiness::Collect
+  IL_0005: ret 
+=== GameLoader.HostForm::<Dispatch>b__29
+  IL_0000: ldarg.0 
+  IL_0001: ldstr "loader-progress"
+  IL_0006: ldarg.1 
+  IL_0007: ldarg.2 
+  IL_0008: newobj <>f__AnonymousType0`2::.ctor
+  IL_000D: newobj <>f__AnonymousType1`2::.ctor
+  IL_0012: call HostForm::Post
+  IL_0017: ret 
+=== GameLoader.HostForm::.ctor
+  IL_0000: ldarg.0 
+  IL_0001: newobj Api::.ctor
+  IL_0006: stfld HostForm::api
+  IL_000B: ldarg.0 
+  IL_000C: newobj CancellationTokenSource::.ctor
+  IL_0011: stfld HostForm::shutdown
+  IL_0016: ldarg.0 
+  IL_0017: call Form::.ctor
+  IL_001C: ldarg.0 
+  IL_001D: ldstr "Loader"
+  IL_0022: callvirt Control::set_Text
+  IL_0027: ldarg.0 
+  IL_0028: ldc.i4.0 
+  IL_0029: call Form::set_FormBorderStyle
+  IL_002E: ldarg.0 
+  IL_002F: ldc.i4.0 
+  IL_0030: call Form::set_StartPosition
+  IL_0035: ldarg.0 
+  IL_0036: ldc.i4.0 
+  IL_0037: call ContainerControl::set_AutoScaleMode
+  IL_003C: ldarg.0 
+  IL_003D: ldc.i4.0 
+  IL_003E: call Form::set_MaximizeBox
+  IL_0043: ldarg.0 
+  IL_0044: ldc.i4.8 
+  IL_0045: ldc.i4.8 
+  IL_0046: ldc.i4.s 10
+  IL_0048: call Color::FromArgb
+  IL_004D: callvirt Control::set_BackColor
+  IL_0052: ldarg.0 
+  IL_0053: call Application::get_ExecutablePath
+  IL_0058: call Icon::ExtractAssociatedIcon
+  IL_005D: call Form::set_Icon
+  IL_0062: leave.s IL_0067
+  IL_0064: pop 
+  IL_0065: leave.s IL_0067
+  IL_0067: ldsfld IntPtr::Zero
+  IL_006C: call Graphics::FromHwnd
+  IL_0071: stloc.0 
+  IL_0072: ldarg.0 
+  IL_0073: ldloc.0 
+  IL_0074: callvirt Graphics::get_DpiX
+  IL_0079: ldc.r4 96
+  IL_007E: div 
+  IL_007F: stfld HostForm::scale
+  IL_0084: leave.s IL_0090
+  IL_0086: ldloc.0 
+  IL_0087: brfalse.s IL_008F
+  IL_0089: ldloc.0 
+  IL_008A: callvirt IDisposable::Dispose
+  IL_008F: endfinally 
+  IL_0090: ldarg.0 
+  IL_0091: call Sys::WinBuild
+  IL_0096: ldc.i4 22000
+  IL_009B: clt 
+  IL_009D: ldc.i4.0 
+  IL_009E: ceq 
+  IL_00A0: stfld HostForm::win11
+  IL_00A5: ldarg.0 
+  IL_00A6: ldarg.0 
+  IL_00A7: ldfld HostForm::api
+  IL_00AC: ldarg.0 
+  IL_00AD: ldftn HostForm::Emit
+  IL_00B3: newobj Action`3::.ctor
+  IL_00B8: ldarg.0 
+  IL_00B9: ldfld HostForm::shutdown
+  IL_00BE: callvirt CancellationTokenSource::get_Token
+  IL_00C3: newobj Launcher::.ctor
+  IL_00C8: stfld HostForm::launcher
+  IL_00CD: ldarg.0 
+  IL_00CE: ldsfld HostForm::LoginSize
+  IL_00D3: call HostForm::Place
+  IL_00D8: ret 
+=== GameLoader.HostForm::.cctor
+  IL_0000: ldc.i4 400
+  IL_0005: ldc.i4 400
+  IL_000A: newobj Size::.ctor
+  IL_000F: stsfld HostForm::LoginSize
+  IL_0014: ldc.i4 1164
+  IL_0019: ldc.i4 592
+  IL_001E: newobj Size::.ctor
+  IL_0023: stsfld HostForm::MainSize
+  IL_0028: ret 

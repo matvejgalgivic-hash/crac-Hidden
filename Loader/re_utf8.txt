@@ -1,0 +1,26 @@
+﻿=== GameLoader.RobRunRuntime::ReadExact
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <ReadExact>d__6::stream
+  IL_0008: ldloca.s 0
+  IL_000A: ldarg.1 
+  IL_000B: stfld <ReadExact>d__6::bytes
+  IL_0010: ldloca.s 0
+  IL_0012: ldarg.2 
+  IL_0013: stfld <ReadExact>d__6::cancel
+  IL_0018: ldloca.s 0
+  IL_001A: call AsyncTaskMethodBuilder::Create
+  IL_001F: stfld <ReadExact>d__6::<>t__builder
+  IL_0024: ldloca.s 0
+  IL_0026: ldc.i4.m1 
+  IL_0027: stfld <ReadExact>d__6::<>1__state
+  IL_002C: ldloca.s 0
+  IL_002E: ldfld <ReadExact>d__6::<>t__builder
+  IL_0033: stloc.1 
+  IL_0034: ldloca.s 1
+  IL_0036: ldloca.s 0
+  IL_0038: call AsyncTaskMethodBuilder::Start
+  IL_003D: ldloca.s 0
+  IL_003F: ldflda <ReadExact>d__6::<>t__builder
+  IL_0044: call AsyncTaskMethodBuilder::get_Task
+  IL_0049: ret 

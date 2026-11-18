@@ -1,0 +1,714 @@
+﻿=== GameLoader.SelfUpdate+<Install>d__11::MoveNext
+  IL_0000: ldc.i4.1 
+  IL_0001: stloc.0 
+  IL_0002: ldarg.0 
+  IL_0003: ldfld <Install>d__11::<>1__state
+  IL_0008: stloc.2 
+  IL_0009: ldloc.2 
+  IL_000A: switch IL_005B, IL_005B, IL_005B, IL_005B, IL_005B, IL_005B
+  IL_0027: ldarg.0 
+  IL_0028: call Path::GetTempPath
+  IL_002D: ldstr "GameLoader.Update."
+  IL_0032: ldc.i4.s 16
+  IL_0034: call Sys::Rand
+  IL_0039: call String::Concat
+  IL_003E: call Path::Combine
+  IL_0043: stfld <Install>d__11::<directory>5__12
+  IL_0048: ldarg.0 
+  IL_0049: ldfld <Install>d__11::<directory>5__12
+  IL_004E: call Directory::CreateDirectory
+  IL_0053: pop 
+  IL_0054: ldarg.0 
+  IL_0055: ldc.i4.0 
+  IL_0056: stfld <Install>d__11::<handedOff>5__13
+  IL_005B: ldarg.0 
+  IL_005C: ldfld <Install>d__11::<>1__state
+  IL_0061: stloc.3 
+  IL_0062: ldloc.3 
+  IL_0063: switch IL_00CA, IL_0102, IL_029E, IL_029E, IL_029E, IL_029E
+  IL_0080: ldarg.0 
+  IL_0081: ldfld <Install>d__11::api
+  IL_0086: ldstr "/api/v1/loader-update"
+  IL_008B: ldc.i4 15000
+  IL_0090: ldc.i4.0 
+  IL_0091: callvirt Api::Authed
+  IL_0096: callvirt Task`1::GetAwaiter
+  IL_009B: stloc.s 4
+  IL_009D: ldloca.s 4
+  IL_009F: call TaskAwaiter`1::get_IsCompleted
+  IL_00A4: brtrue.s IL_00E9
+  IL_00A6: ldarg.0 
+  IL_00A7: ldc.i4.0 
+  IL_00A8: stfld <Install>d__11::<>1__state
+  IL_00AD: ldarg.0 
+  IL_00AE: ldloc.s 4
+  IL_00B0: stfld <Install>d__11::<>u__$awaiter23
+  IL_00B5: ldarg.0 
+  IL_00B6: ldflda <Install>d__11::<>t__builder
+  IL_00BB: ldloca.s 4
+  IL_00BD: ldarg.0 
+  IL_00BE: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_00C3: ldc.i4.0 
+  IL_00C4: stloc.0 
+  IL_00C5: leave IL_08AD
+  IL_00CA: ldarg.0 
+  IL_00CB: ldfld <Install>d__11::<>u__$awaiter23
+  IL_00D0: stloc.s 4
+  IL_00D2: ldarg.0 
+  IL_00D3: ldloca.s 5
+  IL_00D5: initobj TaskAwaiter`1
+  IL_00DB: ldloc.s 5
+  IL_00DD: stfld <Install>d__11::<>u__$awaiter23
+  IL_00E2: ldarg.0 
+  IL_00E3: ldc.i4.m1 
+  IL_00E4: stfld <Install>d__11::<>1__state
+  IL_00E9: ldloca.s 4
+  IL_00EB: call TaskAwaiter`1::GetResult
+  IL_00F0: ldloca.s 4
+  IL_00F2: initobj TaskAwaiter`1
+  IL_00F8: stloc.s 6
+  IL_00FA: ldarg.0 
+  IL_00FB: ldloc.s 6
+  IL_00FD: stfld <Install>d__11::<response>5__15
+  IL_0102: ldarg.0 
+  IL_0103: ldfld <Install>d__11::<>1__state
+  IL_0108: stloc.s 7
+  IL_010A: ldloc.s 7
+  IL_010C: ldc.i4.1 
+  IL_010D: beq.s IL_0153
+  IL_010F: ldarg.0 
+  IL_0110: ldfld <Install>d__11::<response>5__15
+  IL_0115: callvirt HttpResponseMessage::get_Content
+  IL_011A: callvirt HttpContent::ReadAsStringAsync
+  IL_011F: callvirt Task`1::GetAwaiter
+  IL_0124: stloc.s 8
+  IL_0126: ldloca.s 8
+  IL_0128: call TaskAwaiter`1::get_IsCompleted
+  IL_012D: brtrue.s IL_0172
+  IL_012F: ldarg.0 
+  IL_0130: ldc.i4.1 
+  IL_0131: stfld <Install>d__11::<>1__state
+  IL_0136: ldarg.0 
+  IL_0137: ldloc.s 8
+  IL_0139: stfld <Install>d__11::<>u__$awaiter24
+  IL_013E: ldarg.0 
+  IL_013F: ldflda <Install>d__11::<>t__builder
+  IL_0144: ldloca.s 8
+  IL_0146: ldarg.0 
+  IL_0147: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_014C: ldc.i4.0 
+  IL_014D: stloc.0 
+  IL_014E: leave IL_08AD
+  IL_0153: ldarg.0 
+  IL_0154: ldfld <Install>d__11::<>u__$awaiter24
+  IL_0159: stloc.s 8
+  IL_015B: ldarg.0 
+  IL_015C: ldloca.s 9
+  IL_015E: initobj TaskAwaiter`1
+  IL_0164: ldloc.s 9
+  IL_0166: stfld <Install>d__11::<>u__$awaiter24
+  IL_016B: ldarg.0 
+  IL_016C: ldc.i4.m1 
+  IL_016D: stfld <Install>d__11::<>1__state
+  IL_0172: ldloca.s 8
+  IL_0174: call TaskAwaiter`1::GetResult
+  IL_0179: ldloca.s 8
+  IL_017B: initobj TaskAwaiter`1
+  IL_0181: call Json::Parse
+  IL_0186: call Json::Obj
+  IL_018B: stloc.s 10
+  IL_018D: ldarg.0 
+  IL_018E: ldloc.s 10
+  IL_0190: stfld <Install>d__11::<data>5__16
+  IL_0195: ldarg.0 
+  IL_0196: ldarg.0 
+  IL_0197: ldfld <Install>d__11::<data>5__16
+  IL_019C: brfalse.s IL_01C7
+  IL_019E: ldarg.0 
+  IL_019F: ldfld <Install>d__11::<data>5__16
+  IL_01A4: ldstr "update"
+  IL_01A9: callvirt Dictionary`2::ContainsKey
+  IL_01AE: brfalse.s IL_01C7
+  IL_01B0: ldarg.0 
+  IL_01B1: ldfld <Install>d__11::<data>5__16
+  IL_01B6: ldstr "update"
+  IL_01BB: callvirt Dictionary`2::get_Item
+  IL_01C0: call Json::Obj
+  IL_01C5: br.s IL_01C8
+  IL_01C7: ldnull 
+  IL_01C8: stfld <Install>d__11::<update>5__14
+  IL_01CD: leave.s IL_01E6
+  IL_01CF: ldloc.0 
+  IL_01D0: brfalse.s IL_01E5
+  IL_01D2: ldarg.0 
+  IL_01D3: ldfld <Install>d__11::<response>5__15
+  IL_01D8: brfalse.s IL_01E5
+  IL_01DA: ldarg.0 
+  IL_01DB: ldfld <Install>d__11::<response>5__15
+  IL_01E0: callvirt IDisposable::Dispose
+  IL_01E5: endfinally 
+  IL_01E6: ldarg.0 
+  IL_01E7: ldfld <Install>d__11::<update>5__14
+  IL_01EC: brfalse.s IL_020B
+  IL_01EE: ldarg.0 
+  IL_01EF: ldfld <Install>d__11::<update>5__14
+  IL_01F4: ldstr "request_id"
+  IL_01F9: call Json::Str
+  IL_01FE: ldarg.0 
+  IL_01FF: ldfld <Install>d__11::requestId
+  IL_0204: call String::op_Inequality
+  IL_0209: brfalse.s IL_0216
+  IL_020B: ldstr "Запрос обновления больше не актуален"
+  IL_0210: newobj Exception::.ctor
+  IL_0215: throw 
+  IL_0216: ldarg.0 
+  IL_0217: ldarg.0 
+  IL_0218: ldfld <Install>d__11::<update>5__14
+  IL_021D: ldstr "manifest"
+  IL_0222: callvirt Dictionary`2::get_Item
+  IL_0227: call Json::Obj
+  IL_022C: stfld <Install>d__11::<envelope>5__17
+  IL_0231: ldarg.0 
+  IL_0232: ldarg.0 
+  IL_0233: ldfld <Install>d__11::<envelope>5__17
+  IL_0238: call ReleaseIntegrity::VerifyLoader
+  IL_023D: stfld <Install>d__11::<metadata>5__18
+  IL_0242: ldarg.0 
+  IL_0243: ldarg.0 
+  IL_0244: ldfld <Install>d__11::<directory>5__12
+  IL_0249: ldstr "Loader.exe"
+  IL_024E: call Path::Combine
+  IL_0253: stfld <Install>d__11::<binary>5__19
+  IL_0258: ldarg.0 
+  IL_0259: ldarg.0 
+  IL_025A: ldfld <Install>d__11::<metadata>5__18
+  IL_025F: ldstr "size"
+  IL_0264: call Json::Long
+  IL_0269: stfld <Install>d__11::<total>5__1a
+  IL_026E: ldarg.0 
+  IL_026F: ldc.i4.0 
+  IL_0270: conv.i8 
+  IL_0271: stfld <Install>d__11::<received>5__1b
+  IL_0276: ldarg.0 
+  IL_0277: ldc.i4.1 
+  IL_0278: newarr CancellationToken
+  IL_027D: stloc.s 11
+  IL_027F: ldloc.s 11
+  IL_0281: ldc.i4.0 
+  IL_0282: ldelema CancellationToken
+  IL_0287: ldarg.0 
+  IL_0288: ldfld <Install>d__11::shutdown
+  IL_028D: stobj CancellationToken
+  IL_0292: ldloc.s 11
+  IL_0294: call CancellationTokenSource::CreateLinkedTokenSource
+  IL_0299: stfld <Install>d__11::<timeout>5__1c
+  IL_029E: ldarg.0 
+  IL_029F: ldfld <Install>d__11::<>1__state
+  IL_02A4: stloc.s 12
+  IL_02A6: ldloc.s 12
+  IL_02A8: ldc.i4.2 
+  IL_02A9: sub 
+  IL_02AA: switch IL_0359, IL_03A2, IL_03A2, IL_03A2
+  IL_02BF: ldarg.0 
+  IL_02C0: ldfld <Install>d__11::<timeout>5__1c
+  IL_02C5: ldc.r8 5
+  IL_02CE: call TimeSpan::FromMinutes
+  IL_02D3: callvirt CancellationTokenSource::CancelAfter
+  IL_02D8: ldarg.0 
+  IL_02D9: ldnull 
+  IL_02DA: stfld <Install>d__11::CS$<>9__CachedAnonymousMethodDelegatee
+  IL_02DF: ldarg.0 
+  IL_02E0: newobj <>c__DisplayClassf::.ctor
+  IL_02E5: stfld <Install>d__11::CS$<>8__locals10
+  IL_02EA: ldarg.0 
+  IL_02EB: ldfld <Install>d__11::CS$<>8__locals10
+  IL_02F0: ldarg.0 
+  IL_02F1: ldfld <Install>d__11::api
+  IL_02F6: ldstr "/api/v1/loader-update/"
+  IL_02FB: ldarg.0 
+  IL_02FC: ldfld <Install>d__11::requestId
+  IL_0301: call Uri::EscapeDataString
+  IL_0306: ldstr "/file"
+  IL_030B: call String::Concat
+  IL_0310: ldc.i4 15000
+  IL_0315: ldc.i4.1 
+  IL_0316: callvirt Api::Authed
+  IL_031B: callvirt Task`1::GetAwaiter
+  IL_0320: stloc.s 13
+  IL_0322: ldloca.s 13
+  IL_0324: call TaskAwaiter`1::get_IsCompleted
+  IL_0329: brtrue.s IL_038E
+  IL_032B: stloc.s 14
+  IL_032D: ldarg.0 
+  IL_032E: ldloc.s 14
+  IL_0330: stfld <Install>d__11::<>t__stack
+  IL_0335: ldarg.0 
+  IL_0336: ldc.i4.2 
+  IL_0337: stfld <Install>d__11::<>1__state
+  IL_033C: ldarg.0 
+  IL_033D: ldloc.s 13
+  IL_033F: stfld <Install>d__11::<>u__$awaiter23
+  IL_0344: ldarg.0 
+  IL_0345: ldflda <Install>d__11::<>t__builder
+  IL_034A: ldloca.s 13
+  IL_034C: ldarg.0 
+  IL_034D: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_0352: ldc.i4.0 
+  IL_0353: stloc.0 
+  IL_0354: leave IL_08AD
+  IL_0359: ldarg.0 
+  IL_035A: ldfld <Install>d__11::<>t__stack
+  IL_035F: unbox.any SelfUpdate::<>c__DisplayClassf
+  IL_0364: stloc.s 15
+  IL_0366: ldloc.s 15
+  IL_0368: ldarg.0 
+  IL_0369: ldnull 
+  IL_036A: stfld <Install>d__11::<>t__stack
+  IL_036F: ldarg.0 
+  IL_0370: ldfld <Install>d__11::<>u__$awaiter23
+  IL_0375: stloc.s 13
+  IL_0377: ldarg.0 
+  IL_0378: ldloca.s 16
+  IL_037A: initobj TaskAwaiter`1
+  IL_0380: ldloc.s 16
+  IL_0382: stfld <Install>d__11::<>u__$awaiter23
+  IL_0387: ldarg.0 
+  IL_0388: ldc.i4.m1 
+  IL_0389: stfld <Install>d__11::<>1__state
+  IL_038E: ldloca.s 13
+  IL_0390: call TaskAwaiter`1::GetResult
+  IL_0395: ldloca.s 13
+  IL_0397: initobj TaskAwaiter`1
+  IL_039D: stfld <>c__DisplayClassf::response
+  IL_03A2: ldarg.0 
+  IL_03A3: ldfld <Install>d__11::<>1__state
+  IL_03A8: stloc.s 17
+  IL_03AA: ldloc.s 17
+  IL_03AC: ldc.i4.3 
+  IL_03AD: sub 
+  IL_03AE: switch IL_03FE, IL_03FE, IL_03FE
+  IL_03BF: ldarg.0 
+  IL_03C0: ldarg.0 
+  IL_03C1: ldfld <Install>d__11::<timeout>5__1c
+  IL_03C6: callvirt CancellationTokenSource::get_Token
+  IL_03CB: stloc.s 18
+  IL_03CD: ldloca.s 18
+  IL_03CF: ldarg.0 
+  IL_03D0: ldfld <Install>d__11::CS$<>9__CachedAnonymousMethodDelegatee
+  IL_03D5: brtrue.s IL_03EE
+  IL_03D7: ldarg.0 
+  IL_03D8: ldarg.0 
+  IL_03D9: ldfld <Install>d__11::CS$<>8__locals10
+  IL_03DE: ldftn <>c__DisplayClassf::<Install>b__d
+  IL_03E4: newobj Action::.ctor
+  IL_03E9: stfld <Install>d__11::CS$<>9__CachedAnonymousMethodDelegatee
+  IL_03EE: ldarg.0 
+  IL_03EF: ldfld <Install>d__11::CS$<>9__CachedAnonymousMethodDelegatee
+  IL_03F4: call CancellationToken::Register
+  IL_03F9: stfld <Install>d__11::<>7__wrap25
+  IL_03FE: ldarg.0 
+  IL_03FF: ldfld <Install>d__11::<>1__state
+  IL_0404: stloc.s 19
+  IL_0406: ldloc.s 19
+  IL_0408: ldc.i4.3 
+  IL_0409: sub 
+  IL_040A: switch IL_0464, IL_049C, IL_049C
+  IL_041B: ldarg.0 
+  IL_041C: ldfld <Install>d__11::CS$<>8__locals10
+  IL_0421: ldfld <>c__DisplayClassf::response
+  IL_0426: callvirt HttpResponseMessage::get_Content
+  IL_042B: callvirt HttpContent::ReadAsStreamAsync
+  IL_0430: callvirt Task`1::GetAwaiter
+  IL_0435: stloc.s 20
+  IL_0437: ldloca.s 20
+  IL_0439: call TaskAwaiter`1::get_IsCompleted
+  IL_043E: brtrue.s IL_0483
+  IL_0440: ldarg.0 
+  IL_0441: ldc.i4.3 
+  IL_0442: stfld <Install>d__11::<>1__state
+  IL_0447: ldarg.0 
+  IL_0448: ldloc.s 20
+  IL_044A: stfld <Install>d__11::<>u__$awaiter26
+  IL_044F: ldarg.0 
+  IL_0450: ldflda <Install>d__11::<>t__builder
+  IL_0455: ldloca.s 20
+  IL_0457: ldarg.0 
+  IL_0458: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_045D: ldc.i4.0 
+  IL_045E: stloc.0 
+  IL_045F: leave IL_08AD
+  IL_0464: ldarg.0 
+  IL_0465: ldfld <Install>d__11::<>u__$awaiter26
+  IL_046A: stloc.s 20
+  IL_046C: ldarg.0 
+  IL_046D: ldloca.s 21
+  IL_046F: initobj TaskAwaiter`1
+  IL_0475: ldloc.s 21
+  IL_0477: stfld <Install>d__11::<>u__$awaiter26
+  IL_047C: ldarg.0 
+  IL_047D: ldc.i4.m1 
+  IL_047E: stfld <Install>d__11::<>1__state
+  IL_0483: ldloca.s 20
+  IL_0485: call TaskAwaiter`1::GetResult
+  IL_048A: ldloca.s 20
+  IL_048C: initobj TaskAwaiter`1
+  IL_0492: stloc.s 22
+  IL_0494: ldarg.0 
+  IL_0495: ldloc.s 22
+  IL_0497: stfld <Install>d__11::<input>5__1d
+  IL_049C: ldarg.0 
+  IL_049D: ldfld <Install>d__11::<>1__state
+  IL_04A2: stloc.s 23
+  IL_04A4: ldloc.s 23
+  IL_04A6: ldc.i4.4 
+  IL_04A7: sub 
+  IL_04A8: switch IL_04C8, IL_04C8
+  IL_04B5: ldarg.0 
+  IL_04B6: ldarg.0 
+  IL_04B7: ldfld <Install>d__11::<binary>5__19
+  IL_04BC: ldc.i4.1 
+  IL_04BD: ldc.i4.2 
+  IL_04BE: newobj FileStream::.ctor
+  IL_04C3: stfld <Install>d__11::<output>5__1e
+  IL_04C8: ldarg.0 
+  IL_04C9: ldfld <Install>d__11::<>1__state
+  IL_04CE: stloc.s 24
+  IL_04D0: ldloc.s 24
+  IL_04D2: ldc.i4.4 
+  IL_04D3: sub 
+  IL_04D4: switch IL_0585, IL_064C
+  IL_04E1: ldarg.0 
+  IL_04E2: ldc.i4 65536
+  IL_04E7: newarr Byte
+  IL_04EC: stfld <Install>d__11::<buffer>5__1f
+  IL_04F1: ldarg.0 
+  IL_04F2: call Stopwatch::StartNew
+  IL_04F7: stfld <Install>d__11::<clock>5__20
+  IL_04FC: br IL_05F3
+  IL_0501: ldarg.0 
+  IL_0502: dup 
+  IL_0503: ldfld <Install>d__11::<received>5__1b
+  IL_0508: ldarg.0 
+  IL_0509: ldfld <Install>d__11::<count>5__21
+  IL_050E: conv.i8 
+  IL_050F: add 
+  IL_0510: stfld <Install>d__11::<received>5__1b
+  IL_0515: ldarg.0 
+  IL_0516: ldfld <Install>d__11::<received>5__1b
+  IL_051B: ldarg.0 
+  IL_051C: ldfld <Install>d__11::<total>5__1a
+  IL_0521: ble.s IL_052E
+  IL_0523: ldstr "Размер лоадера превышает подписанную сборку"
+  IL_0528: newobj Exception::.ctor
+  IL_052D: throw 
+  IL_052E: ldarg.0 
+  IL_052F: ldfld <Install>d__11::<output>5__1e
+  IL_0534: ldarg.0 
+  IL_0535: ldfld <Install>d__11::<buffer>5__1f
+  IL_053A: ldc.i4.0 
+  IL_053B: ldarg.0 
+  IL_053C: ldfld <Install>d__11::<count>5__21
+  IL_0541: ldarg.0 
+  IL_0542: ldfld <Install>d__11::<timeout>5__1c
+  IL_0547: callvirt CancellationTokenSource::get_Token
+  IL_054C: callvirt Stream::WriteAsync
+  IL_0551: callvirt Task::GetAwaiter
+  IL_0556: stloc.s 25
+  IL_0558: ldloca.s 25
+  IL_055A: call TaskAwaiter::get_IsCompleted
+  IL_055F: brtrue.s IL_05A4
+  IL_0561: ldarg.0 
+  IL_0562: ldc.i4.4 
+  IL_0563: stfld <Install>d__11::<>1__state
+  IL_0568: ldarg.0 
+  IL_0569: ldloc.s 25
+  IL_056B: stfld <Install>d__11::<>u__$awaiter27
+  IL_0570: ldarg.0 
+  IL_0571: ldflda <Install>d__11::<>t__builder
+  IL_0576: ldloca.s 25
+  IL_0578: ldarg.0 
+  IL_0579: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_057E: ldc.i4.0 
+  IL_057F: stloc.0 
+  IL_0580: leave IL_08AD
+  IL_0585: ldarg.0 
+  IL_0586: ldfld <Install>d__11::<>u__$awaiter27
+  IL_058B: stloc.s 25
+  IL_058D: ldarg.0 
+  IL_058E: ldloca.s 26
+  IL_0590: initobj TaskAwaiter
+  IL_0596: ldloc.s 26
+  IL_0598: stfld <Install>d__11::<>u__$awaiter27
+  IL_059D: ldarg.0 
+  IL_059E: ldc.i4.m1 
+  IL_059F: stfld <Install>d__11::<>1__state
+  IL_05A4: ldloca.s 25
+  IL_05A6: call TaskAwaiter::GetResult
+  IL_05AB: ldloca.s 25
+  IL_05AD: initobj TaskAwaiter
+  IL_05B3: ldarg.0 
+  IL_05B4: ldfld <Install>d__11::<clock>5__20
+  IL_05B9: callvirt Stopwatch::get_ElapsedMilliseconds
+  IL_05BE: ldc.i4.s 100
+  IL_05C0: conv.i8 
+  IL_05C1: bge.s IL_05D1
+  IL_05C3: ldarg.0 
+  IL_05C4: ldfld <Install>d__11::<received>5__1b
+  IL_05C9: ldarg.0 
+  IL_05CA: ldfld <Install>d__11::<total>5__1a
+  IL_05CF: bne.un.s IL_05F3
+  IL_05D1: ldarg.0 
+  IL_05D2: ldfld <Install>d__11::progress
+  IL_05D7: ldarg.0 
+  IL_05D8: ldfld <Install>d__11::<received>5__1b
+  IL_05DD: ldarg.0 
+  IL_05DE: ldfld <Install>d__11::<total>5__1a
+  IL_05E3: callvirt Action`2::Invoke
+  IL_05E8: ldarg.0 
+  IL_05E9: ldfld <Install>d__11::<clock>5__20
+  IL_05EE: callvirt Stopwatch::Restart
+  IL_05F3: ldarg.0 
+  IL_05F4: ldfld <Install>d__11::<input>5__1d
+  IL_05F9: ldarg.0 
+  IL_05FA: ldfld <Install>d__11::<buffer>5__1f
+  IL_05FF: ldc.i4.0 
+  IL_0600: ldarg.0 
+  IL_0601: ldfld <Install>d__11::<buffer>5__1f
+  IL_0606: ldlen 
+  IL_0607: conv.i4 
+  IL_0608: ldarg.0 
+  IL_0609: ldfld <Install>d__11::<timeout>5__1c
+  IL_060E: callvirt CancellationTokenSource::get_Token
+  IL_0613: callvirt Stream::ReadAsync
+  IL_0618: callvirt Task`1::GetAwaiter
+  IL_061D: stloc.s 27
+  IL_061F: ldloca.s 27
+  IL_0621: call TaskAwaiter`1::get_IsCompleted
+  IL_0626: brtrue.s IL_066B
+  IL_0628: ldarg.0 
+  IL_0629: ldc.i4.5 
+  IL_062A: stfld <Install>d__11::<>1__state
+  IL_062F: ldarg.0 
+  IL_0630: ldloc.s 27
+  IL_0632: stfld <Install>d__11::<>u__$awaiter28
+  IL_0637: ldarg.0 
+  IL_0638: ldflda <Install>d__11::<>t__builder
+  IL_063D: ldloca.s 27
+  IL_063F: ldarg.0 
+  IL_0640: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_0645: ldc.i4.0 
+  IL_0646: stloc.0 
+  IL_0647: leave IL_08AD
+  IL_064C: ldarg.0 
+  IL_064D: ldfld <Install>d__11::<>u__$awaiter28
+  IL_0652: stloc.s 27
+  IL_0654: ldarg.0 
+  IL_0655: ldloca.s 28
+  IL_0657: initobj TaskAwaiter`1
+  IL_065D: ldloc.s 28
+  IL_065F: stfld <Install>d__11::<>u__$awaiter28
+  IL_0664: ldarg.0 
+  IL_0665: ldc.i4.m1 
+  IL_0666: stfld <Install>d__11::<>1__state
+  IL_066B: ldloca.s 27
+  IL_066D: call TaskAwaiter`1::GetResult
+  IL_0672: ldloca.s 27
+  IL_0674: initobj TaskAwaiter`1
+  IL_067A: stloc.s 29
+  IL_067C: ldarg.0 
+  IL_067D: ldloc.s 29
+  IL_067F: dup 
+  IL_0680: stloc.s 30
+  IL_0682: stfld <Install>d__11::<count>5__21
+  IL_0687: ldloc.s 30
+  IL_0689: brtrue IL_0501
+  IL_068E: leave.s IL_06A7
+  IL_0690: ldloc.0 
+  IL_0691: brfalse.s IL_06A6
+  IL_0693: ldarg.0 
+  IL_0694: ldfld <Install>d__11::<output>5__1e
+  IL_0699: brfalse.s IL_06A6
+  IL_069B: ldarg.0 
+  IL_069C: ldfld <Install>d__11::<output>5__1e
+  IL_06A1: callvirt IDisposable::Dispose
+  IL_06A6: endfinally 
+  IL_06A7: leave.s IL_06C0
+  IL_06A9: ldloc.0 
+  IL_06AA: brfalse.s IL_06BF
+  IL_06AC: ldarg.0 
+  IL_06AD: ldfld <Install>d__11::<input>5__1d
+  IL_06B2: brfalse.s IL_06BF
+  IL_06B4: ldarg.0 
+  IL_06B5: ldfld <Install>d__11::<input>5__1d
+  IL_06BA: callvirt IDisposable::Dispose
+  IL_06BF: endfinally 
+  IL_06C0: leave.s IL_06D7
+  IL_06C2: ldloc.0 
+  IL_06C3: brfalse.s IL_06D6
+  IL_06C5: ldarg.0 
+  IL_06C6: ldflda <Install>d__11::<>7__wrap25
+  IL_06CB: constrained. CancellationTokenRegistration
+  IL_06D1: callvirt IDisposable::Dispose
+  IL_06D6: endfinally 
+  IL_06D7: leave.s IL_06FA
+  IL_06D9: ldloc.0 
+  IL_06DA: brfalse.s IL_06F9
+  IL_06DC: ldarg.0 
+  IL_06DD: ldfld <Install>d__11::CS$<>8__locals10
+  IL_06E2: ldfld <>c__DisplayClassf::response
+  IL_06E7: brfalse.s IL_06F9
+  IL_06E9: ldarg.0 
+  IL_06EA: ldfld <Install>d__11::CS$<>8__locals10
+  IL_06EF: ldfld <>c__DisplayClassf::response
+  IL_06F4: callvirt IDisposable::Dispose
+  IL_06F9: endfinally 
+  IL_06FA: leave.s IL_0713
+  IL_06FC: ldloc.0 
+  IL_06FD: brfalse.s IL_0712
+  IL_06FF: ldarg.0 
+  IL_0700: ldfld <Install>d__11::<timeout>5__1c
+  IL_0705: brfalse.s IL_0712
+  IL_0707: ldarg.0 
+  IL_0708: ldfld <Install>d__11::<timeout>5__1c
+  IL_070D: callvirt IDisposable::Dispose
+  IL_0712: endfinally 
+  IL_0713: ldarg.0 
+  IL_0714: ldfld <Install>d__11::<binary>5__19
+  IL_0719: ldarg.0 
+  IL_071A: ldfld <Install>d__11::<metadata>5__18
+  IL_071F: call SelfUpdate::VerifyFile
+  IL_0724: ldarg.0 
+  IL_0725: ldfld <Install>d__11::<directory>5__12
+  IL_072A: ldstr "manifest.json"
+  IL_072F: call Path::Combine
+  IL_0734: ldarg.0 
+  IL_0735: ldfld <Install>d__11::<envelope>5__17
+  IL_073A: call Json::Stringify
+  IL_073F: call File::WriteAllText
+  IL_0744: call Application::get_ExecutablePath
+  IL_0749: ldarg.0 
+  IL_074A: ldfld <Install>d__11::<directory>5__12
+  IL_074F: ldstr "updater.exe"
+  IL_0754: call Path::Combine
+  IL_0759: call File::Copy
+  IL_075E: ldarg.0 
+  IL_075F: call Application::get_ExecutablePath
+  IL_0764: call Path::GetDirectoryName
+  IL_0769: ldstr ".loader-write-"
+  IL_076E: ldc.i4.8 
+  IL_076F: call Sys::Rand
+  IL_0774: call String::Concat
+  IL_0779: call Path::Combine
+  IL_077E: stfld <Install>d__11::<probe>5__22
+  IL_0783: ldarg.0 
+  IL_0784: ldfld <Install>d__11::<probe>5__22
+  IL_0789: call File::Create
+  IL_078E: stloc.s 31
+  IL_0790: leave.s IL_07A1
+  IL_0792: ldloc.0 
+  IL_0793: brfalse.s IL_07A0
+  IL_0795: ldloc.s 31
+  IL_0797: brfalse.s IL_07A0
+  IL_0799: ldloc.s 31
+  IL_079B: callvirt IDisposable::Dispose
+  IL_07A0: endfinally 
+  IL_07A1: ldarg.0 
+  IL_07A2: ldfld <Install>d__11::<probe>5__22
+  IL_07A7: call File::Delete
+  IL_07AC: ldarg.0 
+  IL_07AD: ldflda <Install>d__11::shutdown
+  IL_07B2: call CancellationToken::ThrowIfCancellationRequested
+  IL_07B7: ldarg.0 
+  IL_07B8: ldarg.0 
+  IL_07B9: ldfld <Install>d__11::<directory>5__12
+  IL_07BE: ldstr "updater.exe"
+  IL_07C3: call Path::Combine
+  IL_07C8: ldc.i4.6 
+  IL_07C9: newarr Object
+  IL_07CE: stloc.s 32
+  IL_07D0: ldloc.s 32
+  IL_07D2: ldc.i4.0 
+  IL_07D3: ldstr "--apply-loader-update "
+  IL_07D8: stelem.ref 
+  IL_07D9: ldloc.s 32
+  IL_07DB: ldc.i4.1 
+  IL_07DC: call Process::GetCurrentProcess
+  IL_07E1: callvirt Process::get_Id
+  IL_07E6: box Int32
+  IL_07EB: stelem.ref 
+  IL_07EC: ldloc.s 32
+  IL_07EE: ldc.i4.2 
+  IL_07EF: ldstr " "
+  IL_07F4: stelem.ref 
+  IL_07F5: ldloc.s 32
+  IL_07F7: ldc.i4.3 
+  IL_07F8: call Application::get_ExecutablePath
+  IL_07FD: call SelfUpdate::Quote
+  IL_0802: stelem.ref 
+  IL_0803: ldloc.s 32
+  IL_0805: ldc.i4.4 
+  IL_0806: ldstr " "
+  IL_080B: stelem.ref 
+  IL_080C: ldloc.s 32
+  IL_080E: ldc.i4.5 
+  IL_080F: ldarg.0 
+  IL_0810: ldfld <Install>d__11::requestId
+  IL_0815: call SelfUpdate::Quote
+  IL_081A: stelem.ref 
+  IL_081B: ldloc.s 32
+  IL_081D: call String::Concat
+  IL_0822: newobj ProcessStartInfo::.ctor
+  IL_0827: stfld <Install>d__11::<>g__initLocalc
+  IL_082C: ldarg.0 
+  IL_082D: ldfld <Install>d__11::<>g__initLocalc
+  IL_0832: ldc.i4.0 
+  IL_0833: callvirt ProcessStartInfo::set_UseShellExecute
+  IL_0838: ldarg.0 
+  IL_0839: ldfld <Install>d__11::<>g__initLocalc
+  IL_083E: ldc.i4.1 
+  IL_083F: callvirt ProcessStartInfo::set_CreateNoWindow
+  IL_0844: ldarg.0 
+  IL_0845: ldfld <Install>d__11::<>g__initLocalc
+  IL_084A: ldarg.0 
+  IL_084B: ldfld <Install>d__11::<directory>5__12
+  IL_0850: callvirt ProcessStartInfo::set_WorkingDirectory
+  IL_0855: ldarg.0 
+  IL_0856: ldfld <Install>d__11::<>g__initLocalc
+  IL_085B: call Process::Start
+  IL_0860: pop 
+  IL_0861: ldarg.0 
+  IL_0862: ldc.i4.1 
+  IL_0863: stfld <Install>d__11::<handedOff>5__13
+  IL_0868: leave.s IL_0881
+  IL_086A: ldloc.0 
+  IL_086B: brfalse.s IL_0880
+  IL_086D: ldarg.0 
+  IL_086E: ldfld <Install>d__11::<handedOff>5__13
+  IL_0873: brtrue.s IL_0880
+  IL_0875: ldarg.0 
+  IL_0876: ldfld <Install>d__11::<directory>5__12
+  IL_087B: call SelfUpdate::Cleanup
+  IL_0880: endfinally 
+  IL_0881: leave.s IL_089A
+  IL_0883: stloc.1 
+  IL_0884: ldarg.0 
+  IL_0885: ldc.i4.s -2
+  IL_0887: stfld <Install>d__11::<>1__state
+  IL_088C: ldarg.0 
+  IL_088D: ldflda <Install>d__11::<>t__builder
+  IL_0892: ldloc.1 
+  IL_0893: call AsyncTaskMethodBuilder::SetException
+  IL_0898: leave.s IL_08AD
+  IL_089A: ldarg.0 
+  IL_089B: ldc.i4.s -2
+  IL_089D: stfld <Install>d__11::<>1__state
+  IL_08A2: ldarg.0 
+  IL_08A3: ldflda <Install>d__11::<>t__builder
+  IL_08A8: call AsyncTaskMethodBuilder::SetResult
+  IL_08AD: ret 
+=== GameLoader.SelfUpdate+<Install>d__11::SetStateMachine
+  IL_0000: ldarg.0 
+  IL_0001: ldflda <Install>d__11::<>t__builder
+  IL_0006: ldarg.1 
+  IL_0007: call AsyncTaskMethodBuilder::SetStateMachine
+  IL_000C: ret 

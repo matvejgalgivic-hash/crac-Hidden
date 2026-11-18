@@ -1,0 +1,22 @@
+﻿=== GameLoader.Config::get_Server
+  IL_0000: ldsfld Config::Servers
+  IL_0005: ldc.i4.0 
+  IL_0006: ldelem.ref 
+  IL_0007: ret 
+=== GameLoader.Config::set_Server
+  IL_0000: ret 
+=== GameLoader.Config::.cctor
+  IL_0000: ldc.i4.2 
+  IL_0001: newarr String
+  IL_0006: stloc.0 
+  IL_0007: ldloc.0 
+  IL_0008: ldc.i4.0 
+  IL_0009: ldstr "https://95.85.230.17"
+  IL_000E: stelem.ref 
+  IL_000F: ldloc.0 
+  IL_0010: ldc.i4.1 
+  IL_0011: ldstr "https://138.124.40.179"
+  IL_0016: stelem.ref 
+  IL_0017: ldloc.0 
+  IL_0018: stsfld Config::Servers
+  IL_001D: ret 

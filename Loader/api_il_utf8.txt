@@ -1,0 +1,311 @@
+﻿=== GameLoader.Api::Clear
+  IL_0000: ldarg.0 
+  IL_0001: ldnull 
+  IL_0002: stfld Api::token
+  IL_0007: ldarg.0 
+  IL_0008: ldnull 
+  IL_0009: stfld Api::key
+  IL_000E: ret 
+=== GameLoader.Api::Send
+  IL_0000: ldarg.0 
+  IL_0001: ldarg.1 
+  IL_0002: ldarg.2 
+  IL_0003: ldarg.3 
+  IL_0004: ldarg.s 4
+  IL_0006: ldarg.s 5
+  IL_0008: ldarg.s 6
+  IL_000A: ldc.i4.3 
+  IL_000B: call Api::Send
+  IL_0010: ret 
+=== GameLoader.Api::CurrentServer
+  IL_0000: ldc.i4.0 
+  IL_0001: stloc.1 
+  IL_0002: ldsfld Api::serverLock
+  IL_0007: dup 
+  IL_0008: stloc.2 
+  IL_0009: ldloca.s 1
+  IL_000B: call Monitor::Enter
+  IL_0010: ldsfld Api::activeServer
+  IL_0015: stloc.0 
+  IL_0016: leave.s IL_0022
+  IL_0018: ldloc.1 
+  IL_0019: brfalse.s IL_0021
+  IL_001B: ldloc.2 
+  IL_001C: call Monitor::Exit
+  IL_0021: endfinally 
+  IL_0022: ldsfld Config::Servers
+  IL_0027: ldloc.0 
+  IL_0028: ldsfld Config::Servers
+  IL_002D: ldlen 
+  IL_002E: conv.i4 
+  IL_002F: rem 
+  IL_0030: ldelem.ref 
+  IL_0031: ret 
+=== GameLoader.Api::AdvanceServer
+  IL_0000: ldc.i4.0 
+  IL_0001: stloc.0 
+  IL_0002: ldsfld Api::serverLock
+  IL_0007: dup 
+  IL_0008: stloc.1 
+  IL_0009: ldloca.s 0
+  IL_000B: call Monitor::Enter
+  IL_0010: ldsfld Api::activeServer
+  IL_0015: ldarg.0 
+  IL_0016: bne.un.s IL_0036
+  IL_0018: ldsfld Config::Servers
+  IL_001D: ldlen 
+  IL_001E: conv.i4 
+  IL_001F: ldc.i4.1 
+  IL_0020: ble.s IL_0036
+  IL_0022: ldsfld Api::activeServer
+  IL_0027: ldc.i4.1 
+  IL_0028: add 
+  IL_0029: ldsfld Config::Servers
+  IL_002E: ldlen 
+  IL_002F: conv.i4 
+  IL_0030: rem 
+  IL_0031: stsfld Api::activeServer
+  IL_0036: leave.s IL_0042
+  IL_0038: ldloc.0 
+  IL_0039: brfalse.s IL_0041
+  IL_003B: ldloc.1 
+  IL_003C: call Monitor::Exit
+  IL_0041: endfinally 
+  IL_0042: ret 
+=== GameLoader.Api::Send
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <Send>d__3::<>4__this
+  IL_0008: ldloca.s 0
+  IL_000A: ldarg.1 
+  IL_000B: stfld <Send>d__3::method
+  IL_0010: ldloca.s 0
+  IL_0012: ldarg.2 
+  IL_0013: stfld <Send>d__3::path
+  IL_0018: ldloca.s 0
+  IL_001A: ldarg.3 
+  IL_001B: stfld <Send>d__3::body
+  IL_0020: ldloca.s 0
+  IL_0022: ldarg.s 4
+  IL_0024: stfld <Send>d__3::auth
+  IL_0029: ldloca.s 0
+  IL_002B: ldarg.s 5
+  IL_002D: stfld <Send>d__3::timeoutMs
+  IL_0032: ldloca.s 0
+  IL_0034: ldarg.s 6
+  IL_0036: stfld <Send>d__3::headersOnly
+  IL_003B: ldloca.s 0
+  IL_003D: ldarg.s 7
+  IL_003F: stfld <Send>d__3::attempts
+  IL_0044: ldloca.s 0
+  IL_0046: call AsyncTaskMethodBuilder`1::Create
+  IL_004B: stfld <Send>d__3::<>t__builder
+  IL_0050: ldloca.s 0
+  IL_0052: ldc.i4.m1 
+  IL_0053: stfld <Send>d__3::<>1__state
+  IL_0058: ldloca.s 0
+  IL_005A: ldfld <Send>d__3::<>t__builder
+  IL_005F: stloc.1 
+  IL_0060: ldloca.s 1
+  IL_0062: ldloca.s 0
+  IL_0064: call AsyncTaskMethodBuilder`1::Start
+  IL_0069: ldloca.s 0
+  IL_006B: ldflda <Send>d__3::<>t__builder
+  IL_0070: call AsyncTaskMethodBuilder`1::get_Task
+  IL_0075: ret 
+=== GameLoader.Api::SendOnce
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <SendOnce>d__e::<>4__this
+  IL_0008: ldloca.s 0
+  IL_000A: ldarg.1 
+  IL_000B: stfld <SendOnce>d__e::client
+  IL_0010: ldloca.s 0
+  IL_0012: ldarg.2 
+  IL_0013: stfld <SendOnce>d__e::server
+  IL_0018: ldloca.s 0
+  IL_001A: ldarg.3 
+  IL_001B: stfld <SendOnce>d__e::method
+  IL_0020: ldloca.s 0
+  IL_0022: ldarg.s 4
+  IL_0024: stfld <SendOnce>d__e::path
+  IL_0029: ldloca.s 0
+  IL_002B: ldarg.s 5
+  IL_002D: stfld <SendOnce>d__e::body
+  IL_0032: ldloca.s 0
+  IL_0034: ldarg.s 6
+  IL_0036: stfld <SendOnce>d__e::auth
+  IL_003B: ldloca.s 0
+  IL_003D: ldarg.s 7
+  IL_003F: stfld <SendOnce>d__e::timeoutMs
+  IL_0044: ldloca.s 0
+  IL_0046: ldarg.s 8
+  IL_0048: stfld <SendOnce>d__e::headersOnly
+  IL_004D: ldloca.s 0
+  IL_004F: call AsyncTaskMethodBuilder`1::Create
+  IL_0054: stfld <SendOnce>d__e::<>t__builder
+  IL_0059: ldloca.s 0
+  IL_005B: ldc.i4.m1 
+  IL_005C: stfld <SendOnce>d__e::<>1__state
+  IL_0061: ldloca.s 0
+  IL_0063: ldfld <SendOnce>d__e::<>t__builder
+  IL_0068: stloc.1 
+  IL_0069: ldloca.s 1
+  IL_006B: ldloca.s 0
+  IL_006D: call AsyncTaskMethodBuilder`1::Start
+  IL_0072: ldloca.s 0
+  IL_0074: ldflda <SendOnce>d__e::<>t__builder
+  IL_0079: call AsyncTaskMethodBuilder`1::get_Task
+  IL_007E: ret 
+=== GameLoader.Api::ErrorOf
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <ErrorOf>d__13::res
+  IL_0008: ldloca.s 0
+  IL_000A: call AsyncTaskMethodBuilder`1::Create
+  IL_000F: stfld <ErrorOf>d__13::<>t__builder
+  IL_0014: ldloca.s 0
+  IL_0016: ldc.i4.m1 
+  IL_0017: stfld <ErrorOf>d__13::<>1__state
+  IL_001C: ldloca.s 0
+  IL_001E: ldfld <ErrorOf>d__13::<>t__builder
+  IL_0023: stloc.1 
+  IL_0024: ldloca.s 1
+  IL_0026: ldloca.s 0
+  IL_0028: call AsyncTaskMethodBuilder`1::Start
+  IL_002D: ldloca.s 0
+  IL_002F: ldflda <ErrorOf>d__13::<>t__builder
+  IL_0034: call AsyncTaskMethodBuilder`1::get_Task
+  IL_0039: ret 
+=== GameLoader.Api::Authenticate
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <Authenticate>d__19::<>4__this
+  IL_0008: ldloca.s 0
+  IL_000A: ldarg.1 
+  IL_000B: stfld <Authenticate>d__19::k
+  IL_0010: ldloca.s 0
+  IL_0012: call AsyncTaskMethodBuilder`1::Create
+  IL_0017: stfld <Authenticate>d__19::<>t__builder
+  IL_001C: ldloca.s 0
+  IL_001E: ldc.i4.m1 
+  IL_001F: stfld <Authenticate>d__19::<>1__state
+  IL_0024: ldloca.s 0
+  IL_0026: ldfld <Authenticate>d__19::<>t__builder
+  IL_002B: stloc.1 
+  IL_002C: ldloca.s 1
+  IL_002E: ldloca.s 0
+  IL_0030: call AsyncTaskMethodBuilder`1::Start
+  IL_0035: ldloca.s 0
+  IL_0037: ldflda <Authenticate>d__19::<>t__builder
+  IL_003C: call AsyncTaskMethodBuilder`1::get_Task
+  IL_0041: ret 
+=== GameLoader.Api::Authed
+  IL_0000: ldarg.0 
+  IL_0001: ldstr "GET"
+  IL_0006: ldarg.1 
+  IL_0007: ldnull 
+  IL_0008: ldarg.2 
+  IL_0009: ldarg.3 
+  IL_000A: call Api::AuthedRequest
+  IL_000F: ret 
+=== GameLoader.Api::AuthedPost
+  IL_0000: ldarg.0 
+  IL_0001: ldstr "POST"
+  IL_0006: ldarg.1 
+  IL_0007: ldarg.2 
+  IL_0008: ldarg.3 
+  IL_0009: ldc.i4.0 
+  IL_000A: call Api::AuthedRequest
+  IL_000F: ret 
+=== GameLoader.Api::AuthedRequest
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <AuthedRequest>d__21::<>4__this
+  IL_0008: ldloca.s 0
+  IL_000A: ldarg.1 
+  IL_000B: stfld <AuthedRequest>d__21::method
+  IL_0010: ldloca.s 0
+  IL_0012: ldarg.2 
+  IL_0013: stfld <AuthedRequest>d__21::path
+  IL_0018: ldloca.s 0
+  IL_001A: ldarg.3 
+  IL_001B: stfld <AuthedRequest>d__21::body
+  IL_0020: ldloca.s 0
+  IL_0022: ldarg.s 4
+  IL_0024: stfld <AuthedRequest>d__21::timeoutMs
+  IL_0029: ldloca.s 0
+  IL_002B: ldarg.s 5
+  IL_002D: stfld <AuthedRequest>d__21::headersOnly
+  IL_0032: ldloca.s 0
+  IL_0034: call AsyncTaskMethodBuilder`1::Create
+  IL_0039: stfld <AuthedRequest>d__21::<>t__builder
+  IL_003E: ldloca.s 0
+  IL_0040: ldc.i4.m1 
+  IL_0041: stfld <AuthedRequest>d__21::<>1__state
+  IL_0046: ldloca.s 0
+  IL_0048: ldfld <AuthedRequest>d__21::<>t__builder
+  IL_004D: stloc.1 
+  IL_004E: ldloca.s 1
+  IL_0050: ldloca.s 0
+  IL_0052: call AsyncTaskMethodBuilder`1::Start
+  IL_0057: ldloca.s 0
+  IL_0059: ldflda <AuthedRequest>d__21::<>t__builder
+  IL_005E: call AsyncTaskMethodBuilder`1::get_Task
+  IL_0063: ret 
+=== GameLoader.Api::Me
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <Me>d__28::<>4__this
+  IL_0008: ldloca.s 0
+  IL_000A: call AsyncTaskMethodBuilder`1::Create
+  IL_000F: stfld <Me>d__28::<>t__builder
+  IL_0014: ldloca.s 0
+  IL_0016: ldc.i4.m1 
+  IL_0017: stfld <Me>d__28::<>1__state
+  IL_001C: ldloca.s 0
+  IL_001E: ldfld <Me>d__28::<>t__builder
+  IL_0023: stloc.1 
+  IL_0024: ldloca.s 1
+  IL_0026: ldloca.s 0
+  IL_0028: call AsyncTaskMethodBuilder`1::Start
+  IL_002D: ldloca.s 0
+  IL_002F: ldflda <Me>d__28::<>t__builder
+  IL_0034: call AsyncTaskMethodBuilder`1::get_Task
+  IL_0039: ret 
+=== GameLoader.Api::Ping
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <Ping>d__2d::<>4__this
+  IL_0008: ldloca.s 0
+  IL_000A: call AsyncTaskMethodBuilder`1::Create
+  IL_000F: stfld <Ping>d__2d::<>t__builder
+  IL_0014: ldloca.s 0
+  IL_0016: ldc.i4.m1 
+  IL_0017: stfld <Ping>d__2d::<>1__state
+  IL_001C: ldloca.s 0
+  IL_001E: ldfld <Ping>d__2d::<>t__builder
+  IL_0023: stloc.1 
+  IL_0024: ldloca.s 1
+  IL_0026: ldloca.s 0
+  IL_0028: call AsyncTaskMethodBuilder`1::Start
+  IL_002D: ldloca.s 0
+  IL_002F: ldflda <Ping>d__2d::<>t__builder
+  IL_0034: call AsyncTaskMethodBuilder`1::get_Task
+  IL_0039: ret 
+=== GameLoader.Api::.ctor
+  IL_0000: ldarg.0 
+  IL_0001: call Object::.ctor
+  IL_0006: ret 
+=== GameLoader.Api::.cctor
+  IL_0000: ldc.i4.1 
+  IL_0001: call Net::Create
+  IL_0006: stsfld Api::Http
+  IL_000B: ldc.i4.0 
+  IL_000C: call Net::Create
+  IL_0011: stsfld Api::HttpDirect
+  IL_0016: ldc.i4.0 
+  IL_0017: stsfld Api::activeServer
+  IL_001C: newobj Object::.ctor
+  IL_0021: stsfld Api::serverLock
+  IL_0026: ret 

@@ -1,0 +1,313 @@
+﻿=== GameLoader.SelfUpdate+<Check>d__0::MoveNext
+  IL_0000: ldc.i4.1 
+  IL_0001: stloc.0 
+  IL_0002: ldarg.0 
+  IL_0003: ldfld <Check>d__0::<>1__state
+  IL_0008: stloc.3 
+  IL_0009: ldloc.3 
+  IL_000A: switch IL_0031, IL_01EE, IL_0226
+  IL_001B: ldarg.0 
+  IL_001C: ldsfld Registry::CurrentUser
+  IL_0021: ldstr "Software\Hidden\Loader"
+  IL_0026: ldc.i4.1 
+  IL_0027: callvirt RegistryKey::OpenSubKey
+  IL_002C: stfld <Check>d__0::<key>5__1
+  IL_0031: ldarg.0 
+  IL_0032: ldfld <Check>d__0::<>1__state
+  IL_0037: stloc.s 4
+  IL_0039: ldloc.s 4
+  IL_003B: ldc.i4.0 
+  IL_003C: beq IL_0129
+  IL_0041: ldarg.0 
+  IL_0042: ldarg.0 
+  IL_0043: ldfld <Check>d__0::<key>5__1
+  IL_0048: brfalse.s IL_0066
+  IL_004A: ldarg.0 
+  IL_004B: ldfld <Check>d__0::<key>5__1
+  IL_0050: ldstr "LoaderUpdateReceipt"
+  IL_0055: ldstr ""
+  IL_005A: callvirt RegistryKey::GetValue
+  IL_005F: isinst String
+  IL_0064: br.s IL_006B
+  IL_0066: ldstr ""
+  IL_006B: stfld <Check>d__0::<receipt>5__2
+  IL_0070: ldarg.0 
+  IL_0071: ldfld <Check>d__0::<receipt>5__2
+  IL_0076: call String::IsNullOrEmpty
+  IL_007B: brtrue IL_018B
+  IL_0080: ldarg.0 
+  IL_0081: ldarg.0 
+  IL_0082: ldfld <Check>d__0::<receipt>5__2
+  IL_0087: ldc.i4.1 
+  IL_0088: newarr Char
+  IL_008D: stloc.s 5
+  IL_008F: ldloc.s 5
+  IL_0091: ldc.i4.0 
+  IL_0092: ldc.i4.s 58
+  IL_0094: stelem.i2 
+  IL_0095: ldloc.s 5
+  IL_0097: callvirt String::Split
+  IL_009C: stfld <Check>d__0::<parts>5__3
+  IL_00A1: ldarg.0 
+  IL_00A2: ldfld <Check>d__0::<parts>5__3
+  IL_00A7: ldlen 
+  IL_00A8: conv.i4 
+  IL_00A9: ldc.i4.2 
+  IL_00AA: bne.un IL_018B
+  IL_00AF: ldarg.0 
+  IL_00B0: ldfld <Check>d__0::<parts>5__3
+  IL_00B5: ldc.i4.1 
+  IL_00B6: ldelem.ref 
+  IL_00B7: call Application::get_ExecutablePath
+  IL_00BC: call SelfUpdate::Digest
+  IL_00C1: call String::op_Equality
+  IL_00C6: brfalse IL_018B
+  IL_00CB: ldarg.0 
+  IL_00CC: ldfld <Check>d__0::api
+  IL_00D1: ldstr "/api/v1/loader-update/complete"
+  IL_00D6: ldarg.0 
+  IL_00D7: ldfld <Check>d__0::<parts>5__3
+  IL_00DC: ldc.i4.0 
+  IL_00DD: ldelem.ref 
+  IL_00DE: ldarg.0 
+  IL_00DF: ldfld <Check>d__0::<parts>5__3
+  IL_00E4: ldc.i4.1 
+  IL_00E5: ldelem.ref 
+  IL_00E6: newobj <>f__AnonymousType2`2::.ctor
+  IL_00EB: ldc.i4 15000
+  IL_00F0: callvirt Api::AuthedPost
+  IL_00F5: callvirt Task`1::GetAwaiter
+  IL_00FA: stloc.s 6
+  IL_00FC: ldloca.s 6
+  IL_00FE: call TaskAwaiter`1::get_IsCompleted
+  IL_0103: brtrue.s IL_0148
+  IL_0105: ldarg.0 
+  IL_0106: ldc.i4.0 
+  IL_0107: stfld <Check>d__0::<>1__state
+  IL_010C: ldarg.0 
+  IL_010D: ldloc.s 6
+  IL_010F: stfld <Check>d__0::<>u__$awaiter9
+  IL_0114: ldarg.0 
+  IL_0115: ldflda <Check>d__0::<>t__builder
+  IL_011A: ldloca.s 6
+  IL_011C: ldarg.0 
+  IL_011D: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0122: ldc.i4.0 
+  IL_0123: stloc.0 
+  IL_0124: leave IL_039A
+  IL_0129: ldarg.0 
+  IL_012A: ldfld <Check>d__0::<>u__$awaiter9
+  IL_012F: stloc.s 6
+  IL_0131: ldarg.0 
+  IL_0132: ldloca.s 7
+  IL_0134: initobj TaskAwaiter`1
+  IL_013A: ldloc.s 7
+  IL_013C: stfld <Check>d__0::<>u__$awaiter9
+  IL_0141: ldarg.0 
+  IL_0142: ldc.i4.m1 
+  IL_0143: stfld <Check>d__0::<>1__state
+  IL_0148: ldloca.s 6
+  IL_014A: call TaskAwaiter`1::GetResult
+  IL_014F: ldloca.s 6
+  IL_0151: initobj TaskAwaiter`1
+  IL_0157: stloc.s 8
+  IL_0159: ldarg.0 
+  IL_015A: ldloc.s 8
+  IL_015C: stfld <Check>d__0::<response>5__4
+  IL_0161: leave.s IL_017A
+  IL_0163: ldloc.0 
+  IL_0164: brfalse.s IL_0179
+  IL_0166: ldarg.0 
+  IL_0167: ldfld <Check>d__0::<response>5__4
+  IL_016C: brfalse.s IL_0179
+  IL_016E: ldarg.0 
+  IL_016F: ldfld <Check>d__0::<response>5__4
+  IL_0174: callvirt IDisposable::Dispose
+  IL_0179: endfinally 
+  IL_017A: ldarg.0 
+  IL_017B: ldfld <Check>d__0::<key>5__1
+  IL_0180: ldstr "LoaderUpdateReceipt"
+  IL_0185: ldc.i4.0 
+  IL_0186: callvirt RegistryKey::DeleteValue
+  IL_018B: leave.s IL_01A4
+  IL_018D: ldloc.0 
+  IL_018E: brfalse.s IL_01A3
+  IL_0190: ldarg.0 
+  IL_0191: ldfld <Check>d__0::<key>5__1
+  IL_0196: brfalse.s IL_01A3
+  IL_0198: ldarg.0 
+  IL_0199: ldfld <Check>d__0::<key>5__1
+  IL_019E: callvirt IDisposable::Dispose
+  IL_01A3: endfinally 
+  IL_01A4: ldarg.0 
+  IL_01A5: ldfld <Check>d__0::api
+  IL_01AA: ldstr "/api/v1/loader-update"
+  IL_01AF: ldc.i4 15000
+  IL_01B4: ldc.i4.0 
+  IL_01B5: callvirt Api::Authed
+  IL_01BA: callvirt Task`1::GetAwaiter
+  IL_01BF: stloc.s 9
+  IL_01C1: ldloca.s 9
+  IL_01C3: call TaskAwaiter`1::get_IsCompleted
+  IL_01C8: brtrue.s IL_020D
+  IL_01CA: ldarg.0 
+  IL_01CB: ldc.i4.1 
+  IL_01CC: stfld <Check>d__0::<>1__state
+  IL_01D1: ldarg.0 
+  IL_01D2: ldloc.s 9
+  IL_01D4: stfld <Check>d__0::<>u__$awaiter9
+  IL_01D9: ldarg.0 
+  IL_01DA: ldflda <Check>d__0::<>t__builder
+  IL_01DF: ldloca.s 9
+  IL_01E1: ldarg.0 
+  IL_01E2: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_01E7: ldc.i4.0 
+  IL_01E8: stloc.0 
+  IL_01E9: leave IL_039A
+  IL_01EE: ldarg.0 
+  IL_01EF: ldfld <Check>d__0::<>u__$awaiter9
+  IL_01F4: stloc.s 9
+  IL_01F6: ldarg.0 
+  IL_01F7: ldloca.s 10
+  IL_01F9: initobj TaskAwaiter`1
+  IL_01FF: ldloc.s 10
+  IL_0201: stfld <Check>d__0::<>u__$awaiter9
+  IL_0206: ldarg.0 
+  IL_0207: ldc.i4.m1 
+  IL_0208: stfld <Check>d__0::<>1__state
+  IL_020D: ldloca.s 9
+  IL_020F: call TaskAwaiter`1::GetResult
+  IL_0214: ldloca.s 9
+  IL_0216: initobj TaskAwaiter`1
+  IL_021C: stloc.s 11
+  IL_021E: ldarg.0 
+  IL_021F: ldloc.s 11
+  IL_0221: stfld <Check>d__0::<response>5__5
+  IL_0226: ldarg.0 
+  IL_0227: ldfld <Check>d__0::<>1__state
+  IL_022C: stloc.s 12
+  IL_022E: ldloc.s 12
+  IL_0230: ldc.i4.2 
+  IL_0231: beq.s IL_0277
+  IL_0233: ldarg.0 
+  IL_0234: ldfld <Check>d__0::<response>5__5
+  IL_0239: callvirt HttpResponseMessage::get_Content
+  IL_023E: callvirt HttpContent::ReadAsStringAsync
+  IL_0243: callvirt Task`1::GetAwaiter
+  IL_0248: stloc.s 13
+  IL_024A: ldloca.s 13
+  IL_024C: call TaskAwaiter`1::get_IsCompleted
+  IL_0251: brtrue.s IL_0296
+  IL_0253: ldarg.0 
+  IL_0254: ldc.i4.2 
+  IL_0255: stfld <Check>d__0::<>1__state
+  IL_025A: ldarg.0 
+  IL_025B: ldloc.s 13
+  IL_025D: stfld <Check>d__0::<>u__$awaitera
+  IL_0262: ldarg.0 
+  IL_0263: ldflda <Check>d__0::<>t__builder
+  IL_0268: ldloca.s 13
+  IL_026A: ldarg.0 
+  IL_026B: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0270: ldc.i4.0 
+  IL_0271: stloc.0 
+  IL_0272: leave IL_039A
+  IL_0277: ldarg.0 
+  IL_0278: ldfld <Check>d__0::<>u__$awaitera
+  IL_027D: stloc.s 13
+  IL_027F: ldarg.0 
+  IL_0280: ldloca.s 14
+  IL_0282: initobj TaskAwaiter`1
+  IL_0288: ldloc.s 14
+  IL_028A: stfld <Check>d__0::<>u__$awaitera
+  IL_028F: ldarg.0 
+  IL_0290: ldc.i4.m1 
+  IL_0291: stfld <Check>d__0::<>1__state
+  IL_0296: ldloca.s 13
+  IL_0298: call TaskAwaiter`1::GetResult
+  IL_029D: ldloca.s 13
+  IL_029F: initobj TaskAwaiter`1
+  IL_02A5: call Json::Parse
+  IL_02AA: call Json::Obj
+  IL_02AF: stloc.s 15
+  IL_02B1: ldarg.0 
+  IL_02B2: ldloc.s 15
+  IL_02B4: stfld <Check>d__0::<data>5__6
+  IL_02B9: ldarg.0 
+  IL_02BA: ldarg.0 
+  IL_02BB: ldfld <Check>d__0::<data>5__6
+  IL_02C0: brfalse.s IL_02D4
+  IL_02C2: ldarg.0 
+  IL_02C3: ldfld <Check>d__0::<data>5__6
+  IL_02C8: ldstr "update"
+  IL_02CD: callvirt Dictionary`2::ContainsKey
+  IL_02D2: brtrue.s IL_02D7
+  IL_02D4: ldnull 
+  IL_02D5: br.s IL_02EC
+  IL_02D7: ldarg.0 
+  IL_02D8: ldfld <Check>d__0::<data>5__6
+  IL_02DD: ldstr "update"
+  IL_02E2: callvirt Dictionary`2::get_Item
+  IL_02E7: call Json::Obj
+  IL_02EC: stfld <Check>d__0::<update>5__7
+  IL_02F1: ldarg.0 
+  IL_02F2: ldfld <Check>d__0::<update>5__7
+  IL_02F7: brtrue.s IL_0300
+  IL_02F9: ldnull 
+  IL_02FA: stloc.1 
+  IL_02FB: leave IL_0386
+  IL_0300: ldarg.0 
+  IL_0301: ldarg.0 
+  IL_0302: ldfld <Check>d__0::<update>5__7
+  IL_0307: ldstr "manifest"
+  IL_030C: callvirt Dictionary`2::get_Item
+  IL_0311: call Json::Obj
+  IL_0316: call ReleaseIntegrity::VerifyLoader
+  IL_031B: stfld <Check>d__0::<metadata>5__8
+  IL_0320: ldarg.0 
+  IL_0321: ldfld <Check>d__0::<update>5__7
+  IL_0326: ldstr "request_id"
+  IL_032B: call Json::Str
+  IL_0330: ldarg.0 
+  IL_0331: ldfld <Check>d__0::<metadata>5__8
+  IL_0336: ldstr "version"
+  IL_033B: call Json::Str
+  IL_0340: ldarg.0 
+  IL_0341: ldfld <Check>d__0::<metadata>5__8
+  IL_0346: ldstr "size"
+  IL_034B: call Json::Long
+  IL_0350: newobj <>f__AnonymousType3`3::.ctor
+  IL_0355: stloc.1 
+  IL_0356: leave.s IL_0386
+  IL_0358: ldloc.0 
+  IL_0359: brfalse.s IL_036E
+  IL_035B: ldarg.0 
+  IL_035C: ldfld <Check>d__0::<response>5__5
+  IL_0361: brfalse.s IL_036E
+  IL_0363: ldarg.0 
+  IL_0364: ldfld <Check>d__0::<response>5__5
+  IL_0369: callvirt IDisposable::Dispose
+  IL_036E: endfinally 
+  IL_036F: stloc.2 
+  IL_0370: ldarg.0 
+  IL_0371: ldc.i4.s -2
+  IL_0373: stfld <Check>d__0::<>1__state
+  IL_0378: ldarg.0 
+  IL_0379: ldflda <Check>d__0::<>t__builder
+  IL_037E: ldloc.2 
+  IL_037F: call AsyncTaskMethodBuilder`1::SetException
+  IL_0384: leave.s IL_039A
+  IL_0386: ldarg.0 
+  IL_0387: ldc.i4.s -2
+  IL_0389: stfld <Check>d__0::<>1__state
+  IL_038E: ldarg.0 
+  IL_038F: ldflda <Check>d__0::<>t__builder
+  IL_0394: ldloc.1 
+  IL_0395: call AsyncTaskMethodBuilder`1::SetResult
+  IL_039A: ret 
+=== GameLoader.SelfUpdate+<Check>d__0::SetStateMachine
+  IL_0000: ldarg.0 
+  IL_0001: ldflda <Check>d__0::<>t__builder
+  IL_0006: ldarg.1 
+  IL_0007: call AsyncTaskMethodBuilder`1::SetStateMachine
+  IL_000C: ret 

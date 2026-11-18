@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; connect-src 'none'">
+<title>Loader</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═════════════════════ LOGIN ═════════════════════ -->
+<div class="frame login" id="login" data-drag>
+  <div class="fx">
+    <div class="fx-glow"></div>
+    <div class="fx-grid"></div>
+    <div class="fx-beam"></div>
+    <div class="fx-noise"></div>
+  </div>
+
+  <div class="titlebar">
+    <div class="tb-brand"><img class="brand-logo" src="icons/hidden.svg" alt="Hidden"><span class="tb-ver" id="loginVer">v1.0.5</span></div>
+    <div class="tb-btns">
+      <button class="tb-btn lang-switch" data-language aria-label="Switch to Russian">EN</button>
+      
+      <button class="tb-btn" data-win="min" data-i18n-title="Свернуть" aria-label="Свернуть"><svg viewBox="0 0 12 12"><path d="M2 6h8"/></svg></button>
+      <button class="tb-btn close" data-win="close" data-i18n-title="Закрыть" aria-label="Закрыть"><svg viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6"/></svg></button>
+    </div>
+  </div>
+
+  <div class="login-body">
+    <div class="login-head">
+      <h1 class="login-title" data-i18n="Авторизация">Авторизация</h1>
+    </div>
+    <p class="login-sub" data-i18n="Введите ключ, чтобы продолжить">Введите ключ, чтобы продолжить</p>
+
+    <form class="key-form" id="keyForm" autocomplete="off">
+      <div class="key-field" id="keyField">
+        <svg viewBox="0 0 24 24" class="key-ico"><circle cx="8" cy="15.5" r="4"/><path d="M10.9 12.6 19.5 4M16 7.5l2.6 2.6M13.6 9.9l2 2"/></svg>
+        <input id="keyInput" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="48">
+        <span class="key-line"></span>
+      </div>
+      <button class="btn-auth" id="authBtn" type="submit">
+        <span class="lbl" data-i18n="Авторизация">Авторизация</span>
+        <span class="spinner"></span>
+        <svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </button>
+      <div class="login-error" id="loginError"></div>
+    </form>
+  </div>
+
+  <div class="login-foot"><span class="net" id="netDot"></span><span id="netText" data-i18n="Подключение…">Подключение…</span></div>
+</div>
+
+<!-- ═════════════════════ MAIN ═════════════════════ -->
+<div class="frame main" id="main" hidden>
+  <div class="bg">
+    <div class="bg-img" id="bgA"></div>
+    <div class="bg-img" id="bgB"></div>
+    <div class="bg-shade"></div>
+  </div>
+
+  <header class="titlebar main-tb" data-drag>
+    <div class="tb-brand"><img class="brand-logo" src="icons/hidden.svg" alt="Hidden"><div class="mt-status"><span class="net on"></span><span data-i18n="Подключено">Подключено</span></div></div>
+    <div class="tb-btns">
+      <button class="tb-btn lang-switch" data-language aria-label="Switch to Russian">EN</button>
+      
+      <button class="tb-btn" id="refreshBtn" data-i18n-title="Обновить" aria-label="Обновить" title="Обновить"><svg viewBox="0 0 12 12"><path d="M10 6a4 4 0 1 1-1.2-2.85M10 1.5V3.5H8"/></svg></button>
+      <button class="tb-btn" data-win="min" data-i18n-title="Свернуть" aria-label="Свернуть"><svg viewBox="0 0 12 12"><path d="M2 6h8"/></svg></button>
+      <button class="tb-btn close" data-win="close" data-i18n-title="Закрыть" aria-label="Закрыть"><svg viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6"/></svg></button>
+    </div>
+  </header>
+
+  <section class="library">
+    <div class="lib-head">
+      <h2 data-i18n="Ваши игры">Ваши игры</h2>
+      <p id="libCount"></p>
+    </div>
+    <div class="cards" id="cards"></div>
+    <div class="lib-empty" id="libEmpty" hidden>
+      <b data-i18n="Нет доступных игр">Нет доступных игр</b>
+      <span data-i18n="Для этого ключа пока не открыто ни одной игры">Для этого ключа пока не открыто ни одной игры</span>
+    </div>
+  </section>
+
+  <aside class="ready">
+    <div class="ready-head">
+      <h3 data-i18n="Готовность ПК">Готовность ПК</h3>
+      <button class="tb-btn" id="readyRefresh" data-i18n-title="Проверить заново" aria-label="Проверить заново" title="Проверить заново"><svg viewBox="0 0 12 12"><path d="M10 6a4 4 0 1 1-1.2-2.85M10 1.5V3.5H8"/></svg></button>
+    </div>
+    <ul class="ready-list" id="readyList"></ul>
+    <div class="ready-foot" id="readyFoot" data-i18n="Проверка…">Проверка…</div>
+  </aside>
+
+  <footer class="statusbar">
+    <div class="sub-box" id="subBox">
+      <svg viewBox="0 0 44 44" class="ring">
+        <circle cx="22" cy="22" r="19" class="ring-bg"/>
+        <circle cx="22" cy="22" r="19" class="ring-fg" id="ringFg"/>
+      </svg>
+      <div class="ring-num" id="ringNum">—</div>
+      <div class="sub-text">
+        <b id="subLeft">—</b>
+        <span id="subUntil">—</span>
+      </div>
+    </div>
+
+    <div class="sb-mid" id="sbMsg"></div>
+
+    <div class="sb-right">
+      <div class="key-chip"><svg viewBox="0 0 24 24"><circle cx="8" cy="15.5" r="4"/><path d="M10.9 12.6 19.5 4M16 7.5l2.6 2.6M13.6 9.9l2 2"/></svg><span id="keyMasked">—</span></div>
+      <button class="btn-ghost" id="logoutBtn" data-i18n="Выйти">Выйти</button>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<template id="readyTpl">
+  <li class="rd">
+    <span class="rd-dot"></span>
+    <div class="rd-text"><b></b><span></span></div>
+    <span class="rd-state"></span>
+  </li>
+</template>
+
+<template id="cardTpl">
+  <article class="card">
+    <div class="card-img"></div>
+    <div class="card-shade"></div>
+    <div class="card-top">
+      <span class="badge ver"></span>
+      <span class="badge ok" data-i18n="Доступно">Доступно</span>
+    </div>
+    <div class="card-body">
+      <h3 class="card-title"></h3>
+      <p class="card-desc"></p>
+      <div class="card-meta"></div>
+      <div class="card-action">
+        <button class="btn-play">
+          <svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5L8 5.5Z"/></svg>
+          <span data-i18n="Запустить">Запустить</span>
+        </button>
+        <div class="prog" hidden>
+          <div class="prog-row"><span class="prog-stage" data-i18n="Подготовка">Подготовка</span><span class="prog-pct"></span></div>
+          <div class="prog-bar"><i></i></div>
+          <div class="prog-detail"></div>
+        </div>
+      </div>
+    </div>
+    <span class="card-edge"></span>
+  </article>
+</template>
+
+<div id="loaderUpdate" class="loader-update" role="dialog" aria-modal="true" aria-labelledby="loaderUpdateTitle" hidden>
+  <div class="loader-update-card">
+    <h2 id="loaderUpdateTitle" data-i18n="Обновление лоадера">Обновление лоадера</h2>
+    <p data-i18n="Администратор запросил повторную загрузку лоадера. После загрузки он перезапустится.">Администратор запросил повторную загрузку лоадера. После загрузки он перезапустится.</p>
+    <p id="loaderUpdateVersion"></p>
+    <progress id="loaderUpdateProgress" max="100" value="0" hidden></progress>
+    <p id="loaderUpdateStatus" role="status"></p>
+    <div class="loader-update-actions">
+      <button id="loaderUpdateInstall" data-i18n="Перекачать">Перекачать</button>
+    </div>
+  </div>
+</div>
+<script src="bridge.js"></script>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

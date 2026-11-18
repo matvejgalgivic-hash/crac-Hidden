@@ -1,0 +1,688 @@
+﻿=== GameLoader.RobRunRuntime+<Start>d__28::MoveNext
+  IL_0000: ldc.i4.1 
+  IL_0001: stloc.2 
+  IL_0002: ldarg.0 
+  IL_0003: ldfld <Start>d__28::<>1__state
+  IL_0008: stloc.s 4
+  IL_000A: ldloc.s 4
+  IL_000C: switch IL_00AF, IL_00AF, IL_00AF, IL_00AF, IL_00AF, IL_00AF, IL_00AF, IL_00AF
+  IL_0031: ldarg.0 
+  IL_0032: ldnull 
+  IL_0033: stfld <Start>d__28::CS$<>9__CachedAnonymousMethodDelegate22
+  IL_0038: ldarg.0 
+  IL_0039: newobj <>c__DisplayClass23::.ctor
+  IL_003E: stfld <Start>d__28::CS$<>8__locals24
+  IL_0043: ldarg.0 
+  IL_0044: ldfld <Start>d__28::CS$<>8__locals24
+  IL_0049: ldarg.0 
+  IL_004A: ldfld <Start>d__28::exe
+  IL_004F: stfld <>c__DisplayClass23::exe
+  IL_0054: ldarg.0 
+  IL_0055: ldarg.0 
+  IL_0056: ldfld <Start>d__28::server
+  IL_005B: ldarg.0 
+  IL_005C: ldfld <Start>d__28::gameId
+  IL_0061: ldarg.0 
+  IL_0062: ldfld <Start>d__28::signed
+  IL_0067: call RobRunRuntime::Bootstrap
+  IL_006C: stfld <Start>d__28::<bootstrap>5__29
+  IL_0071: ldarg.0 
+  IL_0072: ldfld <Start>d__28::CS$<>8__locals24
+  IL_0077: ldstr "RobRun."
+  IL_007C: call Guid::NewGuid
+  IL_0081: stloc.s 5
+  IL_0083: ldloca.s 5
+  IL_0085: ldstr "N"
+  IL_008A: call Guid::ToString
+  IL_008F: call String::Concat
+  IL_0094: stfld <>c__DisplayClass23::pipeName
+  IL_0099: ldarg.0 
+  IL_009A: ldarg.0 
+  IL_009B: ldfld <Start>d__28::CS$<>8__locals24
+  IL_00A0: ldfld <>c__DisplayClass23::pipeName
+  IL_00A5: call RobRunRuntime::CreatePipe
+  IL_00AA: stfld <Start>d__28::<pipe>5__2a
+  IL_00AF: ldarg.0 
+  IL_00B0: ldfld <Start>d__28::<>1__state
+  IL_00B5: stloc.s 6
+  IL_00B7: ldloc.s 6
+  IL_00B9: switch IL_0101, IL_021F, IL_021F, IL_021F, IL_021F, IL_021F, IL_021F, IL_021F
+  IL_00DE: ldarg.0 
+  IL_00DF: ldnull 
+  IL_00E0: stfld <Start>d__28::CS$<>9__CachedAnonymousMethodDelegate25
+  IL_00E5: ldarg.0 
+  IL_00E6: newobj <>c__DisplayClass26::.ctor
+  IL_00EB: stfld <Start>d__28::CS$<>8__locals27
+  IL_00F0: ldarg.0 
+  IL_00F1: ldfld <Start>d__28::CS$<>8__locals27
+  IL_00F6: ldarg.0 
+  IL_00F7: ldfld <Start>d__28::CS$<>8__locals24
+  IL_00FC: stfld <>c__DisplayClass26::CS$<>8__locals24
+  IL_0101: ldarg.0 
+  IL_0102: ldfld <Start>d__28::<>1__state
+  IL_0107: stloc.s 7
+  IL_0109: ldloc.s 7
+  IL_010B: ldc.i4.0 
+  IL_010C: beq.s IL_017C
+  IL_010E: ldarg.0 
+  IL_010F: ldfld <Start>d__28::CS$<>8__locals27
+  IL_0114: ldarg.0 
+  IL_0115: ldfld <Start>d__28::CS$<>9__CachedAnonymousMethodDelegate22
+  IL_011A: brtrue.s IL_0133
+  IL_011C: ldarg.0 
+  IL_011D: ldarg.0 
+  IL_011E: ldfld <Start>d__28::CS$<>8__locals24
+  IL_0123: ldftn <>c__DisplayClass23::<Start>b__20
+  IL_0129: newobj Func`1::.ctor
+  IL_012E: stfld <Start>d__28::CS$<>9__CachedAnonymousMethodDelegate22
+  IL_0133: ldarg.0 
+  IL_0134: ldfld <Start>d__28::CS$<>9__CachedAnonymousMethodDelegate22
+  IL_0139: call Task::Run
+  IL_013E: callvirt Task`1::GetAwaiter
+  IL_0143: stloc.s 8
+  IL_0145: ldloca.s 8
+  IL_0147: call TaskAwaiter`1::get_IsCompleted
+  IL_014C: brtrue.s IL_01B1
+  IL_014E: stloc.s 9
+  IL_0150: ldarg.0 
+  IL_0151: ldloc.s 9
+  IL_0153: stfld <Start>d__28::<>t__stack
+  IL_0158: ldarg.0 
+  IL_0159: ldc.i4.0 
+  IL_015A: stfld <Start>d__28::<>1__state
+  IL_015F: ldarg.0 
+  IL_0160: ldloc.s 8
+  IL_0162: stfld <Start>d__28::<>u__$awaiter32
+  IL_0167: ldarg.0 
+  IL_0168: ldflda <Start>d__28::<>t__builder
+  IL_016D: ldloca.s 8
+  IL_016F: ldarg.0 
+  IL_0170: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_0175: ldc.i4.0 
+  IL_0176: stloc.2 
+  IL_0177: leave IL_0893
+  IL_017C: ldarg.0 
+  IL_017D: ldfld <Start>d__28::<>t__stack
+  IL_0182: unbox.any RobRunRuntime::<>c__DisplayClass26
+  IL_0187: stloc.s 10
+  IL_0189: ldloc.s 10
+  IL_018B: ldarg.0 
+  IL_018C: ldnull 
+  IL_018D: stfld <Start>d__28::<>t__stack
+  IL_0192: ldarg.0 
+  IL_0193: ldfld <Start>d__28::<>u__$awaiter32
+  IL_0198: stloc.s 8
+  IL_019A: ldarg.0 
+  IL_019B: ldloca.s 11
+  IL_019D: initobj TaskAwaiter`1
+  IL_01A3: ldloc.s 11
+  IL_01A5: stfld <Start>d__28::<>u__$awaiter32
+  IL_01AA: ldarg.0 
+  IL_01AB: ldc.i4.m1 
+  IL_01AC: stfld <Start>d__28::<>1__state
+  IL_01B1: ldloca.s 8
+  IL_01B3: call TaskAwaiter`1::GetResult
+  IL_01B8: ldloca.s 8
+  IL_01BA: initobj TaskAwaiter`1
+  IL_01C0: stfld <>c__DisplayClass26::child
+  IL_01C5: leave.s IL_01F6
+  IL_01C7: stloc.0 
+  IL_01C8: ldloc.0 
+  IL_01C9: callvirt Win32Exception::get_NativeErrorCode
+  IL_01CE: ldc.i4 1223
+  IL_01D3: bne.un.s IL_01E0
+  IL_01D5: ldstr "Запуск отменён - нужно подтвердить права администратора"
+  IL_01DA: newobj Exception::.ctor
+  IL_01DF: throw 
+  IL_01E0: ldstr "Не удалось запустить RobRun: "
+  IL_01E5: ldloc.0 
+  IL_01E6: callvirt Exception::get_Message
+  IL_01EB: call String::Concat
+  IL_01F0: newobj Exception::.ctor
+  IL_01F5: throw 
+  IL_01F6: ldarg.0 
+  IL_01F7: ldfld <Start>d__28::CS$<>8__locals27
+  IL_01FC: ldfld <>c__DisplayClass26::child
+  IL_0201: brtrue.s IL_020E
+  IL_0203: ldstr "Не удалось получить процесс RobRun"
+  IL_0208: newobj Exception::.ctor
+  IL_020D: throw 
+  IL_020E: ldarg.0 
+  IL_020F: ldarg.0 
+  IL_0210: ldfld <Start>d__28::CS$<>8__locals27
+  IL_0215: ldfld <>c__DisplayClass26::child
+  IL_021A: stfld <Start>d__28::<>7__wrap33
+  IL_021F: ldarg.0 
+  IL_0220: ldfld <Start>d__28::<>1__state
+  IL_0225: stloc.s 12
+  IL_0227: ldloc.s 12
+  IL_0229: ldc.i4.1 
+  IL_022A: sub 
+  IL_022B: switch IL_0262, IL_0262, IL_0262, IL_0262, IL_0262, IL_0262, IL_0262
+  IL_024C: ldarg.0 
+  IL_024D: ldarg.0 
+  IL_024E: ldfld <Start>d__28::CS$<>8__locals27
+  IL_0253: ldfld <>c__DisplayClass26::child
+  IL_0258: newobj Lifetime::.ctor
+  IL_025D: stfld <Start>d__28::<lifetime>5__2b
+  IL_0262: ldarg.0 
+  IL_0263: ldfld <Start>d__28::<>1__state
+  IL_0268: stloc.s 13
+  IL_026A: ldloc.s 13
+  IL_026C: ldc.i4.1 
+  IL_026D: sub 
+  IL_026E: switch IL_0296, IL_0296, IL_0296, IL_0296, IL_0296, IL_0296, IL_07D4
+  IL_028F: ldarg.0 
+  IL_0290: ldnull 
+  IL_0291: stfld <Start>d__28::<pipeClosed>5__2c
+  IL_0296: ldarg.0 
+  IL_0297: ldfld <Start>d__28::<>1__state
+  IL_029C: stloc.s 14
+  IL_029E: ldloc.s 14
+  IL_02A0: ldc.i4.1 
+  IL_02A1: sub 
+  IL_02A2: switch IL_0331, IL_039A, IL_04CF, IL_0537, IL_06BC, IL_0724
+  IL_02BF: ldarg.0 
+  IL_02C0: call Stopwatch::StartNew
+  IL_02C5: stfld <Start>d__28::<handshake>5__2d
+  IL_02CA: ldarg.0 
+  IL_02CB: ldfld <Start>d__28::<pipe>5__2a
+  IL_02D0: ldarg.0 
+  IL_02D1: ldfld <Start>d__28::cancel
+  IL_02D6: callvirt NamedPipeServerStream::WaitForConnectionAsync
+  IL_02DB: ldarg.0 
+  IL_02DC: ldfld <Start>d__28::<lifetime>5__2b
+  IL_02E1: ldarg.0 
+  IL_02E2: ldfld <Start>d__28::<handshake>5__2d
+  IL_02E7: ldarg.0 
+  IL_02E8: ldfld <Start>d__28::handshakeTimeout
+  IL_02ED: ldarg.0 
+  IL_02EE: ldfld <Start>d__28::cancel
+  IL_02F3: ldstr "RobRun не подключился к лоадеру за отведённое время"
+  IL_02F8: call RobRunRuntime::Within
+  IL_02FD: callvirt Task::GetAwaiter
+  IL_0302: stloc.s 15
+  IL_0304: ldloca.s 15
+  IL_0306: call TaskAwaiter::get_IsCompleted
+  IL_030B: brtrue.s IL_0350
+  IL_030D: ldarg.0 
+  IL_030E: ldc.i4.1 
+  IL_030F: stfld <Start>d__28::<>1__state
+  IL_0314: ldarg.0 
+  IL_0315: ldloc.s 15
+  IL_0317: stfld <Start>d__28::<>u__$awaiter34
+  IL_031C: ldarg.0 
+  IL_031D: ldflda <Start>d__28::<>t__builder
+  IL_0322: ldloca.s 15
+  IL_0324: ldarg.0 
+  IL_0325: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_032A: ldc.i4.0 
+  IL_032B: stloc.2 
+  IL_032C: leave IL_0893
+  IL_0331: ldarg.0 
+  IL_0332: ldfld <Start>d__28::<>u__$awaiter34
+  IL_0337: stloc.s 15
+  IL_0339: ldarg.0 
+  IL_033A: ldloca.s 16
+  IL_033C: initobj TaskAwaiter
+  IL_0342: ldloc.s 16
+  IL_0344: stfld <Start>d__28::<>u__$awaiter34
+  IL_0349: ldarg.0 
+  IL_034A: ldc.i4.m1 
+  IL_034B: stfld <Start>d__28::<>1__state
+  IL_0350: ldloca.s 15
+  IL_0352: call TaskAwaiter::GetResult
+  IL_0357: ldloca.s 15
+  IL_0359: initobj TaskAwaiter
+  IL_035F: ldarg.0 
+  IL_0360: ldfld <Start>d__28::<pipe>5__2a
+  IL_0365: callvirt PipeStream::get_SafePipeHandle
+  IL_036A: ldarg.0 
+  IL_036B: ldflda <Start>d__28::<actualPid>5__2e
+  IL_0370: call RobRunRuntime::GetNamedPipeClientProcessId
+  IL_0375: brfalse.s IL_038F
+  IL_0377: ldarg.0 
+  IL_0378: ldfld <Start>d__28::<actualPid>5__2e
+  IL_037D: ldarg.0 
+  IL_037E: ldfld <Start>d__28::CS$<>8__locals27
+  IL_0383: ldfld <>c__DisplayClass26::child
+  IL_0388: callvirt Process::get_Id
+  IL_038D: beq.s IL_039A
+  IL_038F: ldstr "Проверка процесса RobRun не пройдена"
+  IL_0394: newobj Exception::.ctor
+  IL_0399: throw 
+  IL_039A: ldarg.0 
+  IL_039B: ldfld <Start>d__28::<>1__state
+  IL_03A0: stloc.s 17
+  IL_03A2: ldloc.s 17
+  IL_03A4: ldc.i4.2 
+  IL_03A5: beq.s IL_0414
+  IL_03A7: ldarg.0 
+  IL_03A8: ldfld <Start>d__28::<pipe>5__2a
+  IL_03AD: ldarg.0 
+  IL_03AE: ldfld <Start>d__28::<bootstrap>5__29
+  IL_03B3: ldarg.0 
+  IL_03B4: ldfld <Start>d__28::cancel
+  IL_03B9: call RobRunRuntime::WriteFrame
+  IL_03BE: ldarg.0 
+  IL_03BF: ldfld <Start>d__28::<lifetime>5__2b
+  IL_03C4: ldarg.0 
+  IL_03C5: ldfld <Start>d__28::<handshake>5__2d
+  IL_03CA: ldarg.0 
+  IL_03CB: ldfld <Start>d__28::handshakeTimeout
+  IL_03D0: ldarg.0 
+  IL_03D1: ldfld <Start>d__28::cancel
+  IL_03D6: ldstr "Не удалось передать параметры запуска RobRun"
+  IL_03DB: call RobRunRuntime::Within
+  IL_03E0: callvirt Task::GetAwaiter
+  IL_03E5: stloc.s 18
+  IL_03E7: ldloca.s 18
+  IL_03E9: call TaskAwaiter::get_IsCompleted
+  IL_03EE: brtrue.s IL_0433
+  IL_03F0: ldarg.0 
+  IL_03F1: ldc.i4.2 
+  IL_03F2: stfld <Start>d__28::<>1__state
+  IL_03F7: ldarg.0 
+  IL_03F8: ldloc.s 18
+  IL_03FA: stfld <Start>d__28::<>u__$awaiter34
+  IL_03FF: ldarg.0 
+  IL_0400: ldflda <Start>d__28::<>t__builder
+  IL_0405: ldloca.s 18
+  IL_0407: ldarg.0 
+  IL_0408: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_040D: ldc.i4.0 
+  IL_040E: stloc.2 
+  IL_040F: leave IL_0893
+  IL_0414: ldarg.0 
+  IL_0415: ldfld <Start>d__28::<>u__$awaiter34
+  IL_041A: stloc.s 18
+  IL_041C: ldarg.0 
+  IL_041D: ldloca.s 19
+  IL_041F: initobj TaskAwaiter
+  IL_0425: ldloc.s 19
+  IL_0427: stfld <Start>d__28::<>u__$awaiter34
+  IL_042C: ldarg.0 
+  IL_042D: ldc.i4.m1 
+  IL_042E: stfld <Start>d__28::<>1__state
+  IL_0433: ldloca.s 18
+  IL_0435: call TaskAwaiter::GetResult
+  IL_043A: ldloca.s 18
+  IL_043C: initobj TaskAwaiter
+  IL_0442: leave.s IL_045C
+  IL_0444: ldloc.2 
+  IL_0445: brfalse.s IL_045B
+  IL_0447: ldarg.0 
+  IL_0448: ldfld <Start>d__28::<bootstrap>5__29
+  IL_044D: ldc.i4.0 
+  IL_044E: ldarg.0 
+  IL_044F: ldfld <Start>d__28::<bootstrap>5__29
+  IL_0454: ldlen 
+  IL_0455: conv.i4 
+  IL_0456: call Array::Clear
+  IL_045B: endfinally 
+  IL_045C: ldarg.0 
+  IL_045D: ldarg.0 
+  IL_045E: ldfld <Start>d__28::<pipe>5__2a
+  IL_0463: ldarg.0 
+  IL_0464: ldfld <Start>d__28::cancel
+  IL_0469: call RobRunRuntime::ReadFrame
+  IL_046E: stfld <Start>d__28::<next>5__2f
+  IL_0473: ldarg.0 
+  IL_0474: ldfld <Start>d__28::<next>5__2f
+  IL_0479: ldarg.0 
+  IL_047A: ldfld <Start>d__28::<lifetime>5__2b
+  IL_047F: ldarg.0 
+  IL_0480: ldfld <Start>d__28::<handshake>5__2d
+  IL_0485: ldarg.0 
+  IL_0486: ldfld <Start>d__28::handshakeTimeout
+  IL_048B: ldarg.0 
+  IL_048C: ldfld <Start>d__28::cancel
+  IL_0491: ldstr "RobRun не подтвердил инициализацию за отведённое время"
+  IL_0496: call RobRunRuntime::Within
+  IL_049B: callvirt Task::GetAwaiter
+  IL_04A0: stloc.s 20
+  IL_04A2: ldloca.s 20
+  IL_04A4: call TaskAwaiter::get_IsCompleted
+  IL_04A9: brtrue.s IL_04EE
+  IL_04AB: ldarg.0 
+  IL_04AC: ldc.i4.3 
+  IL_04AD: stfld <Start>d__28::<>1__state
+  IL_04B2: ldarg.0 
+  IL_04B3: ldloc.s 20
+  IL_04B5: stfld <Start>d__28::<>u__$awaiter34
+  IL_04BA: ldarg.0 
+  IL_04BB: ldflda <Start>d__28::<>t__builder
+  IL_04C0: ldloca.s 20
+  IL_04C2: ldarg.0 
+  IL_04C3: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_04C8: ldc.i4.0 
+  IL_04C9: stloc.2 
+  IL_04CA: leave IL_0893
+  IL_04CF: ldarg.0 
+  IL_04D0: ldfld <Start>d__28::<>u__$awaiter34
+  IL_04D5: stloc.s 20
+  IL_04D7: ldarg.0 
+  IL_04D8: ldloca.s 21
+  IL_04DA: initobj TaskAwaiter
+  IL_04E0: ldloc.s 21
+  IL_04E2: stfld <Start>d__28::<>u__$awaiter34
+  IL_04E7: ldarg.0 
+  IL_04E8: ldc.i4.m1 
+  IL_04E9: stfld <Start>d__28::<>1__state
+  IL_04EE: ldloca.s 20
+  IL_04F0: call TaskAwaiter::GetResult
+  IL_04F5: ldloca.s 20
+  IL_04F7: initobj TaskAwaiter
+  IL_04FD: ldarg.0 
+  IL_04FE: ldfld <Start>d__28::<next>5__2f
+  IL_0503: callvirt Task`1::GetAwaiter
+  IL_0508: stloc.s 22
+  IL_050A: ldloca.s 22
+  IL_050C: call TaskAwaiter`1::get_IsCompleted
+  IL_0511: brtrue.s IL_0556
+  IL_0513: ldarg.0 
+  IL_0514: ldc.i4.4 
+  IL_0515: stfld <Start>d__28::<>1__state
+  IL_051A: ldarg.0 
+  IL_051B: ldloc.s 22
+  IL_051D: stfld <Start>d__28::<>u__$awaiter35
+  IL_0522: ldarg.0 
+  IL_0523: ldflda <Start>d__28::<>t__builder
+  IL_0528: ldloca.s 22
+  IL_052A: ldarg.0 
+  IL_052B: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_0530: ldc.i4.0 
+  IL_0531: stloc.2 
+  IL_0532: leave IL_0893
+  IL_0537: ldarg.0 
+  IL_0538: ldfld <Start>d__28::<>u__$awaiter35
+  IL_053D: stloc.s 22
+  IL_053F: ldarg.0 
+  IL_0540: ldloca.s 23
+  IL_0542: initobj TaskAwaiter`1
+  IL_0548: ldloc.s 23
+  IL_054A: stfld <Start>d__28::<>u__$awaiter35
+  IL_054F: ldarg.0 
+  IL_0550: ldc.i4.m1 
+  IL_0551: stfld <Start>d__28::<>1__state
+  IL_0556: ldloca.s 22
+  IL_0558: call TaskAwaiter`1::GetResult
+  IL_055D: ldloca.s 22
+  IL_055F: initobj TaskAwaiter`1
+  IL_0565: stloc.s 24
+  IL_0567: ldarg.0 
+  IL_0568: ldloc.s 24
+  IL_056A: stfld <Start>d__28::<current>5__30
+  IL_056F: ldarg.0 
+  IL_0570: call Stopwatch::StartNew
+  IL_0575: stfld <Start>d__28::<waiting>5__31
+  IL_057A: ldarg.0 
+  IL_057B: ldflda <Start>d__28::cancel
+  IL_0580: call CancellationToken::ThrowIfCancellationRequested
+  IL_0585: ldarg.0 
+  IL_0586: ldfld <Start>d__28::<current>5__30
+  IL_058B: ldstr "ready"
+  IL_0590: call String::op_Equality
+  IL_0595: brfalse.s IL_05CF
+  IL_0597: ldarg.0 
+  IL_0598: ldfld <Start>d__28::CS$<>8__locals27
+  IL_059D: ldfld <>c__DisplayClass26::child
+  IL_05A2: callvirt Process::get_HasExited
+  IL_05A7: brfalse.s IL_05BA
+  IL_05A9: ldarg.0 
+  IL_05AA: ldfld <Start>d__28::<lifetime>5__2b
+  IL_05AF: callvirt Lifetime::ExitMessage
+  IL_05B4: newobj Exception::.ctor
+  IL_05B9: throw 
+  IL_05BA: ldarg.0 
+  IL_05BB: ldfld <Start>d__28::status
+  IL_05C0: ldstr "ready"
+  IL_05C5: callvirt Action`1::Invoke
+  IL_05CA: leave IL_0880
+  IL_05CF: ldarg.0 
+  IL_05D0: ldfld <Start>d__28::<current>5__30
+  IL_05D5: ldstr "error:"
+  IL_05DA: ldc.i4.4 
+  IL_05DB: callvirt String::StartsWith
+  IL_05E0: brfalse.s IL_0609
+  IL_05E2: ldarg.0 
+  IL_05E3: ldfld <Start>d__28::<current>5__30
+  IL_05E8: callvirt String::get_Length
+  IL_05ED: ldc.i4.6 
+  IL_05EE: bgt.s IL_05F7
+  IL_05F0: ldstr "Ошибка инициализации RobRun"
+  IL_05F5: br.s IL_0603
+  IL_05F7: ldarg.0 
+  IL_05F8: ldfld <Start>d__28::<current>5__30
+  IL_05FD: ldc.i4.6 
+  IL_05FE: callvirt String::Substring
+  IL_0603: newobj Exception::.ctor
+  IL_0608: throw 
+  IL_0609: ldarg.0 
+  IL_060A: ldfld <Start>d__28::<current>5__30
+  IL_060F: ldstr "initializing"
+  IL_0614: call String::op_Inequality
+  IL_0619: brfalse.s IL_0638
+  IL_061B: ldarg.0 
+  IL_061C: ldfld <Start>d__28::<current>5__30
+  IL_0621: ldstr "waiting_game"
+  IL_0626: call String::op_Inequality
+  IL_062B: brfalse.s IL_0638
+  IL_062D: ldstr "RobRun вернул неизвестное состояние"
+  IL_0632: newobj Exception::.ctor
+  IL_0637: throw 
+  IL_0638: ldarg.0 
+  IL_0639: ldfld <Start>d__28::status
+  IL_063E: ldarg.0 
+  IL_063F: ldfld <Start>d__28::<current>5__30
+  IL_0644: callvirt Action`1::Invoke
+  IL_0649: ldarg.0 
+  IL_064A: ldarg.0 
+  IL_064B: ldfld <Start>d__28::<pipe>5__2a
+  IL_0650: ldarg.0 
+  IL_0651: ldfld <Start>d__28::cancel
+  IL_0656: call RobRunRuntime::ReadFrame
+  IL_065B: stfld <Start>d__28::<next>5__2f
+  IL_0660: ldarg.0 
+  IL_0661: ldfld <Start>d__28::<next>5__2f
+  IL_0666: ldarg.0 
+  IL_0667: ldfld <Start>d__28::<lifetime>5__2b
+  IL_066C: ldarg.0 
+  IL_066D: ldfld <Start>d__28::<waiting>5__31
+  IL_0672: ldarg.0 
+  IL_0673: ldfld <Start>d__28::readyTimeout
+  IL_0678: ldarg.0 
+  IL_0679: ldfld <Start>d__28::cancel
+  IL_067E: ldstr "Время ожидания игры истекло. Запустите игру и повторите попытку"
+  IL_0683: call RobRunRuntime::Within
+  IL_0688: callvirt Task::GetAwaiter
+  IL_068D: stloc.s 25
+  IL_068F: ldloca.s 25
+  IL_0691: call TaskAwaiter::get_IsCompleted
+  IL_0696: brtrue.s IL_06DB
+  IL_0698: ldarg.0 
+  IL_0699: ldc.i4.5 
+  IL_069A: stfld <Start>d__28::<>1__state
+  IL_069F: ldarg.0 
+  IL_06A0: ldloc.s 25
+  IL_06A2: stfld <Start>d__28::<>u__$awaiter34
+  IL_06A7: ldarg.0 
+  IL_06A8: ldflda <Start>d__28::<>t__builder
+  IL_06AD: ldloca.s 25
+  IL_06AF: ldarg.0 
+  IL_06B0: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_06B5: ldc.i4.0 
+  IL_06B6: stloc.2 
+  IL_06B7: leave IL_0893
+  IL_06BC: ldarg.0 
+  IL_06BD: ldfld <Start>d__28::<>u__$awaiter34
+  IL_06C2: stloc.s 25
+  IL_06C4: ldarg.0 
+  IL_06C5: ldloca.s 26
+  IL_06C7: initobj TaskAwaiter
+  IL_06CD: ldloc.s 26
+  IL_06CF: stfld <Start>d__28::<>u__$awaiter34
+  IL_06D4: ldarg.0 
+  IL_06D5: ldc.i4.m1 
+  IL_06D6: stfld <Start>d__28::<>1__state
+  IL_06DB: ldloca.s 25
+  IL_06DD: call TaskAwaiter::GetResult
+  IL_06E2: ldloca.s 25
+  IL_06E4: initobj TaskAwaiter
+  IL_06EA: ldarg.0 
+  IL_06EB: ldfld <Start>d__28::<next>5__2f
+  IL_06F0: callvirt Task`1::GetAwaiter
+  IL_06F5: stloc.s 27
+  IL_06F7: ldloca.s 27
+  IL_06F9: call TaskAwaiter`1::get_IsCompleted
+  IL_06FE: brtrue.s IL_0743
+  IL_0700: ldarg.0 
+  IL_0701: ldc.i4.6 
+  IL_0702: stfld <Start>d__28::<>1__state
+  IL_0707: ldarg.0 
+  IL_0708: ldloc.s 27
+  IL_070A: stfld <Start>d__28::<>u__$awaiter35
+  IL_070F: ldarg.0 
+  IL_0710: ldflda <Start>d__28::<>t__builder
+  IL_0715: ldloca.s 27
+  IL_0717: ldarg.0 
+  IL_0718: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_071D: ldc.i4.0 
+  IL_071E: stloc.2 
+  IL_071F: leave IL_0893
+  IL_0724: ldarg.0 
+  IL_0725: ldfld <Start>d__28::<>u__$awaiter35
+  IL_072A: stloc.s 27
+  IL_072C: ldarg.0 
+  IL_072D: ldloca.s 28
+  IL_072F: initobj TaskAwaiter`1
+  IL_0735: ldloc.s 28
+  IL_0737: stfld <Start>d__28::<>u__$awaiter35
+  IL_073C: ldarg.0 
+  IL_073D: ldc.i4.m1 
+  IL_073E: stfld <Start>d__28::<>1__state
+  IL_0743: ldloca.s 27
+  IL_0745: call TaskAwaiter`1::GetResult
+  IL_074A: ldloca.s 27
+  IL_074C: initobj TaskAwaiter`1
+  IL_0752: stloc.s 29
+  IL_0754: ldarg.0 
+  IL_0755: ldloc.s 29
+  IL_0757: stfld <Start>d__28::<current>5__30
+  IL_075C: br IL_057A
+  IL_0761: stloc.1 
+  IL_0762: ldarg.0 
+  IL_0763: ldloc.1 
+  IL_0764: stfld <Start>d__28::<pipeClosed>5__2c
+  IL_0769: leave.s IL_076B
+  IL_076B: ldarg.0 
+  IL_076C: ldfld <Start>d__28::<pipeClosed>5__2c
+  IL_0771: brfalse IL_081C
+  IL_0776: ldarg.0 
+  IL_0777: ldfld <Start>d__28::CS$<>9__CachedAnonymousMethodDelegate25
+  IL_077C: brtrue.s IL_0795
+  IL_077E: ldarg.0 
+  IL_077F: ldarg.0 
+  IL_0780: ldfld <Start>d__28::CS$<>8__locals27
+  IL_0785: ldftn <>c__DisplayClass26::<Start>b__21
+  IL_078B: newobj Func`1::.ctor
+  IL_0790: stfld <Start>d__28::CS$<>9__CachedAnonymousMethodDelegate25
+  IL_0795: ldarg.0 
+  IL_0796: ldfld <Start>d__28::CS$<>9__CachedAnonymousMethodDelegate25
+  IL_079B: call Task::Run
+  IL_07A0: callvirt Task`1::GetAwaiter
+  IL_07A5: stloc.s 30
+  IL_07A7: ldloca.s 30
+  IL_07A9: call TaskAwaiter`1::get_IsCompleted
+  IL_07AE: brtrue.s IL_07F3
+  IL_07B0: ldarg.0 
+  IL_07B1: ldc.i4.7 
+  IL_07B2: stfld <Start>d__28::<>1__state
+  IL_07B7: ldarg.0 
+  IL_07B8: ldloc.s 30
+  IL_07BA: stfld <Start>d__28::<>u__$awaiter36
+  IL_07BF: ldarg.0 
+  IL_07C0: ldflda <Start>d__28::<>t__builder
+  IL_07C5: ldloca.s 30
+  IL_07C7: ldarg.0 
+  IL_07C8: call AsyncTaskMethodBuilder::AwaitUnsafeOnCompleted
+  IL_07CD: ldc.i4.0 
+  IL_07CE: stloc.2 
+  IL_07CF: leave IL_0893
+  IL_07D4: ldarg.0 
+  IL_07D5: ldfld <Start>d__28::<>u__$awaiter36
+  IL_07DA: stloc.s 30
+  IL_07DC: ldarg.0 
+  IL_07DD: ldloca.s 31
+  IL_07DF: initobj TaskAwaiter`1
+  IL_07E5: ldloc.s 31
+  IL_07E7: stfld <Start>d__28::<>u__$awaiter36
+  IL_07EC: ldarg.0 
+  IL_07ED: ldc.i4.m1 
+  IL_07EE: stfld <Start>d__28::<>1__state
+  IL_07F3: ldloca.s 30
+  IL_07F5: call TaskAwaiter`1::GetResult
+  IL_07FA: ldloca.s 30
+  IL_07FC: initobj TaskAwaiter`1
+  IL_0802: brfalse.s IL_0815
+  IL_0804: ldarg.0 
+  IL_0805: ldfld <Start>d__28::<lifetime>5__2b
+  IL_080A: callvirt Lifetime::ExitMessage
+  IL_080F: newobj Exception::.ctor
+  IL_0814: throw 
+  IL_0815: ldarg.0 
+  IL_0816: ldfld <Start>d__28::<pipeClosed>5__2c
+  IL_081B: throw 
+  IL_081C: leave.s IL_0835
+  IL_081E: ldloc.2 
+  IL_081F: brfalse.s IL_0834
+  IL_0821: ldarg.0 
+  IL_0822: ldfld <Start>d__28::<lifetime>5__2b
+  IL_0827: brfalse.s IL_0834
+  IL_0829: ldarg.0 
+  IL_082A: ldfld <Start>d__28::<lifetime>5__2b
+  IL_082F: callvirt IDisposable::Dispose
+  IL_0834: endfinally 
+  IL_0835: leave.s IL_084E
+  IL_0837: ldloc.2 
+  IL_0838: brfalse.s IL_084D
+  IL_083A: ldarg.0 
+  IL_083B: ldfld <Start>d__28::<>7__wrap33
+  IL_0840: brfalse.s IL_084D
+  IL_0842: ldarg.0 
+  IL_0843: ldfld <Start>d__28::<>7__wrap33
+  IL_0848: callvirt IDisposable::Dispose
+  IL_084D: endfinally 
+  IL_084E: leave.s IL_0867
+  IL_0850: ldloc.2 
+  IL_0851: brfalse.s IL_0866
+  IL_0853: ldarg.0 
+  IL_0854: ldfld <Start>d__28::<pipe>5__2a
+  IL_0859: brfalse.s IL_0866
+  IL_085B: ldarg.0 
+  IL_085C: ldfld <Start>d__28::<pipe>5__2a
+  IL_0861: callvirt IDisposable::Dispose
+  IL_0866: endfinally 
+  IL_0867: leave.s IL_0880
+  IL_0869: stloc.3 
+  IL_086A: ldarg.0 
+  IL_086B: ldc.i4.s -2
+  IL_086D: stfld <Start>d__28::<>1__state
+  IL_0872: ldarg.0 
+  IL_0873: ldflda <Start>d__28::<>t__builder
+  IL_0878: ldloc.3 
+  IL_0879: call AsyncTaskMethodBuilder::SetException
+  IL_087E: leave.s IL_0893
+  IL_0880: ldarg.0 
+  IL_0881: ldc.i4.s -2
+  IL_0883: stfld <Start>d__28::<>1__state
+  IL_0888: ldarg.0 
+  IL_0889: ldflda <Start>d__28::<>t__builder
+  IL_088E: call AsyncTaskMethodBuilder::SetResult
+  IL_0893: ret 
+=== GameLoader.RobRunRuntime+<Start>d__28::SetStateMachine
+  IL_0000: ldarg.0 
+  IL_0001: ldflda <Start>d__28::<>t__builder
+  IL_0006: ldarg.1 
+  IL_0007: call AsyncTaskMethodBuilder::SetStateMachine
+  IL_000C: ret 

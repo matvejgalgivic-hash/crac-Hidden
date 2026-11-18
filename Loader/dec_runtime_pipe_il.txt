@@ -1,0 +1,45 @@
+﻿=== GameLoader.RobRunRuntime::CreatePipe
+  IL_0000: call WindowsIdentity::GetCurrent
+  IL_0005: stloc.1 
+  IL_0006: ldloc.1 
+  IL_0007: callvirt WindowsIdentity::get_User
+  IL_000C: stloc.0 
+  IL_000D: leave.s IL_0019
+  IL_000F: ldloc.1 
+  IL_0010: brfalse.s IL_0018
+  IL_0012: ldloc.1 
+  IL_0013: callvirt IDisposable::Dispose
+  IL_0018: endfinally 
+  IL_0019: ldloc.0 
+  IL_001A: ldnull 
+  IL_001B: call SecurityIdentifier::op_Equality
+  IL_0020: brfalse.s IL_002D
+  IL_0022: ldstr "Не удалось определить пользователя Windows"
+  IL_0027: newobj Exception::.ctor
+  IL_002C: throw 
+  IL_002D: newobj PipeSecurity::.ctor
+  IL_0032: stloc.2 
+  IL_0033: ldloc.2 
+  IL_0034: ldc.i4.1 
+  IL_0035: ldc.i4.0 
+  IL_0036: callvirt ObjectSecurity::SetAccessRuleProtection
+  IL_003B: ldloc.2 
+  IL_003C: ldloc.0 
+  IL_003D: callvirt ObjectSecurity::SetOwner
+  IL_0042: ldloc.2 
+  IL_0043: ldloc.0 
+  IL_0044: ldc.i4 2032031
+  IL_0049: ldc.i4.0 
+  IL_004A: newobj PipeAccessRule::.ctor
+  IL_004F: callvirt PipeSecurity::AddAccessRule
+  IL_0054: ldarg.0 
+  IL_0055: ldc.i4.3 
+  IL_0056: ldc.i4.1 
+  IL_0057: ldc.i4.0 
+  IL_0058: ldc.i4 1073741824
+  IL_005D: ldc.i4 4096
+  IL_0062: ldc.i4 4096
+  IL_0067: ldloc.2 
+  IL_0068: ldc.i4.0 
+  IL_0069: newobj NamedPipeServerStream::.ctor
+  IL_006E: ret 

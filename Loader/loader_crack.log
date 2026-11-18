@@ -1,0 +1,13 @@
+22:05:28 admin=True
+22:05:28 patch: Verify neutralized at 0x7A50
+22:05:28 patch: VerifyEnvelope neutralized at 0x7AC4
+22:05:28 patch: ValidateDigest neutralized at 0x7F00
+22:05:28 loaded Loader, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null
+22:05:28 servers was: https://95.85.230.17, https://138.124.40.179
+22:05:28 servers set: http://127.0.0.1:8765
+22:05:28 invoking Program.Main
+22:05:31 auto: host found GameLoader.HostForm
+22:05:31 auto: core ok Microsoft.Web.WebView2.Core.CoreWebView2
+22:05:33 auto: exec "submitted"
+22:05:36 auto: state "{\"cards\":1,\"key\":\"RYKB-A4HF-RZBD-U9J8\",\"main\":true,\"login\":false}"
+22:05:36 auto: login done

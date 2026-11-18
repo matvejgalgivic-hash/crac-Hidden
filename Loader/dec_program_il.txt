@@ -1,0 +1,104 @@
+﻿=== GameLoader.Program::Main
+  IL_0000: call AppDomain::get_CurrentDomain
+  IL_0005: ldnull 
+  IL_0006: ldftn Program::ResolveEmbedded
+  IL_000C: newobj ResolveEventHandler::.ctor
+  IL_0011: callvirt AppDomain::add_AssemblyResolve
+  IL_0016: ldarg.0 
+  IL_0017: call SelfUpdate::HandleArguments
+  IL_001C: brfalse.s IL_001F
+  IL_001E: ret 
+  IL_001F: ldc.i4.1 
+  IL_0020: ldstr "Local\GameLoader.SingleInstance"
+  IL_0025: ldloca.s 0
+  IL_0027: newobj Mutex::.ctor
+  IL_002C: stloc.1 
+  IL_002D: ldloc.0 
+  IL_002E: brtrue.s IL_0037
+  IL_0030: call Native::ActivateExisting
+  IL_0035: leave.s IL_005E
+  IL_0037: call Native::SetProcessDPIAware
+  IL_003C: pop 
+  IL_003D: leave.s IL_0042
+  IL_003F: pop 
+  IL_0040: leave.s IL_0042
+  IL_0042: call Application::EnableVisualStyles
+  IL_0047: ldc.i4.0 
+  IL_0048: call Application::SetCompatibleTextRenderingDefault
+  IL_004D: call Program::Run
+  IL_0052: leave.s IL_005E
+  IL_0054: ldloc.1 
+  IL_0055: brfalse.s IL_005D
+  IL_0057: ldloc.1 
+  IL_0058: callvirt IDisposable::Dispose
+  IL_005D: endfinally 
+  IL_005E: ret 
+=== GameLoader.Program::Run
+  IL_0000: newobj HostForm::.ctor
+  IL_0005: call Application::Run
+  IL_000A: ret 
+=== GameLoader.Program::ResolveEmbedded
+  IL_0000: ldarg.1 
+  IL_0001: callvirt ResolveEventArgs::get_Name
+  IL_0006: newobj AssemblyName::.ctor
+  IL_000B: call AssemblyName::get_Name
+  IL_0010: stloc.0 
+  IL_0011: ldc.i4.0 
+  IL_0012: stloc.s 4
+  IL_0014: ldsfld Program::Loaded
+  IL_0019: dup 
+  IL_001A: stloc.s 6
+  IL_001C: ldloca.s 4
+  IL_001E: call Monitor::Enter
+  IL_0023: ldsfld Program::Loaded
+  IL_0028: ldloc.0 
+  IL_0029: ldloca.s 1
+  IL_002B: callvirt Dictionary`2::TryGetValue
+  IL_0030: brfalse.s IL_0037
+  IL_0032: ldloc.1 
+  IL_0033: stloc.s 5
+  IL_0035: leave.s IL_009A
+  IL_0037: call Assembly::GetExecutingAssembly
+  IL_003C: ldstr "lib/"
+  IL_0041: ldloc.0 
+  IL_0042: ldstr ".dll"
+  IL_0047: call String::Concat
+  IL_004C: callvirt Assembly::GetManifestResourceStream
+  IL_0051: stloc.2 
+  IL_0052: ldloc.2 
+  IL_0053: brtrue.s IL_005A
+  IL_0055: ldnull 
+  IL_0056: stloc.s 5
+  IL_0058: leave.s IL_009A
+  IL_005A: newobj MemoryStream::.ctor
+  IL_005F: stloc.3 
+  IL_0060: ldloc.2 
+  IL_0061: ldloc.3 
+  IL_0062: callvirt Stream::CopyTo
+  IL_0067: ldloc.3 
+  IL_0068: callvirt MemoryStream::ToArray
+  IL_006D: call Assembly::Load
+  IL_0072: stloc.1 
+  IL_0073: ldsfld Program::Loaded
+  IL_0078: ldloc.0 
+  IL_0079: ldloc.1 
+  IL_007A: callvirt Dictionary`2::set_Item
+  IL_007F: ldloc.1 
+  IL_0080: stloc.s 5
+  IL_0082: leave.s IL_009A
+  IL_0084: ldloc.2 
+  IL_0085: brfalse.s IL_008D
+  IL_0087: ldloc.2 
+  IL_0088: callvirt IDisposable::Dispose
+  IL_008D: endfinally 
+  IL_008E: ldloc.s 4
+  IL_0090: brfalse.s IL_0099
+  IL_0092: ldloc.s 6
+  IL_0094: call Monitor::Exit
+  IL_0099: endfinally 
+  IL_009A: ldloc.s 5
+  IL_009C: ret 
+=== GameLoader.Program::.cctor
+  IL_0000: newobj Dictionary`2::.ctor
+  IL_0005: stsfld Program::Loaded
+  IL_000A: ret 

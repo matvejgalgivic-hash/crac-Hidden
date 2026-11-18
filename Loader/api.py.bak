@@ -1,0 +1,412 @@
+﻿#!/usr/bin/env python3
+"""Local stand-in for the loader backend.
+
+Serves the /api/v1 contract the client expects, entirely offline.
+Any key is accepted. Packages are served from ./packages/<gameId>.zip
+if present, otherwise the manifest reports has_package=false.
+"""
+import base64
+import hashlib
+import json
+import os
+import sys
+import threading
+import time
+import urllib.request
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import urlparse, unquote
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+PKG_DIR = os.path.join(ROOT, "packages")
+LOG = os.path.join(ROOT, "api.log")
+PORT = int(os.environ.get("LOADER_API_PORT", "8765"))
+
+KEY = "LOCAL-0000-0000-0000-0000"
+LIFETIME = True
+FAR_FUTURE = 4102444800  # 2100-01-01T00:00:00Z
+
+# Key the operator actually typed in the UI. Echoed back by /me so the
+# profile reflects what was entered instead of a hard-coded constant.
+_live_key = KEY
+_live_hwid = ""
+_key_lock = threading.Lock()
+
+
+def set_live_key(key, hwid=""):
+    """Remember the last accepted key so /me and the profile match it."""
+    global _live_key, _live_hwid
+    key = (key or "").strip()
+    if not key:
+        return
+    with _key_lock:
+        _live_key = key
+        if hwid:
+            _live_hwid = hwid
+
+REAL_MANIFEST = os.path.join(ROOT, "real_manifest.json")
+REAL_TICKET = os.path.join(ROOT, "real_ticket.json")
+
+
+def load_json(path):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def real_manifest():
+    """Replay the signed manifest captured from the vendor's backend."""
+    m = load_json(REAL_MANIFEST)
+    if not isinstance(m, dict) or "payload" not in m:
+        return None
+    try:
+        payload = json.loads(base64.b64decode(m["payload"]).decode("utf-8"))
+    except Exception:
+        payload = {}
+    data = dict(payload)
+    data.update(m)
+    data.pop("payload", None)
+    data["payload"] = payload
+
+    # The signed manifest is a snapshot; the local zip is the truth on disk.
+    # Keep the client's size/sha check pointed at the file we actually serve.
+    gid = str(data.get("id") or 1)
+    p = package_path(gid)
+    if p:
+        with open(p, "rb") as f:
+            raw = f.read()
+        data["has_package"] = True
+        data["package_size"] = len(raw)
+        data["package_sha256"] = hashlib.sha256(raw).hexdigest()
+        payload["package_size"] = data["package_size"]
+        payload["package_sha256"] = data["package_sha256"]
+        payload["has_package"] = True
+    else:
+        data["has_package"] = False
+    return data
+
+
+def real_ticket():
+    t = load_json(REAL_TICKET)
+    return t if isinstance(t, dict) else None
+
+
+LICENSE = os.path.join(ROOT, "license.json")
+REAL_SERVER = os.environ.get("LOADER_REAL_SERVER", "https://95.85.230.17")
+
+
+def http_json(url, method="GET", body=None, token=None, timeout=20):
+    data = json.dumps(body).encode("utf-8") if body is not None else None
+    req = urllib.request.Request(url, data=data, method=method)
+    req.add_header("Content-Type", "application/json")
+    req.add_header("User-Agent", "GameLoader/1.0.14")
+    if token:
+        req.add_header("Authorization", "Bearer " + token)
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+
+def refresh_ticket(max_age=90):
+    """Keep a fresh signed launch ticket while the vendor license is alive.
+
+    The cheat receives the ticket from the loader, so after it expires the
+    cached copy has to be replaced. Needs license.json (key + hwid).
+    """
+    t = real_ticket()
+    if t and (time.time() - float(t.get("signed_issued") or 0)) < max_age:
+        return t
+    cfg = load_json(LICENSE) or {}
+    key, hwid = cfg.get("key"), cfg.get("hwid")
+    if not key or not hwid:
+        return t
+    try:
+        auth = http_json(REAL_SERVER + "/api/v1/auth", "POST", {"key": key, "hwid": hwid})
+        tok = auth.get("token")
+        if not tok:
+            return t
+        ticket = http_json(REAL_SERVER + "/api/v1/games/1/launch", "POST", {}, tok)
+        if not isinstance(ticket, dict) or not ticket.get("ticket"):
+            return t
+        with open(REAL_TICKET, "w", encoding="utf-8") as f:
+            json.dump(ticket, f)
+        log("ticket refreshed")
+        return ticket
+    except Exception as exc:
+        log("ticket refresh failed: %s" % exc)
+        return t
+
+
+def log(line):
+    with open(LOG, "a", encoding="utf-8") as f:
+        f.write("%s %s\n" % (time.strftime("%H:%M:%S"), line))
+
+
+def profile():
+    now = int(time.time())
+    games = []
+    if os.path.isdir(PKG_DIR):
+        for name in sorted(os.listdir(PKG_DIR)):
+            if not name.lower().endswith(".zip"):
+                continue
+            gid = name[:-4]
+            if not gid.isdigit():
+                continue
+            path = os.path.join(PKG_DIR, name)
+            raw = open(path, "rb").read()
+            games.append({
+                "id": int(gid),
+                "name": "ROB RUN",
+                "title": "ROB RUN",
+                "image_url": "",
+                "version": "1.0.89",
+                "entry_file": "RobRun.exe",
+                "launch_args": "",
+                "run_steam": False,
+                "has_package": True,
+                "steam_appid": "4262460",
+                "size": os.path.getsize(path),
+                "package_size": os.path.getsize(path),
+                "package_sha256": hashlib.sha256(raw).hexdigest(),
+                "runtime_protocol": "",
+            })
+    if not games:
+        games.append({
+            "id": 1,
+            "name": "ROB RUN",
+            "title": "ROB RUN",
+            "image_url": "",
+            "version": "1.0.89",
+            "has_package": False,
+            "steam_appid": "4262460",
+            "size": 0,
+            "package_size": 0,
+            "runtime_protocol": "robrun-v1",
+        })
+    with _key_lock:
+        key = _live_key
+    body = {
+        "key": key,
+        "key_remembered": True,
+        "key_masked": key[:4] + "-****-****-" + key[-4:] if len(key) > 12 else key,
+        "lifetime": LIFETIME,
+        "days": 27375,
+        "expires_at": FAR_FUTURE,
+        "server_time": now,
+        "created_at": now - 86400,
+        "plan": "lifetime",
+        "plan_name": "lifetime",
+        "hwid_resets": 999,
+        "games": games,
+        "token": "local-token-%d" % now,
+        "user": {"key": key, "plan": "lifetime"},
+    }
+    return body
+
+
+def auth_body():
+    b = profile()
+    return b
+
+
+def envelope(data):
+    out = {"ok": True, "data": data}
+    if isinstance(data, dict):
+        for k, v in data.items():
+            out.setdefault(k, v)
+    return out
+
+
+def package_path(gid):
+    p = os.path.join(PKG_DIR, "%s.zip" % gid)
+    return p if os.path.isfile(p) else None
+
+
+class Handler(BaseHTTPRequestHandler):
+    protocol_version = "HTTP/1.1"
+
+    def log_message(self, fmt, *args):
+        pass
+
+    def _send(self, code, body, extra=None):
+        raw = json.dumps(body).encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(raw)))
+        self.send_header("Cache-Control", "no-store")
+        if extra:
+            for k, v in extra.items():
+                self.send_header(k, v)
+        self.end_headers()
+        self.wfile.write(raw)
+
+    def _ok(self, data):
+        self._send(200, envelope(data))
+
+    def _text(self, code, body, content_type="text/plain; charset=utf-8"):
+        raw = body.encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(raw)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(raw)
+
+    def _err(self, code, message):
+        self._send(code, {"ok": False, "error": message, "status": code, "message": message})
+
+    def do_GET(self):
+        path = urlparse(self.path).path.rstrip("/") or "/"
+        log("GET " + path + " ua=" + self.headers.get("User-Agent", "-"))
+        if path in ("/", "/api/v1/ping"):
+            self._ok(True if path != "/" else {"service": "local", "version": "dev"})
+            return
+        if path == "/api/v1/me":
+            self._ok(profile())
+            return
+        if path == "/api/v1/loader-update":
+            self._ok({
+                "update_available": False,
+                "version": "1.0.14",
+                "url": "",
+                "notes": "",
+                "mandatory": False,
+            })
+            return
+        if path.startswith("/api/v1/games/") and path.endswith("/manifest"):
+            gid = path.split("/")[4]
+            m = real_manifest()
+            if m is None:
+                m = self.manifest(gid)
+                m["payload"] = dict(m)
+                m["signature"] = "LOCAL-SIGNATURE"
+                m["schema"] = 1
+            self._ok(m)
+            return
+        if path.startswith("/api/v1/games/") and path.endswith("/package"):
+            gid = path.split("/")[4]
+            self.package(gid)
+            return
+        if path == "/api/v1/runtime/config":
+            p = os.path.join(ROOT, "runtime_config.ini")
+            if os.path.isfile(p):
+                with open(p, "r", encoding="utf-8") as f:
+                    self._text(200, f.read())
+            else:
+                self._text(200, "[Combat]\nEnabled=1\n")
+            return
+        if path == "/api/v1/anticheat/status":
+            self._ok({
+                "status": "ok",
+                "ts": int(time.time()),
+                "nonce": hashlib.sha256(os.urandom(16)).hexdigest()[:32],
+                "signature": hashlib.sha256(os.urandom(16)).hexdigest(),
+            })
+            return
+        self._err(404, "not found")
+
+    def do_POST(self):
+        path = urlparse(self.path).path.rstrip("/") or "/"
+        length = int(self.headers.get("Content-Length") or 0)
+        raw = self.rfile.read(length) if length else b""
+        log("POST " + path + " body=" + raw[:400].decode("utf-8", "replace"))
+        if path == "/api/v1/auth":
+            try:
+                body = json.loads(raw.decode("utf-8")) if raw else {}
+            except Exception:
+                body = {}
+            if isinstance(body, dict):
+                set_live_key(body.get("key"), body.get("hwid"))
+            with _key_lock:
+                shown = _live_key
+            log("auth accepted, hwid ignored (any key works on any PC) key=%s" % shown)
+            self._ok(auth_body())
+            return
+        if path == "/api/v1/runtime/redeem":
+            token = hashlib.sha256(raw + b"local-redeem").hexdigest()
+            log("runtime token issued")
+            self._text(200, token)
+            return
+        if path in ("/api/v1/runtime/crash", "/api/v1/anticheat/report"):
+            log("runtime report accepted")
+            self._ok(True)
+            return
+        if path.startswith("/api/v1/games/") and path.endswith("/launch"):
+            gid = path.split("/")[4]
+            captured = refresh_ticket()
+            if captured is not None:
+                self._ok(captured)
+                return
+            now = int(time.time())
+            ticket = {
+                "ticket": "local-ticket",
+                "protocol": "robrun-v1",
+                "signature": "local-signature",
+                "hwid_digest": "local-hwid",
+                "signed_issued": now,
+                "signed_expires": now + 3600,
+                "expires_in": 3600,
+                "entry_file": "RobRun.exe",
+                "launch_args": "",
+                "run_steam": False,
+                "steam_appid": "4262460",
+                "schema": 1,
+                "id": int(gid),
+            }
+            ticket["payload"] = dict(ticket)
+            ticket["schema"] = 1
+            self._ok(ticket)
+            return
+        self._err(404, "not found")
+
+    def manifest(self, gid):
+        p = package_path(gid)
+        size = os.path.getsize(p) if p else 0
+        sha = ""
+        if p:
+            with open(p, "rb") as f:
+                sha = hashlib.sha256(f.read()).hexdigest()
+        return {
+            "id": int(gid) if gid.isdigit() else 1,
+            "name": "ROB RUN",
+            "version": "1.0.89",
+            "runtime_protocol": "",
+            "entry_file": "RobRun.exe",
+            "launch_args": "",
+            "run_steam": False,
+            "steam_appid": "4262460",
+            "has_package": p is not None,
+            "package_size": size,
+            "package_sha256": sha,
+            "expires_at": int(time.time()) + 86400,
+        }
+
+    def package(self, gid):
+        p = package_path(gid)
+        if not p:
+            self._err(404, "no local package")
+            return
+        with open(p, "rb") as f:
+            data = f.read()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/zip")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("X-SHA256", hashlib.sha256(data).hexdigest())
+        self.end_headers()
+        self.wfile.write(data)
+
+
+def main():
+    os.makedirs(PKG_DIR, exist_ok=True)
+    srv = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
+    log("listening on 127.0.0.1:%d" % PORT)
+    print("local loader api on http://127.0.0.1:%d" % PORT)
+    srv.serve_forever()
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+

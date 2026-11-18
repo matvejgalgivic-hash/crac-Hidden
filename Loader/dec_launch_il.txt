@@ -1,0 +1,974 @@
+﻿=== GameLoader.Launcher+<Launch>d__f::MoveNext
+  IL_0000: ldc.i4.1 
+  IL_0001: stloc.3 
+  IL_0002: ldarg.0 
+  IL_0003: ldfld <Launch>d__f::<>1__state
+  IL_0008: stloc.s 6
+  IL_000A: ldloc.s 6
+  IL_000C: switch IL_00B4, IL_00B4, IL_00B4, IL_00B4, IL_00B4, IL_00B4, IL_00B4, IL_00B4, IL_00B4
+  IL_0035: ldarg.0 
+  IL_0036: ldnull 
+  IL_0037: stfld <Launch>d__f::CS$<>9__CachedAnonymousMethodDelegate9
+  IL_003C: ldarg.0 
+  IL_003D: ldnull 
+  IL_003E: stfld <Launch>d__f::CS$<>9__CachedAnonymousMethodDelegatea
+  IL_0043: ldarg.0 
+  IL_0044: newobj <>c__DisplayClassb::.ctor
+  IL_0049: stfld <Launch>d__f::CS$<>8__localsc
+  IL_004E: ldarg.0 
+  IL_004F: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0054: ldarg.0 
+  IL_0055: ldfld <Launch>d__f::gameId
+  IL_005A: stfld <>c__DisplayClassb::gameId
+  IL_005F: ldarg.0 
+  IL_0060: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0065: ldarg.0 
+  IL_0066: ldfld <Launch>d__f::<>4__this
+  IL_006B: stfld <>c__DisplayClassb::<>4__this
+  IL_0070: ldarg.0 
+  IL_0071: ldfld <Launch>d__f::<>4__this
+  IL_0076: ldfld Launcher::busy
+  IL_007B: ldarg.0 
+  IL_007C: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0081: ldfld <>c__DisplayClassb::gameId
+  IL_0086: callvirt HashSet`1::Contains
+  IL_008B: brfalse.s IL_0098
+  IL_008D: ldstr "Игра уже запускается"
+  IL_0092: newobj Exception::.ctor
+  IL_0097: throw 
+  IL_0098: ldarg.0 
+  IL_0099: ldfld <Launch>d__f::<>4__this
+  IL_009E: ldfld Launcher::busy
+  IL_00A3: ldarg.0 
+  IL_00A4: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_00A9: ldfld <>c__DisplayClassb::gameId
+  IL_00AE: callvirt HashSet`1::Add
+  IL_00B3: pop 
+  IL_00B4: ldarg.0 
+  IL_00B5: ldfld <Launch>d__f::<>1__state
+  IL_00BA: stloc.s 7
+  IL_00BC: ldloc.s 7
+  IL_00BE: switch IL_00E7, IL_00E7, IL_00E7, IL_00E7, IL_00E7, IL_00E7, IL_00E7, IL_00E7, IL_00E7
+  IL_00E7: ldarg.0 
+  IL_00E8: ldfld <Launch>d__f::<>1__state
+  IL_00ED: stloc.s 8
+  IL_00EF: ldloc.s 8
+  IL_00F1: switch IL_017F, IL_0335, IL_036D, IL_04D5, IL_0678, IL_0737, IL_0887, IL_08BF, IL_0B1D
+  IL_011A: ldarg.0 
+  IL_011B: ldfld <Launch>d__f::<>4__this
+  IL_0120: ldfld Launcher::emit
+  IL_0125: ldarg.0 
+  IL_0126: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_012B: ldfld <>c__DisplayClassb::gameId
+  IL_0130: ldstr "prepare"
+  IL_0135: ldnull 
+  IL_0136: callvirt Action`3::Invoke
+  IL_013B: ldarg.0 
+  IL_013C: ldfld <Launch>d__f::<>4__this
+  IL_0141: ldfld Launcher::api
+  IL_0146: callvirt Api::Me
+  IL_014B: callvirt Task`1::GetAwaiter
+  IL_0150: stloc.s 9
+  IL_0152: ldloca.s 9
+  IL_0154: call TaskAwaiter`1::get_IsCompleted
+  IL_0159: brtrue.s IL_019E
+  IL_015B: ldarg.0 
+  IL_015C: ldc.i4.0 
+  IL_015D: stfld <Launch>d__f::<>1__state
+  IL_0162: ldarg.0 
+  IL_0163: ldloc.s 9
+  IL_0165: stfld <Launch>d__f::<>u__$awaiter1f
+  IL_016A: ldarg.0 
+  IL_016B: ldflda <Launch>d__f::<>t__builder
+  IL_0170: ldloca.s 9
+  IL_0172: ldarg.0 
+  IL_0173: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0178: ldc.i4.0 
+  IL_0179: stloc.3 
+  IL_017A: leave IL_0C81
+  IL_017F: ldarg.0 
+  IL_0180: ldfld <Launch>d__f::<>u__$awaiter1f
+  IL_0185: stloc.s 9
+  IL_0187: ldarg.0 
+  IL_0188: ldloca.s 10
+  IL_018A: initobj TaskAwaiter`1
+  IL_0190: ldloc.s 10
+  IL_0192: stfld <Launch>d__f::<>u__$awaiter1f
+  IL_0197: ldarg.0 
+  IL_0198: ldc.i4.m1 
+  IL_0199: stfld <Launch>d__f::<>1__state
+  IL_019E: ldloca.s 9
+  IL_01A0: call TaskAwaiter`1::GetResult
+  IL_01A5: ldloca.s 9
+  IL_01A7: initobj TaskAwaiter`1
+  IL_01AD: stloc.s 11
+  IL_01AF: ldarg.0 
+  IL_01B0: ldloc.s 11
+  IL_01B2: stfld <Launch>d__f::<me>5__10
+  IL_01B7: ldarg.0 
+  IL_01B8: ldnull 
+  IL_01B9: stfld <Launch>d__f::<game>5__11
+  IL_01BE: ldarg.0 
+  IL_01BF: ldfld <Launch>d__f::<me>5__10
+  IL_01C4: ldstr "games"
+  IL_01C9: ldarg.0 
+  IL_01CA: ldflda <Launch>d__f::<gamesObj>5__12
+  IL_01CF: callvirt Dictionary`2::TryGetValue
+  IL_01D4: brfalse.s IL_0234
+  IL_01D6: ldarg.0 
+  IL_01D7: ldfld <Launch>d__f::<gamesObj>5__12
+  IL_01DC: isinst Object[]
+  IL_01E1: brfalse.s IL_0234
+  IL_01E3: ldarg.0 
+  IL_01E4: ldfld <Launch>d__f::<gamesObj>5__12
+  IL_01E9: castclass Object[]
+  IL_01EE: stloc.s 12
+  IL_01F0: ldc.i4.0 
+  IL_01F1: stloc.s 13
+  IL_01F3: br.s IL_022A
+  IL_01F5: ldloc.s 12
+  IL_01F7: ldloc.s 13
+  IL_01F9: ldelem.ref 
+  IL_01FA: stloc.0 
+  IL_01FB: ldloc.0 
+  IL_01FC: call Json::Obj
+  IL_0201: ldstr "id"
+  IL_0206: call Json::Long
+  IL_020B: ldarg.0 
+  IL_020C: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0211: ldfld <>c__DisplayClassb::gameId
+  IL_0216: bne.un.s IL_0224
+  IL_0218: ldarg.0 
+  IL_0219: ldloc.0 
+  IL_021A: call Json::Obj
+  IL_021F: stfld <Launch>d__f::<game>5__11
+  IL_0224: ldloc.s 13
+  IL_0226: ldc.i4.1 
+  IL_0227: add 
+  IL_0228: stloc.s 13
+  IL_022A: ldloc.s 13
+  IL_022C: ldloc.s 12
+  IL_022E: ldlen 
+  IL_022F: conv.i4 
+  IL_0230: blt.s IL_01F5
+  IL_0232: ldloc.3 
+  IL_0233: pop 
+  IL_0234: ldarg.0 
+  IL_0235: ldfld <Launch>d__f::<game>5__11
+  IL_023A: brtrue.s IL_0247
+  IL_023C: ldstr "Нет доступа к этой игре"
+  IL_0241: newobj Exception::.ctor
+  IL_0246: throw 
+  IL_0247: ldarg.0 
+  IL_0248: ldarg.0 
+  IL_0249: ldfld <Launch>d__f::<game>5__11
+  IL_024E: ldstr "runtime_protocol"
+  IL_0253: call Json::Str
+  IL_0258: stfld <Launch>d__f::<runtimeProtocol>5__13
+  IL_025D: ldarg.0 
+  IL_025E: ldarg.0 
+  IL_025F: ldfld <Launch>d__f::<runtimeProtocol>5__13
+  IL_0264: ldstr "robrun-v1"
+  IL_0269: call String::op_Equality
+  IL_026E: stfld <Launch>d__f::<robRun>5__14
+  IL_0273: ldarg.0 
+  IL_0274: ldfld <Launch>d__f::<runtimeProtocol>5__13
+  IL_0279: callvirt String::get_Length
+  IL_027E: ldc.i4.0 
+  IL_027F: ble.s IL_0294
+  IL_0281: ldarg.0 
+  IL_0282: ldfld <Launch>d__f::<robRun>5__14
+  IL_0287: brtrue.s IL_0294
+  IL_0289: ldstr "Обновите лоадер: протокол запуска не поддерживается"
+  IL_028E: newobj Exception::.ctor
+  IL_0293: throw 
+  IL_0294: ldarg.0 
+  IL_0295: ldnull 
+  IL_0296: stfld <Launch>d__f::<dir>5__15
+  IL_029B: ldarg.0 
+  IL_029C: ldfld <Launch>d__f::<game>5__11
+  IL_02A1: ldstr "has_package"
+  IL_02A6: call Json::Bool
+  IL_02AB: brfalse IL_06BB
+  IL_02B0: ldarg.0 
+  IL_02B1: newobj <>c__DisplayClassd::.ctor
+  IL_02B6: stfld <Launch>d__f::CS$<>8__localse
+  IL_02BB: ldarg.0 
+  IL_02BC: ldfld <Launch>d__f::CS$<>8__localse
+  IL_02C1: ldarg.0 
+  IL_02C2: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_02C7: stfld <>c__DisplayClassd::CS$<>8__localsc
+  IL_02CC: ldarg.0 
+  IL_02CD: ldfld <Launch>d__f::<>4__this
+  IL_02D2: ldfld Launcher::api
+  IL_02D7: ldstr "/api/v1/games/"
+  IL_02DC: ldarg.0 
+  IL_02DD: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_02E2: ldfld <>c__DisplayClassb::gameId
+  IL_02E7: box Int64
+  IL_02EC: ldstr "/manifest"
+  IL_02F1: call String::Concat
+  IL_02F6: ldc.i4 15000
+  IL_02FB: ldc.i4.0 
+  IL_02FC: callvirt Api::Authed
+  IL_0301: callvirt Task`1::GetAwaiter
+  IL_0306: stloc.s 14
+  IL_0308: ldloca.s 14
+  IL_030A: call TaskAwaiter`1::get_IsCompleted
+  IL_030F: brtrue.s IL_0354
+  IL_0311: ldarg.0 
+  IL_0312: ldc.i4.1 
+  IL_0313: stfld <Launch>d__f::<>1__state
+  IL_0318: ldarg.0 
+  IL_0319: ldloc.s 14
+  IL_031B: stfld <Launch>d__f::<>u__$awaiter20
+  IL_0320: ldarg.0 
+  IL_0321: ldflda <Launch>d__f::<>t__builder
+  IL_0326: ldloca.s 14
+  IL_0328: ldarg.0 
+  IL_0329: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_032E: ldc.i4.0 
+  IL_032F: stloc.3 
+  IL_0330: leave IL_0C81
+  IL_0335: ldarg.0 
+  IL_0336: ldfld <Launch>d__f::<>u__$awaiter20
+  IL_033B: stloc.s 14
+  IL_033D: ldarg.0 
+  IL_033E: ldloca.s 15
+  IL_0340: initobj TaskAwaiter`1
+  IL_0346: ldloc.s 15
+  IL_0348: stfld <Launch>d__f::<>u__$awaiter20
+  IL_034D: ldarg.0 
+  IL_034E: ldc.i4.m1 
+  IL_034F: stfld <Launch>d__f::<>1__state
+  IL_0354: ldloca.s 14
+  IL_0356: call TaskAwaiter`1::GetResult
+  IL_035B: ldloca.s 14
+  IL_035D: initobj TaskAwaiter`1
+  IL_0363: stloc.s 16
+  IL_0365: ldarg.0 
+  IL_0366: ldloc.s 16
+  IL_0368: stfld <Launch>d__f::<manifest>5__16
+  IL_036D: ldarg.0 
+  IL_036E: ldfld <Launch>d__f::<>1__state
+  IL_0373: stloc.s 17
+  IL_0375: ldloc.s 17
+  IL_0377: ldc.i4.2 
+  IL_0378: beq.s IL_03CE
+  IL_037A: ldarg.0 
+  IL_037B: ldfld <Launch>d__f::<game>5__11
+  IL_0380: ldarg.0 
+  IL_0381: ldfld <Launch>d__f::<manifest>5__16
+  IL_0386: callvirt HttpResponseMessage::get_Content
+  IL_038B: callvirt HttpContent::ReadAsStringAsync
+  IL_0390: callvirt Task`1::GetAwaiter
+  IL_0395: stloc.s 18
+  IL_0397: ldloca.s 18
+  IL_0399: call TaskAwaiter`1::get_IsCompleted
+  IL_039E: brtrue.s IL_0403
+  IL_03A0: stloc.s 19
+  IL_03A2: ldarg.0 
+  IL_03A3: ldloc.s 19
+  IL_03A5: stfld <Launch>d__f::<>t__stack
+  IL_03AA: ldarg.0 
+  IL_03AB: ldc.i4.2 
+  IL_03AC: stfld <Launch>d__f::<>1__state
+  IL_03B1: ldarg.0 
+  IL_03B2: ldloc.s 18
+  IL_03B4: stfld <Launch>d__f::<>u__$awaiter21
+  IL_03B9: ldarg.0 
+  IL_03BA: ldflda <Launch>d__f::<>t__builder
+  IL_03BF: ldloca.s 18
+  IL_03C1: ldarg.0 
+  IL_03C2: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_03C7: ldc.i4.0 
+  IL_03C8: stloc.3 
+  IL_03C9: leave IL_0C81
+  IL_03CE: ldarg.0 
+  IL_03CF: ldfld <Launch>d__f::<>t__stack
+  IL_03D4: unbox.any Dictionary`2
+  IL_03D9: stloc.s 20
+  IL_03DB: ldloc.s 20
+  IL_03DD: ldarg.0 
+  IL_03DE: ldnull 
+  IL_03DF: stfld <Launch>d__f::<>t__stack
+  IL_03E4: ldarg.0 
+  IL_03E5: ldfld <Launch>d__f::<>u__$awaiter21
+  IL_03EA: stloc.s 18
+  IL_03EC: ldarg.0 
+  IL_03ED: ldloca.s 21
+  IL_03EF: initobj TaskAwaiter`1
+  IL_03F5: ldloc.s 21
+  IL_03F7: stfld <Launch>d__f::<>u__$awaiter21
+  IL_03FC: ldarg.0 
+  IL_03FD: ldc.i4.m1 
+  IL_03FE: stfld <Launch>d__f::<>1__state
+  IL_0403: ldloca.s 18
+  IL_0405: call TaskAwaiter`1::GetResult
+  IL_040A: ldloca.s 18
+  IL_040C: initobj TaskAwaiter`1
+  IL_0412: call Json::Parse
+  IL_0417: call Json::Obj
+  IL_041C: call ReleaseIntegrity::Verify
+  IL_0421: leave.s IL_043A
+  IL_0423: ldloc.3 
+  IL_0424: brfalse.s IL_0439
+  IL_0426: ldarg.0 
+  IL_0427: ldfld <Launch>d__f::<manifest>5__16
+  IL_042C: brfalse.s IL_0439
+  IL_042E: ldarg.0 
+  IL_042F: ldfld <Launch>d__f::<manifest>5__16
+  IL_0434: callvirt IDisposable::Dispose
+  IL_0439: endfinally 
+  IL_043A: ldarg.0 
+  IL_043B: call Temp::Make
+  IL_0440: stfld <Launch>d__f::<dir>5__15
+  IL_0445: ldarg.0 
+  IL_0446: ldfld <Launch>d__f::CS$<>8__localse
+  IL_044B: ldarg.0 
+  IL_044C: ldfld <Launch>d__f::<dir>5__15
+  IL_0451: ldstr "."
+  IL_0456: ldc.i4.4 
+  IL_0457: call Sys::Rand
+  IL_045C: ldstr ".tmp"
+  IL_0461: call String::Concat
+  IL_0466: call Path::Combine
+  IL_046B: stfld <>c__DisplayClassd::zip
+  IL_0470: ldarg.0 
+  IL_0471: ldfld <Launch>d__f::<>4__this
+  IL_0476: ldarg.0 
+  IL_0477: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_047C: ldfld <>c__DisplayClassb::gameId
+  IL_0481: ldarg.0 
+  IL_0482: ldfld <Launch>d__f::CS$<>8__localse
+  IL_0487: ldfld <>c__DisplayClassd::zip
+  IL_048C: ldarg.0 
+  IL_048D: ldfld <Launch>d__f::<game>5__11
+  IL_0492: ldstr "package_size"
+  IL_0497: call Json::Long
+  IL_049C: callvirt Launcher::Download
+  IL_04A1: callvirt Task`1::GetAwaiter
+  IL_04A6: stloc.s 22
+  IL_04A8: ldloca.s 22
+  IL_04AA: call TaskAwaiter`1::get_IsCompleted
+  IL_04AF: brtrue.s IL_04F4
+  IL_04B1: ldarg.0 
+  IL_04B2: ldc.i4.3 
+  IL_04B3: stfld <Launch>d__f::<>1__state
+  IL_04B8: ldarg.0 
+  IL_04B9: ldloc.s 22
+  IL_04BB: stfld <Launch>d__f::<>u__$awaiter22
+  IL_04C0: ldarg.0 
+  IL_04C1: ldflda <Launch>d__f::<>t__builder
+  IL_04C6: ldloca.s 22
+  IL_04C8: ldarg.0 
+  IL_04C9: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_04CE: ldc.i4.0 
+  IL_04CF: stloc.3 
+  IL_04D0: leave IL_0C81
+  IL_04D5: ldarg.0 
+  IL_04D6: ldfld <Launch>d__f::<>u__$awaiter22
+  IL_04DB: stloc.s 22
+  IL_04DD: ldarg.0 
+  IL_04DE: ldloca.s 23
+  IL_04E0: initobj TaskAwaiter`1
+  IL_04E6: ldloc.s 23
+  IL_04E8: stfld <Launch>d__f::<>u__$awaiter22
+  IL_04ED: ldarg.0 
+  IL_04EE: ldc.i4.m1 
+  IL_04EF: stfld <Launch>d__f::<>1__state
+  IL_04F4: ldloca.s 22
+  IL_04F6: call TaskAwaiter`1::GetResult
+  IL_04FB: ldloca.s 22
+  IL_04FD: initobj TaskAwaiter`1
+  IL_0503: stloc.s 24
+  IL_0505: ldarg.0 
+  IL_0506: ldloc.s 24
+  IL_0508: stfld <Launch>d__f::<sums>5__17
+  IL_050D: ldarg.0 
+  IL_050E: ldfld <Launch>d__f::<>4__this
+  IL_0513: ldfld Launcher::emit
+  IL_0518: ldarg.0 
+  IL_0519: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_051E: ldfld <>c__DisplayClassb::gameId
+  IL_0523: ldstr "verify"
+  IL_0528: ldnull 
+  IL_0529: callvirt Action`3::Invoke
+  IL_052E: ldarg.0 
+  IL_052F: ldarg.0 
+  IL_0530: ldfld <Launch>d__f::<game>5__11
+  IL_0535: ldstr "package_sha256"
+  IL_053A: call Json::Str
+  IL_053F: stfld <Launch>d__f::<expected>5__18
+  IL_0544: ldarg.0 
+  IL_0545: ldfld <Launch>d__f::<sums>5__17
+  IL_054A: ldc.i4.0 
+  IL_054B: ldelem.ref 
+  IL_054C: ldarg.0 
+  IL_054D: ldfld <Launch>d__f::<expected>5__18
+  IL_0552: ldc.i4.5 
+  IL_0553: call String::Equals
+  IL_0558: brfalse.s IL_0580
+  IL_055A: ldarg.0 
+  IL_055B: ldfld <Launch>d__f::<sums>5__17
+  IL_0560: ldc.i4.1 
+  IL_0561: ldelem.ref 
+  IL_0562: callvirt String::get_Length
+  IL_0567: ldc.i4.0 
+  IL_0568: ble.s IL_058B
+  IL_056A: ldarg.0 
+  IL_056B: ldfld <Launch>d__f::<sums>5__17
+  IL_0570: ldc.i4.1 
+  IL_0571: ldelem.ref 
+  IL_0572: ldarg.0 
+  IL_0573: ldfld <Launch>d__f::<expected>5__18
+  IL_0578: ldc.i4.5 
+  IL_0579: call String::Equals
+  IL_057E: brtrue.s IL_058B
+  IL_0580: ldstr "Файл повреждён при загрузке - контрольная сумма не совпала"
+  IL_0585: newobj Exception::.ctor
+  IL_058A: throw 
+  IL_058B: ldarg.0 
+  IL_058C: ldfld <Launch>d__f::<>4__this
+  IL_0591: ldfld Launcher::emit
+  IL_0596: ldarg.0 
+  IL_0597: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_059C: ldfld <>c__DisplayClassb::gameId
+  IL_05A1: ldstr "extract"
+  IL_05A6: ldarg.0 
+  IL_05A7: newobj Dictionary`2::.ctor
+  IL_05AC: stfld <Launch>d__f::<>g__initLocal0
+  IL_05B1: ldarg.0 
+  IL_05B2: ldfld <Launch>d__f::<>g__initLocal0
+  IL_05B7: ldstr "done"
+  IL_05BC: ldc.i4.0 
+  IL_05BD: box Int32
+  IL_05C2: callvirt Dictionary`2::Add
+  IL_05C7: ldarg.0 
+  IL_05C8: ldfld <Launch>d__f::<>g__initLocal0
+  IL_05CD: ldstr "total"
+  IL_05D2: ldc.i4.1 
+  IL_05D3: box Int32
+  IL_05D8: callvirt Dictionary`2::Add
+  IL_05DD: ldarg.0 
+  IL_05DE: ldfld <Launch>d__f::<>g__initLocal0
+  IL_05E3: callvirt Action`3::Invoke
+  IL_05E8: ldarg.0 
+  IL_05E9: ldfld <Launch>d__f::CS$<>8__localse
+  IL_05EE: ldarg.0 
+  IL_05EF: ldfld <Launch>d__f::CS$<>9__CachedAnonymousMethodDelegate9
+  IL_05F4: brtrue.s IL_060D
+  IL_05F6: ldarg.0 
+  IL_05F7: ldarg.0 
+  IL_05F8: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_05FD: ldftn <>c__DisplayClassb::<Launch>b__6
+  IL_0603: newobj Action`1::.ctor
+  IL_0608: stfld <Launch>d__f::CS$<>9__CachedAnonymousMethodDelegate9
+  IL_060D: ldarg.0 
+  IL_060E: ldfld <Launch>d__f::CS$<>9__CachedAnonymousMethodDelegate9
+  IL_0613: newobj Progress`1::.ctor
+  IL_0618: stfld <>c__DisplayClassd::progress
+  IL_061D: ldarg.0 
+  IL_061E: ldfld <Launch>d__f::CS$<>8__localse
+  IL_0623: ldarg.0 
+  IL_0624: ldfld <Launch>d__f::<dir>5__15
+  IL_0629: stfld <>c__DisplayClassd::target
+  IL_062E: ldarg.0 
+  IL_062F: ldfld <Launch>d__f::CS$<>8__localse
+  IL_0634: ldftn <>c__DisplayClassd::<Launch>b__7
+  IL_063A: newobj Action::.ctor
+  IL_063F: call Task::Run
+  IL_0644: callvirt Task::GetAwaiter
+  IL_0649: stloc.s 25
+  IL_064B: ldloca.s 25
+  IL_064D: call TaskAwaiter::get_IsCompleted
+  IL_0652: brtrue.s IL_0697
+  IL_0654: ldarg.0 
+  IL_0655: ldc.i4.4 
+  IL_0656: stfld <Launch>d__f::<>1__state
+  IL_065B: ldarg.0 
+  IL_065C: ldloc.s 25
+  IL_065E: stfld <Launch>d__f::<>u__$awaiter23
+  IL_0663: ldarg.0 
+  IL_0664: ldflda <Launch>d__f::<>t__builder
+  IL_0669: ldloca.s 25
+  IL_066B: ldarg.0 
+  IL_066C: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0671: ldc.i4.0 
+  IL_0672: stloc.3 
+  IL_0673: leave IL_0C81
+  IL_0678: ldarg.0 
+  IL_0679: ldfld <Launch>d__f::<>u__$awaiter23
+  IL_067E: stloc.s 25
+  IL_0680: ldarg.0 
+  IL_0681: ldloca.s 26
+  IL_0683: initobj TaskAwaiter
+  IL_0689: ldloc.s 26
+  IL_068B: stfld <Launch>d__f::<>u__$awaiter23
+  IL_0690: ldarg.0 
+  IL_0691: ldc.i4.m1 
+  IL_0692: stfld <Launch>d__f::<>1__state
+  IL_0697: ldloca.s 25
+  IL_0699: call TaskAwaiter::GetResult
+  IL_069E: ldloca.s 25
+  IL_06A0: initobj TaskAwaiter
+  IL_06A6: ldarg.0 
+  IL_06A7: ldfld <Launch>d__f::CS$<>8__localse
+  IL_06AC: ldfld <>c__DisplayClassd::zip
+  IL_06B1: call File::Delete
+  IL_06B6: leave.s IL_06D8
+  IL_06B8: pop 
+  IL_06B9: leave.s IL_06D8
+  IL_06BB: ldarg.0 
+  IL_06BC: ldfld <Launch>d__f::<game>5__11
+  IL_06C1: ldstr "run_steam"
+  IL_06C6: call Json::Bool
+  IL_06CB: brtrue.s IL_06D8
+  IL_06CD: ldstr "Файлы игры ещё не загружены на сервер"
+  IL_06D2: newobj Exception::.ctor
+  IL_06D7: throw 
+  IL_06D8: ldarg.0 
+  IL_06D9: ldfld <Launch>d__f::<>4__this
+  IL_06DE: ldfld Launcher::emit
+  IL_06E3: ldarg.0 
+  IL_06E4: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_06E9: ldfld <>c__DisplayClassb::gameId
+  IL_06EE: ldstr "launch"
+  IL_06F3: ldnull 
+  IL_06F4: callvirt Action`3::Invoke
+  IL_06F9: ldc.i4 250
+  IL_06FE: call Task::Delay
+  IL_0703: callvirt Task::GetAwaiter
+  IL_0708: stloc.s 27
+  IL_070A: ldloca.s 27
+  IL_070C: call TaskAwaiter::get_IsCompleted
+  IL_0711: brtrue.s IL_0756
+  IL_0713: ldarg.0 
+  IL_0714: ldc.i4.5 
+  IL_0715: stfld <Launch>d__f::<>1__state
+  IL_071A: ldarg.0 
+  IL_071B: ldloc.s 27
+  IL_071D: stfld <Launch>d__f::<>u__$awaiter23
+  IL_0722: ldarg.0 
+  IL_0723: ldflda <Launch>d__f::<>t__builder
+  IL_0728: ldloca.s 27
+  IL_072A: ldarg.0 
+  IL_072B: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0730: ldc.i4.0 
+  IL_0731: stloc.3 
+  IL_0732: leave IL_0C81
+  IL_0737: ldarg.0 
+  IL_0738: ldfld <Launch>d__f::<>u__$awaiter23
+  IL_073D: stloc.s 27
+  IL_073F: ldarg.0 
+  IL_0740: ldloca.s 28
+  IL_0742: initobj TaskAwaiter
+  IL_0748: ldloc.s 28
+  IL_074A: stfld <Launch>d__f::<>u__$awaiter23
+  IL_074F: ldarg.0 
+  IL_0750: ldc.i4.m1 
+  IL_0751: stfld <Launch>d__f::<>1__state
+  IL_0756: ldloca.s 27
+  IL_0758: call TaskAwaiter::GetResult
+  IL_075D: ldloca.s 27
+  IL_075F: initobj TaskAwaiter
+  IL_0765: ldarg.0 
+  IL_0766: ldarg.0 
+  IL_0767: ldfld <Launch>d__f::<game>5__11
+  IL_076C: ldstr "steam_appid"
+  IL_0771: call Json::Str
+  IL_0776: stfld <Launch>d__f::<appid>5__19
+  IL_077B: ldarg.0 
+  IL_077C: ldfld <Launch>d__f::<game>5__11
+  IL_0781: ldstr "run_steam"
+  IL_0786: call Json::Bool
+  IL_078B: brfalse.s IL_07CE
+  IL_078D: ldarg.0 
+  IL_078E: ldfld <Launch>d__f::<appid>5__19
+  IL_0793: callvirt String::get_Length
+  IL_0798: ldc.i4.0 
+  IL_0799: ble.s IL_07CE
+  IL_079B: ldarg.0 
+  IL_079C: ldstr "steam://rungameid/"
+  IL_07A1: ldarg.0 
+  IL_07A2: ldfld <Launch>d__f::<appid>5__19
+  IL_07A7: call String::Concat
+  IL_07AC: newobj ProcessStartInfo::.ctor
+  IL_07B1: stfld <Launch>d__f::<>g__initLocal2
+  IL_07B6: ldarg.0 
+  IL_07B7: ldfld <Launch>d__f::<>g__initLocal2
+  IL_07BC: ldc.i4.1 
+  IL_07BD: callvirt ProcessStartInfo::set_UseShellExecute
+  IL_07C2: ldarg.0 
+  IL_07C3: ldfld <Launch>d__f::<>g__initLocal2
+  IL_07C8: call Process::Start
+  IL_07CD: pop 
+  IL_07CE: ldarg.0 
+  IL_07CF: ldfld <Launch>d__f::<robRun>5__14
+  IL_07D4: brfalse IL_0B9C
+  IL_07D9: ldarg.0 
+  IL_07DA: ldfld <Launch>d__f::<dir>5__15
+  IL_07DF: brfalse.s IL_07F8
+  IL_07E1: ldarg.0 
+  IL_07E2: ldfld <Launch>d__f::<game>5__11
+  IL_07E7: ldstr "entry_file"
+  IL_07EC: call Json::Str
+  IL_07F1: callvirt String::get_Length
+  IL_07F6: brtrue.s IL_0803
+  IL_07F8: ldstr "В пакете RobRun нет файла запуска"
+  IL_07FD: newobj Exception::.ctor
+  IL_0802: throw 
+  IL_0803: ldarg.0 
+  IL_0804: ldarg.0 
+  IL_0805: ldfld <Launch>d__f::<dir>5__15
+  IL_080A: ldarg.0 
+  IL_080B: ldfld <Launch>d__f::<game>5__11
+  IL_0810: call Launcher::PrepareRuntimeEntry
+  IL_0815: stfld <Launch>d__f::<exe>5__1a
+  IL_081A: ldarg.0 
+  IL_081B: ldfld <Launch>d__f::<>4__this
+  IL_0820: ldfld Launcher::api
+  IL_0825: ldstr "/api/v1/games/"
+  IL_082A: ldarg.0 
+  IL_082B: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0830: ldfld <>c__DisplayClassb::gameId
+  IL_0835: box Int64
+  IL_083A: ldstr "/launch"
+  IL_083F: call String::Concat
+  IL_0844: newobj Dictionary`2::.ctor
+  IL_0849: ldc.i4 15000
+  IL_084E: callvirt Api::AuthedPost
+  IL_0853: callvirt Task`1::GetAwaiter
+  IL_0858: stloc.s 29
+  IL_085A: ldloca.s 29
+  IL_085C: call TaskAwaiter`1::get_IsCompleted
+  IL_0861: brtrue.s IL_08A6
+  IL_0863: ldarg.0 
+  IL_0864: ldc.i4.6 
+  IL_0865: stfld <Launch>d__f::<>1__state
+  IL_086A: ldarg.0 
+  IL_086B: ldloc.s 29
+  IL_086D: stfld <Launch>d__f::<>u__$awaiter20
+  IL_0872: ldarg.0 
+  IL_0873: ldflda <Launch>d__f::<>t__builder
+  IL_0878: ldloca.s 29
+  IL_087A: ldarg.0 
+  IL_087B: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0880: ldc.i4.0 
+  IL_0881: stloc.3 
+  IL_0882: leave IL_0C81
+  IL_0887: ldarg.0 
+  IL_0888: ldfld <Launch>d__f::<>u__$awaiter20
+  IL_088D: stloc.s 29
+  IL_088F: ldarg.0 
+  IL_0890: ldloca.s 30
+  IL_0892: initobj TaskAwaiter`1
+  IL_0898: ldloc.s 30
+  IL_089A: stfld <Launch>d__f::<>u__$awaiter20
+  IL_089F: ldarg.0 
+  IL_08A0: ldc.i4.m1 
+  IL_08A1: stfld <Launch>d__f::<>1__state
+  IL_08A6: ldloca.s 29
+  IL_08A8: call TaskAwaiter`1::GetResult
+  IL_08AD: ldloca.s 29
+  IL_08AF: initobj TaskAwaiter`1
+  IL_08B5: stloc.s 31
+  IL_08B7: ldarg.0 
+  IL_08B8: ldloc.s 31
+  IL_08BA: stfld <Launch>d__f::<res>5__1c
+  IL_08BF: ldarg.0 
+  IL_08C0: ldfld <Launch>d__f::<>1__state
+  IL_08C5: stloc.s 32
+  IL_08C7: ldloc.s 32
+  IL_08C9: ldc.i4.7 
+  IL_08CA: beq.s IL_0910
+  IL_08CC: ldarg.0 
+  IL_08CD: ldfld <Launch>d__f::<res>5__1c
+  IL_08D2: callvirt HttpResponseMessage::get_Content
+  IL_08D7: callvirt HttpContent::ReadAsStringAsync
+  IL_08DC: callvirt Task`1::GetAwaiter
+  IL_08E1: stloc.s 33
+  IL_08E3: ldloca.s 33
+  IL_08E5: call TaskAwaiter`1::get_IsCompleted
+  IL_08EA: brtrue.s IL_092F
+  IL_08EC: ldarg.0 
+  IL_08ED: ldc.i4.7 
+  IL_08EE: stfld <Launch>d__f::<>1__state
+  IL_08F3: ldarg.0 
+  IL_08F4: ldloc.s 33
+  IL_08F6: stfld <Launch>d__f::<>u__$awaiter21
+  IL_08FB: ldarg.0 
+  IL_08FC: ldflda <Launch>d__f::<>t__builder
+  IL_0901: ldloca.s 33
+  IL_0903: ldarg.0 
+  IL_0904: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0909: ldc.i4.0 
+  IL_090A: stloc.3 
+  IL_090B: leave IL_0C81
+  IL_0910: ldarg.0 
+  IL_0911: ldfld <Launch>d__f::<>u__$awaiter21
+  IL_0916: stloc.s 33
+  IL_0918: ldarg.0 
+  IL_0919: ldloca.s 34
+  IL_091B: initobj TaskAwaiter`1
+  IL_0921: ldloc.s 34
+  IL_0923: stfld <Launch>d__f::<>u__$awaiter21
+  IL_0928: ldarg.0 
+  IL_0929: ldc.i4.m1 
+  IL_092A: stfld <Launch>d__f::<>1__state
+  IL_092F: ldloca.s 33
+  IL_0931: call TaskAwaiter`1::GetResult
+  IL_0936: ldloca.s 33
+  IL_0938: initobj TaskAwaiter`1
+  IL_093E: call Json::Parse
+  IL_0943: call Json::Obj
+  IL_0948: stloc.s 35
+  IL_094A: ldarg.0 
+  IL_094B: ldloc.s 35
+  IL_094D: stfld <Launch>d__f::<ticket>5__1b
+  IL_0952: leave.s IL_096B
+  IL_0954: ldloc.3 
+  IL_0955: brfalse.s IL_096A
+  IL_0957: ldarg.0 
+  IL_0958: ldfld <Launch>d__f::<res>5__1c
+  IL_095D: brfalse.s IL_096A
+  IL_095F: ldarg.0 
+  IL_0960: ldfld <Launch>d__f::<res>5__1c
+  IL_0965: callvirt IDisposable::Dispose
+  IL_096A: endfinally 
+  IL_096B: ldarg.0 
+  IL_096C: ldarg.0 
+  IL_096D: ldfld <Launch>d__f::<ticket>5__1b
+  IL_0972: ldstr "expires_in"
+  IL_0977: call Json::Long
+  IL_097C: stfld <Launch>d__f::<expires>5__1d
+  IL_0981: ldarg.0 
+  IL_0982: ldfld <Launch>d__f::<ticket>5__1b
+  IL_0987: ldstr "protocol"
+  IL_098C: call Json::Str
+  IL_0991: ldstr "robrun-v1"
+  IL_0996: call String::op_Inequality
+  IL_099B: brtrue.s IL_09B2
+  IL_099D: ldarg.0 
+  IL_099E: ldfld <Launch>d__f::<expires>5__1d
+  IL_09A3: ldc.i4.0 
+  IL_09A4: conv.i8 
+  IL_09A5: ble.s IL_09B2
+  IL_09A7: ldarg.0 
+  IL_09A8: ldfld <Launch>d__f::<expires>5__1d
+  IL_09AD: ldc.i4.s 120
+  IL_09AF: conv.i8 
+  IL_09B0: ble.s IL_09BD
+  IL_09B2: ldstr "Сервер вернул неподдерживаемый билет запуска"
+  IL_09B7: newobj Exception::.ctor
+  IL_09BC: throw 
+  IL_09BD: ldarg.0 
+  IL_09BE: ldarg.0 
+  IL_09BF: newobj SignedTicket::.ctor
+  IL_09C4: stfld <Launch>d__f::<>g__initLocal3
+  IL_09C9: ldarg.0 
+  IL_09CA: ldfld <Launch>d__f::<>g__initLocal3
+  IL_09CF: ldarg.0 
+  IL_09D0: ldfld <Launch>d__f::<ticket>5__1b
+  IL_09D5: ldstr "ticket"
+  IL_09DA: call Json::Str
+  IL_09DF: stfld SignedTicket::Ticket
+  IL_09E4: ldarg.0 
+  IL_09E5: ldfld <Launch>d__f::<>g__initLocal3
+  IL_09EA: ldarg.0 
+  IL_09EB: ldfld <Launch>d__f::<ticket>5__1b
+  IL_09F0: ldstr "signature"
+  IL_09F5: call Json::Str
+  IL_09FA: stfld SignedTicket::Signature
+  IL_09FF: ldarg.0 
+  IL_0A00: ldfld <Launch>d__f::<>g__initLocal3
+  IL_0A05: ldarg.0 
+  IL_0A06: ldfld <Launch>d__f::<ticket>5__1b
+  IL_0A0B: ldstr "hwid_digest"
+  IL_0A10: call Json::Str
+  IL_0A15: stfld SignedTicket::HwidDigest
+  IL_0A1A: ldarg.0 
+  IL_0A1B: ldfld <Launch>d__f::<>g__initLocal3
+  IL_0A20: ldarg.0 
+  IL_0A21: ldfld <Launch>d__f::<ticket>5__1b
+  IL_0A26: ldstr "signed_issued"
+  IL_0A2B: call Json::Long
+  IL_0A30: stfld SignedTicket::Issued
+  IL_0A35: ldarg.0 
+  IL_0A36: ldfld <Launch>d__f::<>g__initLocal3
+  IL_0A3B: ldarg.0 
+  IL_0A3C: ldfld <Launch>d__f::<ticket>5__1b
+  IL_0A41: ldstr "signed_expires"
+  IL_0A46: call Json::Long
+  IL_0A4B: stfld SignedTicket::Expires
+  IL_0A50: ldarg.0 
+  IL_0A51: ldfld <Launch>d__f::<>g__initLocal3
+  IL_0A56: stfld <Launch>d__f::<signed>5__1e
+  IL_0A5B: ldarg.0 
+  IL_0A5C: ldfld <Launch>d__f::<>4__this
+  IL_0A61: ldfld Launcher::emit
+  IL_0A66: ldarg.0 
+  IL_0A67: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0A6C: ldfld <>c__DisplayClassb::gameId
+  IL_0A71: ldstr "initializing"
+  IL_0A76: ldnull 
+  IL_0A77: callvirt Action`3::Invoke
+  IL_0A7C: ldarg.0 
+  IL_0A7D: ldfld <Launch>d__f::<exe>5__1a
+  IL_0A82: call Config::get_Server
+  IL_0A87: ldarg.0 
+  IL_0A88: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0A8D: ldfld <>c__DisplayClassb::gameId
+  IL_0A92: ldarg.0 
+  IL_0A93: ldfld <Launch>d__f::<signed>5__1e
+  IL_0A98: ldarg.0 
+  IL_0A99: ldfld <Launch>d__f::CS$<>9__CachedAnonymousMethodDelegatea
+  IL_0A9E: brtrue.s IL_0AB7
+  IL_0AA0: ldarg.0 
+  IL_0AA1: ldarg.0 
+  IL_0AA2: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0AA7: ldftn <>c__DisplayClassb::<Launch>b__8
+  IL_0AAD: newobj Action`1::.ctor
+  IL_0AB2: stfld <Launch>d__f::CS$<>9__CachedAnonymousMethodDelegatea
+  IL_0AB7: ldarg.0 
+  IL_0AB8: ldfld <Launch>d__f::CS$<>9__CachedAnonymousMethodDelegatea
+  IL_0ABD: ldarg.0 
+  IL_0ABE: ldfld <Launch>d__f::<>4__this
+  IL_0AC3: ldfld Launcher::shutdown
+  IL_0AC8: ldc.r8 30
+  IL_0AD1: call TimeSpan::FromSeconds
+  IL_0AD6: ldc.r8 10
+  IL_0ADF: call TimeSpan::FromMinutes
+  IL_0AE4: call RobRunRuntime::Start
+  IL_0AE9: callvirt Task::GetAwaiter
+  IL_0AEE: stloc.s 36
+  IL_0AF0: ldloca.s 36
+  IL_0AF2: call TaskAwaiter::get_IsCompleted
+  IL_0AF7: brtrue.s IL_0B3C
+  IL_0AF9: ldarg.0 
+  IL_0AFA: ldc.i4.8 
+  IL_0AFB: stfld <Launch>d__f::<>1__state
+  IL_0B00: ldarg.0 
+  IL_0B01: ldloc.s 36
+  IL_0B03: stfld <Launch>d__f::<>u__$awaiter23
+  IL_0B08: ldarg.0 
+  IL_0B09: ldflda <Launch>d__f::<>t__builder
+  IL_0B0E: ldloca.s 36
+  IL_0B10: ldarg.0 
+  IL_0B11: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0B16: ldc.i4.0 
+  IL_0B17: stloc.3 
+  IL_0B18: leave IL_0C81
+  IL_0B1D: ldarg.0 
+  IL_0B1E: ldfld <Launch>d__f::<>u__$awaiter23
+  IL_0B23: stloc.s 36
+  IL_0B25: ldarg.0 
+  IL_0B26: ldloca.s 37
+  IL_0B28: initobj TaskAwaiter
+  IL_0B2E: ldloc.s 37
+  IL_0B30: stfld <Launch>d__f::<>u__$awaiter23
+  IL_0B35: ldarg.0 
+  IL_0B36: ldc.i4.m1 
+  IL_0B37: stfld <Launch>d__f::<>1__state
+  IL_0B3C: ldloca.s 36
+  IL_0B3E: call TaskAwaiter::GetResult
+  IL_0B43: ldloca.s 36
+  IL_0B45: initobj TaskAwaiter
+  IL_0B4B: ldarg.0 
+  IL_0B4C: ldfld <Launch>d__f::<>4__this
+  IL_0B51: ldfld Launcher::emit
+  IL_0B56: ldarg.0 
+  IL_0B57: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0B5C: ldfld <>c__DisplayClassb::gameId
+  IL_0B61: ldstr "done"
+  IL_0B66: ldnull 
+  IL_0B67: callvirt Action`3::Invoke
+  IL_0B6C: ldarg.0 
+  IL_0B6D: newobj LaunchResult::.ctor
+  IL_0B72: stfld <Launch>d__f::<>g__initLocal4
+  IL_0B77: ldarg.0 
+  IL_0B78: ldfld <Launch>d__f::<>g__initLocal4
+  IL_0B7D: ldc.i4.1 
+  IL_0B7E: stfld LaunchResult::closeHost
+  IL_0B83: ldarg.0 
+  IL_0B84: ldfld <Launch>d__f::<>g__initLocal4
+  IL_0B89: ldc.i4.1 
+  IL_0B8A: stfld LaunchResult::ready
+  IL_0B8F: ldarg.0 
+  IL_0B90: ldfld <Launch>d__f::<>g__initLocal4
+  IL_0B95: stloc.s 4
+  IL_0B97: leave IL_0C6C
+  IL_0B9C: ldarg.0 
+  IL_0B9D: ldfld <Launch>d__f::<dir>5__15
+  IL_0BA2: brfalse.s IL_0BCD
+  IL_0BA4: ldarg.0 
+  IL_0BA5: ldfld <Launch>d__f::<game>5__11
+  IL_0BAA: ldstr "entry_file"
+  IL_0BAF: call Json::Str
+  IL_0BB4: callvirt String::get_Length
+  IL_0BB9: ldc.i4.0 
+  IL_0BBA: ble.s IL_0BCD
+  IL_0BBC: ldarg.0 
+  IL_0BBD: ldfld <Launch>d__f::<dir>5__15
+  IL_0BC2: ldarg.0 
+  IL_0BC3: ldfld <Launch>d__f::<game>5__11
+  IL_0BC8: call Launcher::RunEntry
+  IL_0BCD: ldarg.0 
+  IL_0BCE: ldfld <Launch>d__f::<>4__this
+  IL_0BD3: ldfld Launcher::emit
+  IL_0BD8: ldarg.0 
+  IL_0BD9: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0BDE: ldfld <>c__DisplayClassb::gameId
+  IL_0BE3: ldstr "done"
+  IL_0BE8: ldnull 
+  IL_0BE9: callvirt Action`3::Invoke
+  IL_0BEE: ldc.i4.1 
+  IL_0BEF: box Boolean
+  IL_0BF4: stloc.s 4
+  IL_0BF6: leave.s IL_0C6C
+  IL_0BF8: stloc.1 
+  IL_0BF9: ldarg.0 
+  IL_0BFA: ldfld <Launch>d__f::<>4__this
+  IL_0BFF: ldfld Launcher::emit
+  IL_0C04: ldarg.0 
+  IL_0C05: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0C0A: ldfld <>c__DisplayClassb::gameId
+  IL_0C0F: ldstr "error"
+  IL_0C14: newobj Dictionary`2::.ctor
+  IL_0C19: stloc.2 
+  IL_0C1A: ldloc.2 
+  IL_0C1B: ldstr "message"
+  IL_0C20: ldloc.1 
+  IL_0C21: callvirt Exception::get_Message
+  IL_0C26: callvirt Dictionary`2::Add
+  IL_0C2B: ldloc.2 
+  IL_0C2C: callvirt Action`3::Invoke
+  IL_0C31: rethrow 
+  IL_0C33: ldloc.3 
+  IL_0C34: brfalse.s IL_0C52
+  IL_0C36: ldarg.0 
+  IL_0C37: ldfld <Launch>d__f::<>4__this
+  IL_0C3C: ldfld Launcher::busy
+  IL_0C41: ldarg.0 
+  IL_0C42: ldfld <Launch>d__f::CS$<>8__localsc
+  IL_0C47: ldfld <>c__DisplayClassb::gameId
+  IL_0C4C: callvirt HashSet`1::Remove
+  IL_0C51: pop 
+  IL_0C52: endfinally 
+  IL_0C53: stloc.s 5
+  IL_0C55: ldarg.0 
+  IL_0C56: ldc.i4.s -2
+  IL_0C58: stfld <Launch>d__f::<>1__state
+  IL_0C5D: ldarg.0 
+  IL_0C5E: ldflda <Launch>d__f::<>t__builder
+  IL_0C63: ldloc.s 5
+  IL_0C65: call AsyncTaskMethodBuilder`1::SetException
+  IL_0C6A: leave.s IL_0C81
+  IL_0C6C: ldarg.0 
+  IL_0C6D: ldc.i4.s -2
+  IL_0C6F: stfld <Launch>d__f::<>1__state
+  IL_0C74: ldarg.0 
+  IL_0C75: ldflda <Launch>d__f::<>t__builder
+  IL_0C7A: ldloc.s 4
+  IL_0C7C: call AsyncTaskMethodBuilder`1::SetResult
+  IL_0C81: ret 

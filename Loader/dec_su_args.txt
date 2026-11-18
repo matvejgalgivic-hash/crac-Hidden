@@ -1,0 +1,15 @@
+﻿=== GameLoader.SelfUpdate+<>c__DisplayClass2e::<HandleArguments>b__2b
+  IL_0000: ldarg.0 
+  IL_0001: ldfld <>c__DisplayClass2e::CS$<>8__locals2d
+  IL_0006: ldfld <>c__DisplayClass2c::args
+  IL_000B: ldc.i4.1 
+  IL_000C: ldelem.ref 
+  IL_000D: call SelfUpdate::Wait
+  IL_0012: ldarg.0 
+  IL_0013: ldfld <>c__DisplayClass2e::directory
+  IL_0018: call SelfUpdate::Cleanup
+  IL_001D: ret 
+=== GameLoader.SelfUpdate+<>c__DisplayClass2e::.ctor
+  IL_0000: ldarg.0 
+  IL_0001: call Object::.ctor
+  IL_0006: ret 

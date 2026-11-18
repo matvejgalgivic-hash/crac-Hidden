@@ -1,0 +1,41 @@
+﻿=== GameLoader.RobRunRuntime::Start
+  IL_0000: ldloca.s 0
+  IL_0002: ldarg.0 
+  IL_0003: stfld <Start>d__28::exe
+  IL_0008: ldloca.s 0
+  IL_000A: ldarg.1 
+  IL_000B: stfld <Start>d__28::server
+  IL_0010: ldloca.s 0
+  IL_0012: ldarg.2 
+  IL_0013: stfld <Start>d__28::gameId
+  IL_0018: ldloca.s 0
+  IL_001A: ldarg.3 
+  IL_001B: stfld <Start>d__28::signed
+  IL_0020: ldloca.s 0
+  IL_0022: ldarg.s 4
+  IL_0024: stfld <Start>d__28::status
+  IL_0029: ldloca.s 0
+  IL_002B: ldarg.s 5
+  IL_002D: stfld <Start>d__28::cancel
+  IL_0032: ldloca.s 0
+  IL_0034: ldarg.s 6
+  IL_0036: stfld <Start>d__28::handshakeTimeout
+  IL_003B: ldloca.s 0
+  IL_003D: ldarg.s 7
+  IL_003F: stfld <Start>d__28::readyTimeout
+  IL_0044: ldloca.s 0
+  IL_0046: call AsyncTaskMethodBuilder::Create
+  IL_004B: stfld <Start>d__28::<>t__builder
+  IL_0050: ldloca.s 0
+  IL_0052: ldc.i4.m1 
+  IL_0053: stfld <Start>d__28::<>1__state
+  IL_0058: ldloca.s 0
+  IL_005A: ldfld <Start>d__28::<>t__builder
+  IL_005F: stloc.1 
+  IL_0060: ldloca.s 1
+  IL_0062: ldloca.s 0
+  IL_0064: call AsyncTaskMethodBuilder::Start
+  IL_0069: ldloca.s 0
+  IL_006B: ldflda <Start>d__28::<>t__builder
+  IL_0070: call AsyncTaskMethodBuilder::get_Task
+  IL_0075: ret 

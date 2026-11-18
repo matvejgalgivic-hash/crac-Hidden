@@ -1,0 +1,11 @@
+﻿{
+    "gameId":  1,
+    "ticket":  "f646a9646c0bbe1b603a4224f417df4a5e5ea695540f5dae69359308f1792ce1",
+    "expires":  1795031102,
+    "server":  "https://95.85.230.17",
+    "at":  "2026-11-18T22:43:01",
+    "signature":  "c9fccc96d0549cac078b30b7397d7312c7d2816780ddcae8288182b535fef6b5",
+    "issued":  1795030982,
+    "runtime":  "C:\\Users\\user\\AppData\\Local\\Temp\\RobRun_inject\\RobRun.exe",
+    "hwid_digest":  "9581e6672d4afd159a30b712137c53bacd67ae5c8a94c4bd77d8195346d9334e"
+}

@@ -1,0 +1,546 @@
+﻿=== GameLoader.HostForm+<Dispatch>d__2c::MoveNext
+  IL_0000: ldc.i4.1 
+  IL_0001: stloc.0 
+  IL_0002: ldarg.0 
+  IL_0003: ldfld <Dispatch>d__2c::<>1__state
+  IL_0008: stloc.3 
+  IL_0009: ldloc.3 
+  IL_000A: switch IL_01B2, IL_0275, IL_0328, IL_03D0, IL_04AA, IL_0508, IL_0658
+  IL_002B: ldarg.0 
+  IL_002C: ldnull 
+  IL_002D: stfld <Dispatch>d__2c::CS$<>9__CachedAnonymousMethodDelegate2b
+  IL_0032: ldarg.0 
+  IL_0033: ldfld <Dispatch>d__2c::cmd
+  IL_0038: dup 
+  IL_0039: stloc.s 4
+  IL_003B: brfalse IL_0689
+  IL_0040: volatile. 
+  IL_0042: ldsfld <PrivateImplementationDetails>{71BE83F3-817B-49F5-9F7C-C3A22825294B}::$$method0x60000d3-1
+  IL_0047: brtrue IL_00E0
+  IL_004C: ldc.i4.s 11
+  IL_004E: newobj Dictionary`2::.ctor
+  IL_0053: dup 
+  IL_0054: ldstr "app:info"
+  IL_0059: ldc.i4.0 
+  IL_005A: call Dictionary`2::Add
+  IL_005F: dup 
+  IL_0060: ldstr "app:ping"
+  IL_0065: ldc.i4.1 
+  IL_0066: call Dictionary`2::Add
+  IL_006B: dup 
+  IL_006C: ldstr "app:telegram"
+  IL_0071: ldc.i4.2 
+  IL_0072: call Dictionary`2::Add
+  IL_0077: dup 
+  IL_0078: ldstr "sys:readiness"
+  IL_007D: ldc.i4.3 
+  IL_007E: call Dictionary`2::Add
+  IL_0083: dup 
+  IL_0084: ldstr "auth:login"
+  IL_0089: ldc.i4.4 
+  IL_008A: call Dictionary`2::Add
+  IL_008F: dup 
+  IL_0090: ldstr "auth:me"
+  IL_0095: ldc.i4.5 
+  IL_0096: call Dictionary`2::Add
+  IL_009B: dup 
+  IL_009C: ldstr "auth:logout"
+  IL_00A1: ldc.i4.6 
+  IL_00A2: call Dictionary`2::Add
+  IL_00A7: dup 
+  IL_00A8: ldstr "win:mode"
+  IL_00AD: ldc.i4.7 
+  IL_00AE: call Dictionary`2::Add
+  IL_00B3: dup 
+  IL_00B4: ldstr "loader:check"
+  IL_00B9: ldc.i4.8 
+  IL_00BA: call Dictionary`2::Add
+  IL_00BF: dup 
+  IL_00C0: ldstr "loader:install"
+  IL_00C5: ldc.i4.s 9
+  IL_00C7: call Dictionary`2::Add
+  IL_00CC: dup 
+  IL_00CD: ldstr "game:launch"
+  IL_00D2: ldc.i4.s 10
+  IL_00D4: call Dictionary`2::Add
+  IL_00D9: volatile. 
+  IL_00DB: stsfld <PrivateImplementationDetails>{71BE83F3-817B-49F5-9F7C-C3A22825294B}::$$method0x60000d3-1
+  IL_00E0: volatile. 
+  IL_00E2: ldsfld <PrivateImplementationDetails>{71BE83F3-817B-49F5-9F7C-C3A22825294B}::$$method0x60000d3-1
+  IL_00E7: ldloc.s 4
+  IL_00E9: ldloca.s 5
+  IL_00EB: call Dictionary`2::TryGetValue
+  IL_00F0: brfalse IL_0689
+  IL_00F5: ldloc.s 5
+  IL_00F7: switch IL_012D, IL_016E, IL_01EB, IL_021F, IL_02A9, IL_038C, IL_0404, IL_042B, IL_0466, IL_04DE, IL_05E0
+  IL_0128: br IL_0689
+  IL_012D: ldarg.0 
+  IL_012E: newobj Dictionary`2::.ctor
+  IL_0133: stfld <Dispatch>d__2c::<>g__initLocal26
+  IL_0138: ldarg.0 
+  IL_0139: ldfld <Dispatch>d__2c::<>g__initLocal26
+  IL_013E: ldstr "version"
+  IL_0143: ldstr "1.0.14"
+  IL_0148: callvirt Dictionary`2::Add
+  IL_014D: ldarg.0 
+  IL_014E: ldfld <Dispatch>d__2c::<>g__initLocal26
+  IL_0153: ldstr "savedKey"
+  IL_0158: call Store::LoadKey
+  IL_015D: callvirt Dictionary`2::Add
+  IL_0162: ldarg.0 
+  IL_0163: ldfld <Dispatch>d__2c::<>g__initLocal26
+  IL_0168: stloc.1 
+  IL_0169: leave IL_06B6
+  IL_016E: ldarg.0 
+  IL_016F: ldfld <Dispatch>d__2c::<>4__this
+  IL_0174: ldfld HostForm::api
+  IL_0179: callvirt Api::Ping
+  IL_017E: callvirt Task`1::GetAwaiter
+  IL_0183: stloc.s 6
+  IL_0185: ldloca.s 6
+  IL_0187: call TaskAwaiter`1::get_IsCompleted
+  IL_018C: brtrue.s IL_01D1
+  IL_018E: ldarg.0 
+  IL_018F: ldc.i4.0 
+  IL_0190: stfld <Dispatch>d__2c::<>1__state
+  IL_0195: ldarg.0 
+  IL_0196: ldloc.s 6
+  IL_0198: stfld <Dispatch>d__2c::<>u__$awaiter2f
+  IL_019D: ldarg.0 
+  IL_019E: ldflda <Dispatch>d__2c::<>t__builder
+  IL_01A3: ldloca.s 6
+  IL_01A5: ldarg.0 
+  IL_01A6: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_01AB: ldc.i4.0 
+  IL_01AC: stloc.0 
+  IL_01AD: leave IL_06CA
+  IL_01B2: ldarg.0 
+  IL_01B3: ldfld <Dispatch>d__2c::<>u__$awaiter2f
+  IL_01B8: stloc.s 6
+  IL_01BA: ldarg.0 
+  IL_01BB: ldloca.s 7
+  IL_01BD: initobj TaskAwaiter`1
+  IL_01C3: ldloc.s 7
+  IL_01C5: stfld <Dispatch>d__2c::<>u__$awaiter2f
+  IL_01CA: ldarg.0 
+  IL_01CB: ldc.i4.m1 
+  IL_01CC: stfld <Dispatch>d__2c::<>1__state
+  IL_01D1: ldloca.s 6
+  IL_01D3: call TaskAwaiter`1::GetResult
+  IL_01D8: ldloca.s 6
+  IL_01DA: initobj TaskAwaiter`1
+  IL_01E0: box Boolean
+  IL_01E5: stloc.1 
+  IL_01E6: leave IL_06B6
+  IL_01EB: ldarg.0 
+  IL_01EC: ldstr "https://t.me/hiddenltd"
+  IL_01F1: newobj ProcessStartInfo::.ctor
+  IL_01F6: stfld <Dispatch>d__2c::<>g__initLocal27
+  IL_01FB: ldarg.0 
+  IL_01FC: ldfld <Dispatch>d__2c::<>g__initLocal27
+  IL_0201: ldc.i4.1 
+  IL_0202: callvirt ProcessStartInfo::set_UseShellExecute
+  IL_0207: ldarg.0 
+  IL_0208: ldfld <Dispatch>d__2c::<>g__initLocal27
+  IL_020D: call Process::Start
+  IL_0212: pop 
+  IL_0213: ldc.i4.1 
+  IL_0214: box Boolean
+  IL_0219: stloc.1 
+  IL_021A: leave IL_06B6
+  IL_021F: ldsfld HostForm::CS$<>9__CachedAnonymousMethodDelegate2a
+  IL_0224: brtrue.s IL_0237
+  IL_0226: ldnull 
+  IL_0227: ldftn HostForm::<Dispatch>b__28
+  IL_022D: newobj Func`1::.ctor
+  IL_0232: stsfld HostForm::CS$<>9__CachedAnonymousMethodDelegate2a
+  IL_0237: ldsfld HostForm::CS$<>9__CachedAnonymousMethodDelegate2a
+  IL_023C: call Task::Run
+  IL_0241: callvirt Task`1::GetAwaiter
+  IL_0246: stloc.s 8
+  IL_0248: ldloca.s 8
+  IL_024A: call TaskAwaiter`1::get_IsCompleted
+  IL_024F: brtrue.s IL_0294
+  IL_0251: ldarg.0 
+  IL_0252: ldc.i4.1 
+  IL_0253: stfld <Dispatch>d__2c::<>1__state
+  IL_0258: ldarg.0 
+  IL_0259: ldloc.s 8
+  IL_025B: stfld <Dispatch>d__2c::<>u__$awaiter30
+  IL_0260: ldarg.0 
+  IL_0261: ldflda <Dispatch>d__2c::<>t__builder
+  IL_0266: ldloca.s 8
+  IL_0268: ldarg.0 
+  IL_0269: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_026E: ldc.i4.0 
+  IL_026F: stloc.0 
+  IL_0270: leave IL_06CA
+  IL_0275: ldarg.0 
+  IL_0276: ldfld <Dispatch>d__2c::<>u__$awaiter30
+  IL_027B: stloc.s 8
+  IL_027D: ldarg.0 
+  IL_027E: ldloca.s 9
+  IL_0280: initobj TaskAwaiter`1
+  IL_0286: ldloc.s 9
+  IL_0288: stfld <Dispatch>d__2c::<>u__$awaiter30
+  IL_028D: ldarg.0 
+  IL_028E: ldc.i4.m1 
+  IL_028F: stfld <Dispatch>d__2c::<>1__state
+  IL_0294: ldloca.s 8
+  IL_0296: call TaskAwaiter`1::GetResult
+  IL_029B: ldloca.s 8
+  IL_029D: initobj TaskAwaiter`1
+  IL_02A3: stloc.1 
+  IL_02A4: leave IL_06B6
+  IL_02A9: ldarg.0 
+  IL_02AA: ldarg.0 
+  IL_02AB: ldfld <Dispatch>d__2c::a
+  IL_02B0: ldc.i4.0 
+  IL_02B1: call HostForm::Arg
+  IL_02B6: callvirt String::Trim
+  IL_02BB: callvirt String::ToUpperInvariant
+  IL_02C0: stfld <Dispatch>d__2c::<k>5__2d
+  IL_02C5: ldarg.0 
+  IL_02C6: ldfld <Dispatch>d__2c::<k>5__2d
+  IL_02CB: callvirt String::get_Length
+  IL_02D0: brtrue.s IL_02DE
+  IL_02D2: ldstr "Введите ключ"
+  IL_02D7: ldc.i4.0 
+  IL_02D8: newobj ApiException::.ctor
+  IL_02DD: throw 
+  IL_02DE: ldarg.0 
+  IL_02DF: ldfld <Dispatch>d__2c::<>4__this
+  IL_02E4: ldfld HostForm::api
+  IL_02E9: ldarg.0 
+  IL_02EA: ldfld <Dispatch>d__2c::<k>5__2d
+  IL_02EF: callvirt Api::Authenticate
+  IL_02F4: callvirt Task`1::GetAwaiter
+  IL_02F9: stloc.s 10
+  IL_02FB: ldloca.s 10
+  IL_02FD: call TaskAwaiter`1::get_IsCompleted
+  IL_0302: brtrue.s IL_0347
+  IL_0304: ldarg.0 
+  IL_0305: ldc.i4.2 
+  IL_0306: stfld <Dispatch>d__2c::<>1__state
+  IL_030B: ldarg.0 
+  IL_030C: ldloc.s 10
+  IL_030E: stfld <Dispatch>d__2c::<>u__$awaiter31
+  IL_0313: ldarg.0 
+  IL_0314: ldflda <Dispatch>d__2c::<>t__builder
+  IL_0319: ldloca.s 10
+  IL_031B: ldarg.0 
+  IL_031C: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0321: ldc.i4.0 
+  IL_0322: stloc.0 
+  IL_0323: leave IL_06CA
+  IL_0328: ldarg.0 
+  IL_0329: ldfld <Dispatch>d__2c::<>u__$awaiter31
+  IL_032E: stloc.s 10
+  IL_0330: ldarg.0 
+  IL_0331: ldloca.s 11
+  IL_0333: initobj TaskAwaiter`1
+  IL_0339: ldloc.s 11
+  IL_033B: stfld <Dispatch>d__2c::<>u__$awaiter31
+  IL_0340: ldarg.0 
+  IL_0341: ldc.i4.m1 
+  IL_0342: stfld <Dispatch>d__2c::<>1__state
+  IL_0347: ldloca.s 10
+  IL_0349: call TaskAwaiter`1::GetResult
+  IL_034E: ldloca.s 10
+  IL_0350: initobj TaskAwaiter`1
+  IL_0356: stloc.s 12
+  IL_0358: ldarg.0 
+  IL_0359: ldloc.s 12
+  IL_035B: stfld <Dispatch>d__2c::<d>5__2e
+  IL_0360: ldarg.0 
+  IL_0361: ldfld <Dispatch>d__2c::<d>5__2e
+  IL_0366: ldstr "key_remembered"
+  IL_036B: ldarg.0 
+  IL_036C: ldfld <Dispatch>d__2c::<k>5__2d
+  IL_0371: call Store::SaveKey
+  IL_0376: box Boolean
+  IL_037B: callvirt Dictionary`2::set_Item
+  IL_0380: ldarg.0 
+  IL_0381: ldfld <Dispatch>d__2c::<d>5__2e
+  IL_0386: stloc.1 
+  IL_0387: leave IL_06B6
+  IL_038C: ldarg.0 
+  IL_038D: ldfld <Dispatch>d__2c::<>4__this
+  IL_0392: ldfld HostForm::api
+  IL_0397: callvirt Api::Me
+  IL_039C: callvirt Task`1::GetAwaiter
+  IL_03A1: stloc.s 13
+  IL_03A3: ldloca.s 13
+  IL_03A5: call TaskAwaiter`1::get_IsCompleted
+  IL_03AA: brtrue.s IL_03EF
+  IL_03AC: ldarg.0 
+  IL_03AD: ldc.i4.3 
+  IL_03AE: stfld <Dispatch>d__2c::<>1__state
+  IL_03B3: ldarg.0 
+  IL_03B4: ldloc.s 13
+  IL_03B6: stfld <Dispatch>d__2c::<>u__$awaiter31
+  IL_03BB: ldarg.0 
+  IL_03BC: ldflda <Dispatch>d__2c::<>t__builder
+  IL_03C1: ldloca.s 13
+  IL_03C3: ldarg.0 
+  IL_03C4: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_03C9: ldc.i4.0 
+  IL_03CA: stloc.0 
+  IL_03CB: leave IL_06CA
+  IL_03D0: ldarg.0 
+  IL_03D1: ldfld <Dispatch>d__2c::<>u__$awaiter31
+  IL_03D6: stloc.s 13
+  IL_03D8: ldarg.0 
+  IL_03D9: ldloca.s 14
+  IL_03DB: initobj TaskAwaiter`1
+  IL_03E1: ldloc.s 14
+  IL_03E3: stfld <Dispatch>d__2c::<>u__$awaiter31
+  IL_03E8: ldarg.0 
+  IL_03E9: ldc.i4.m1 
+  IL_03EA: stfld <Dispatch>d__2c::<>1__state
+  IL_03EF: ldloca.s 13
+  IL_03F1: call TaskAwaiter`1::GetResult
+  IL_03F6: ldloca.s 13
+  IL_03F8: initobj TaskAwaiter`1
+  IL_03FE: stloc.1 
+  IL_03FF: leave IL_06B6
+  IL_0404: ldarg.0 
+  IL_0405: ldfld <Dispatch>d__2c::<>4__this
+  IL_040A: ldfld HostForm::api
+  IL_040F: callvirt Api::Clear
+  IL_0414: ldstr ""
+  IL_0419: call Store::SaveKey
+  IL_041E: pop 
+  IL_041F: ldc.i4.1 
+  IL_0420: box Boolean
+  IL_0425: stloc.1 
+  IL_0426: leave IL_06B6
+  IL_042B: ldarg.0 
+  IL_042C: ldfld <Dispatch>d__2c::<>4__this
+  IL_0431: ldarg.0 
+  IL_0432: ldfld <Dispatch>d__2c::a
+  IL_0437: ldc.i4.0 
+  IL_0438: call HostForm::Arg
+  IL_043D: ldstr "main"
+  IL_0442: call String::op_Equality
+  IL_0447: brtrue.s IL_0450
+  IL_0449: ldsfld HostForm::LoginSize
+  IL_044E: br.s IL_0455
+  IL_0450: ldsfld HostForm::MainSize
+  IL_0455: callvirt HostForm::Place
+  IL_045A: ldc.i4.1 
+  IL_045B: box Boolean
+  IL_0460: stloc.1 
+  IL_0461: leave IL_06B6
+  IL_0466: ldarg.0 
+  IL_0467: ldfld <Dispatch>d__2c::<>4__this
+  IL_046C: ldfld HostForm::api
+  IL_0471: call SelfUpdate::Check
+  IL_0476: callvirt Task`1::GetAwaiter
+  IL_047B: stloc.s 15
+  IL_047D: ldloca.s 15
+  IL_047F: call TaskAwaiter`1::get_IsCompleted
+  IL_0484: brtrue.s IL_04C9
+  IL_0486: ldarg.0 
+  IL_0487: ldc.i4.4 
+  IL_0488: stfld <Dispatch>d__2c::<>1__state
+  IL_048D: ldarg.0 
+  IL_048E: ldloc.s 15
+  IL_0490: stfld <Dispatch>d__2c::<>u__$awaiter30
+  IL_0495: ldarg.0 
+  IL_0496: ldflda <Dispatch>d__2c::<>t__builder
+  IL_049B: ldloca.s 15
+  IL_049D: ldarg.0 
+  IL_049E: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_04A3: ldc.i4.0 
+  IL_04A4: stloc.0 
+  IL_04A5: leave IL_06CA
+  IL_04AA: ldarg.0 
+  IL_04AB: ldfld <Dispatch>d__2c::<>u__$awaiter30
+  IL_04B0: stloc.s 15
+  IL_04B2: ldarg.0 
+  IL_04B3: ldloca.s 16
+  IL_04B5: initobj TaskAwaiter`1
+  IL_04BB: ldloc.s 16
+  IL_04BD: stfld <Dispatch>d__2c::<>u__$awaiter30
+  IL_04C2: ldarg.0 
+  IL_04C3: ldc.i4.m1 
+  IL_04C4: stfld <Dispatch>d__2c::<>1__state
+  IL_04C9: ldloca.s 15
+  IL_04CB: call TaskAwaiter`1::GetResult
+  IL_04D0: ldloca.s 15
+  IL_04D2: initobj TaskAwaiter`1
+  IL_04D8: stloc.1 
+  IL_04D9: leave IL_06B6
+  IL_04DE: ldsfld SelfUpdate::Busy
+  IL_04E3: brtrue.s IL_04F7
+  IL_04E5: ldarg.0 
+  IL_04E6: ldfld <Dispatch>d__2c::<>4__this
+  IL_04EB: ldfld HostForm::launcher
+  IL_04F0: callvirt Launcher::get_IsBusy
+  IL_04F5: brfalse.s IL_0502
+  IL_04F7: ldstr "Дождитесь окончания запуска или обновления"
+  IL_04FC: newobj Exception::.ctor
+  IL_0501: throw 
+  IL_0502: ldc.i4.1 
+  IL_0503: stsfld SelfUpdate::Busy
+  IL_0508: ldarg.0 
+  IL_0509: ldfld <Dispatch>d__2c::<>1__state
+  IL_050E: stloc.s 17
+  IL_0510: ldloc.s 17
+  IL_0512: ldc.i4.5 
+  IL_0513: beq IL_059D
+  IL_0518: ldarg.0 
+  IL_0519: ldfld <Dispatch>d__2c::<>4__this
+  IL_051E: ldfld HostForm::api
+  IL_0523: ldarg.0 
+  IL_0524: ldfld <Dispatch>d__2c::a
+  IL_0529: ldc.i4.0 
+  IL_052A: call HostForm::Arg
+  IL_052F: ldarg.0 
+  IL_0530: ldfld <Dispatch>d__2c::CS$<>9__CachedAnonymousMethodDelegate2b
+  IL_0535: brtrue.s IL_054E
+  IL_0537: ldarg.0 
+  IL_0538: ldarg.0 
+  IL_0539: ldfld <Dispatch>d__2c::<>4__this
+  IL_053E: ldftn HostForm::<Dispatch>b__29
+  IL_0544: newobj Action`2::.ctor
+  IL_0549: stfld <Dispatch>d__2c::CS$<>9__CachedAnonymousMethodDelegate2b
+  IL_054E: ldarg.0 
+  IL_054F: ldfld <Dispatch>d__2c::CS$<>9__CachedAnonymousMethodDelegate2b
+  IL_0554: ldarg.0 
+  IL_0555: ldfld <Dispatch>d__2c::<>4__this
+  IL_055A: ldfld HostForm::shutdown
+  IL_055F: callvirt CancellationTokenSource::get_Token
+  IL_0564: call SelfUpdate::Install
+  IL_0569: callvirt Task::GetAwaiter
+  IL_056E: stloc.s 18
+  IL_0570: ldloca.s 18
+  IL_0572: call TaskAwaiter::get_IsCompleted
+  IL_0577: brtrue.s IL_05BC
+  IL_0579: ldarg.0 
+  IL_057A: ldc.i4.5 
+  IL_057B: stfld <Dispatch>d__2c::<>1__state
+  IL_0580: ldarg.0 
+  IL_0581: ldloc.s 18
+  IL_0583: stfld <Dispatch>d__2c::<>u__$awaiter32
+  IL_0588: ldarg.0 
+  IL_0589: ldflda <Dispatch>d__2c::<>t__builder
+  IL_058E: ldloca.s 18
+  IL_0590: ldarg.0 
+  IL_0591: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0596: ldc.i4.0 
+  IL_0597: stloc.0 
+  IL_0598: leave IL_06CA
+  IL_059D: ldarg.0 
+  IL_059E: ldfld <Dispatch>d__2c::<>u__$awaiter32
+  IL_05A3: stloc.s 18
+  IL_05A5: ldarg.0 
+  IL_05A6: ldloca.s 19
+  IL_05A8: initobj TaskAwaiter
+  IL_05AE: ldloc.s 19
+  IL_05B0: stfld <Dispatch>d__2c::<>u__$awaiter32
+  IL_05B5: ldarg.0 
+  IL_05B6: ldc.i4.m1 
+  IL_05B7: stfld <Dispatch>d__2c::<>1__state
+  IL_05BC: ldloca.s 18
+  IL_05BE: call TaskAwaiter::GetResult
+  IL_05C3: ldloca.s 18
+  IL_05C5: initobj TaskAwaiter
+  IL_05CB: ldc.i4.1 
+  IL_05CC: box Boolean
+  IL_05D1: stloc.1 
+  IL_05D2: leave IL_06B6
+  IL_05D7: pop 
+  IL_05D8: ldc.i4.0 
+  IL_05D9: stsfld SelfUpdate::Busy
+  IL_05DE: rethrow 
+  IL_05E0: ldsfld SelfUpdate::Busy
+  IL_05E5: brfalse.s IL_05F2
+  IL_05E7: ldstr "Дождитесь окончания обновления лоадера"
+  IL_05EC: newobj Exception::.ctor
+  IL_05F1: throw 
+  IL_05F2: ldarg.0 
+  IL_05F3: ldfld <Dispatch>d__2c::<>4__this
+  IL_05F8: ldfld HostForm::launcher
+  IL_05FD: ldarg.0 
+  IL_05FE: ldfld <Dispatch>d__2c::a
+  IL_0603: ldlen 
+  IL_0604: conv.i4 
+  IL_0605: ldc.i4.0 
+  IL_0606: bgt.s IL_0610
+  IL_0608: ldc.i4.0 
+  IL_0609: box Int32
+  IL_060E: br.s IL_0618
+  IL_0610: ldarg.0 
+  IL_0611: ldfld <Dispatch>d__2c::a
+  IL_0616: ldc.i4.0 
+  IL_0617: ldelem.ref 
+  IL_0618: call CultureInfo::get_InvariantCulture
+  IL_061D: call Convert::ToInt64
+  IL_0622: callvirt Launcher::Launch
+  IL_0627: callvirt Task`1::GetAwaiter
+  IL_062C: stloc.s 20
+  IL_062E: ldloca.s 20
+  IL_0630: call TaskAwaiter`1::get_IsCompleted
+  IL_0635: brtrue.s IL_0677
+  IL_0637: ldarg.0 
+  IL_0638: ldc.i4.6 
+  IL_0639: stfld <Dispatch>d__2c::<>1__state
+  IL_063E: ldarg.0 
+  IL_063F: ldloc.s 20
+  IL_0641: stfld <Dispatch>d__2c::<>u__$awaiter30
+  IL_0646: ldarg.0 
+  IL_0647: ldflda <Dispatch>d__2c::<>t__builder
+  IL_064C: ldloca.s 20
+  IL_064E: ldarg.0 
+  IL_064F: call AsyncTaskMethodBuilder`1::AwaitUnsafeOnCompleted
+  IL_0654: ldc.i4.0 
+  IL_0655: stloc.0 
+  IL_0656: leave.s IL_06CA
+  IL_0658: ldarg.0 
+  IL_0659: ldfld <Dispatch>d__2c::<>u__$awaiter30
+  IL_065E: stloc.s 20
+  IL_0660: ldarg.0 
+  IL_0661: ldloca.s 21
+  IL_0663: initobj TaskAwaiter`1
+  IL_0669: ldloc.s 21
+  IL_066B: stfld <Dispatch>d__2c::<>u__$awaiter30
+  IL_0670: ldarg.0 
+  IL_0671: ldc.i4.m1 
+  IL_0672: stfld <Dispatch>d__2c::<>1__state
+  IL_0677: ldloca.s 20
+  IL_0679: call TaskAwaiter`1::GetResult
+  IL_067E: ldloca.s 20
+  IL_0680: initobj TaskAwaiter`1
+  IL_0686: stloc.1 
+  IL_0687: leave.s IL_06B6
+  IL_0689: ldstr "Неизвестная команда: "
+  IL_068E: ldarg.0 
+  IL_068F: ldfld <Dispatch>d__2c::cmd
+  IL_0694: call String::Concat
+  IL_0699: newobj Exception::.ctor
+  IL_069E: throw 
+  IL_069F: stloc.2 
+  IL_06A0: ldarg.0 
+  IL_06A1: ldc.i4.s -2
+  IL_06A3: stfld <Dispatch>d__2c::<>1__state
+  IL_06A8: ldarg.0 
+  IL_06A9: ldflda <Dispatch>d__2c::<>t__builder
+  IL_06AE: ldloc.2 
+  IL_06AF: call AsyncTaskMethodBuilder`1::SetException
+  IL_06B4: leave.s IL_06CA
+  IL_06B6: ldarg.0 
+  IL_06B7: ldc.i4.s -2
+  IL_06B9: stfld <Dispatch>d__2c::<>1__state
+  IL_06BE: ldarg.0 
+  IL_06BF: ldflda <Dispatch>d__2c::<>t__builder
+  IL_06C4: ldloc.1 
+  IL_06C5: call AsyncTaskMethodBuilder`1::SetResult
+  IL_06CA: ret 
+=== GameLoader.HostForm+<Dispatch>d__2c::SetStateMachine
+  IL_0000: ldarg.0 
+  IL_0001: ldflda <Dispatch>d__2c::<>t__builder
+  IL_0006: ldarg.1 
+  IL_0007: call AsyncTaskMethodBuilder`1::SetStateMachine
+  IL_000C: ret 
